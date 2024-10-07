@@ -7,7 +7,7 @@ namespace EjerciciosC
         public static void Main()
         {
             IEjecutarEjercicio ejercicio;
-            ejercicio = new Ejercicio2();
+            ejercicio = new Ejercicio3();
             ejercicio.Ejecutar();
 
         }
