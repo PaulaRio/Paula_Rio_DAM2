@@ -7,16 +7,18 @@ using EjerciciosC;
 
 namespace EjerciciosC_
 {
-    internal class Ejercicio3 : IEjecutarEjercicio
+    class Ejercicio4 : IEjecutarEjercicio
     {
+        /*4. Dada un array de enteros, encuentra todo los números que aparecen
+        un número impar de veces.*/
         public void Ejecutar()
         {
             Console.WriteLine("Introduce un array separado por comas");
             string? numerosArray = Console.ReadLine();
             List<int> splittedNumerosArray = Utils.GetListNumbersFromString(numerosArray);
-            List<int> repeticiones = new List<int>();
-
-            Dictionary<int,int> diccionarioReps= new Dictionary<int,int>();     
+            
+            Dictionary<int, int> diccionarioReps = new Dictionary<int, int>();
+            Dictionary<int, int> nImparveces = new Dictionary<int, int>();
             int cont = 0;
             foreach (int i in splittedNumerosArray)
             {
@@ -30,25 +32,20 @@ namespace EjerciciosC_
                 }
 
             }
-            int keyDiccionarioMenorValor = int.MaxValue;
+            
             foreach (var element in diccionarioReps)
             {
-                if (element.Value< keyDiccionarioMenorValor)
+                if (element.Value %2!=0)
                 {
-                    keyDiccionarioMenorValor = element.Value;
+                    nImparveces.TryAdd(element.Key,element.Value);
                 }
             }
-            int smallestValueWithLessrepetitions = int.MaxValue;
-            foreach (var element in diccionarioReps)
+            foreach (var item in nImparveces)
             {
-                if (element.Value == keyDiccionarioMenorValor &&element.Key< smallestValueWithLessrepetitions)
-                {
-                    smallestValueWithLessrepetitions = element.Key;
-                }
+                Console.WriteLine($"El número {item.Key} " + $" con {item.Value} repeticiones impares");
             }
 
-            Console.WriteLine($"El numero que se repite menos veces es {smallestValueWithLessrepetitions} "+$" con {keyDiccionarioMenorValor} repeticiones");
-
+            
 
         }
     }
