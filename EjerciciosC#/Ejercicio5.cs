@@ -21,22 +21,35 @@ namespace EjerciciosC_
             List<string> splittedStringArray = Utils.GetListStringFromString(stringArray);
             List<int> numbers = new List<int>();
             List<string> words = new List<string>();
+            Dictionary<string, int> diccionarioReps = new Dictionary<string, int>();
+            
             foreach (var item in splittedStringArray)
-            { 
-                if (int.TryParse(item, out int val))
+            {
+                if (diccionarioReps.ContainsKey(item))
                 {
-                    numbers.Add(val);
+
+                    diccionarioReps[item] += 1;
                 }
                 else
                 {
-                    words.Add(item);
-
+                    diccionarioReps.Add(item, 1);
                 }
+            }
+            foreach (var item in diccionarioReps)
+            {
+                if (item.Value>1)
+                {
+                   diccionarioReps.Remove(item.Key);
+                }
+            }
+            foreach (var item in diccionarioReps)
+            {
+                Console.WriteLine(item.Key);
             }
 
 
-            
-                
+
+
 
 
         }
