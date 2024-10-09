@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace EjerciciosC_
 {
     public static class Utils
     {
-        public static int GetNumeroPorConsola()
+        public static int GetNumeroPorConsola(string? numero)
         {
-            Console.WriteLine("Escribe un número por consola");
-            string? numero = Console.ReadLine();
+ 
             if (!int.TryParse(numero, out int val))
             {
                 Console.WriteLine("No has introducido un número");
@@ -46,6 +46,16 @@ namespace EjerciciosC_
                
            
             return splittedDatosString;
+        }
+        public static List<int> NumeroDigitos(int n)
+        {
+            List<int> listaDigitos = new List<int>();
+            while (n>0)
+            {
+                listaDigitos.Add(n % 10);
+                n /= 10;
+            }
+            return listaDigitos;
         }
     }
 
