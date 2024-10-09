@@ -19,8 +19,7 @@ namespace EjerciciosC_
             string? stringArray = Console.ReadLine();
        
             List<string> splittedStringArray = Utils.GetListStringFromString(stringArray);
-            List<int> numbers = new List<int>();
-            List<string> words = new List<string>();
+
             Dictionary<string, int> diccionarioReps = new Dictionary<string, int>();
             
             foreach (var item in splittedStringArray)
@@ -41,11 +40,13 @@ namespace EjerciciosC_
                 {
                    diccionarioReps.Remove(item.Key);
                 }
+                else
+                {
+                    Console.WriteLine(item.Key);
+                }
+                
             }
-            foreach (var item in diccionarioReps)
-            {
-                Console.WriteLine(item.Key);
-            }
+            
 
 
 
