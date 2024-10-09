@@ -35,6 +35,14 @@ namespace EjerciciosC_
             }
             return splittedDatosInt;
         }
+        public static List<string> GetListStringFromString(string? datos)
+        {
+            string[] splittedDatos = datos?.Split(",") ?? [];
+
+            List<string> splittedDatosString = new List<string>();
+           
+            return splittedDatosString;
+        }
     }
 
 }
