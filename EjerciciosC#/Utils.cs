@@ -47,7 +47,7 @@ namespace EjerciciosC_
            
             return splittedDatosString;
         }
-        public static List<int> NumeroDigitos(int n)
+        public static List<int> NumeroToDigitos(int n)
         {
             List<int> listaDigitos = new List<int>();
             while (n>0)
@@ -57,6 +57,7 @@ namespace EjerciciosC_
             }
             return listaDigitos;
         }
+       
         public static int SumaDigitosList(List<int> lista,int origen, int fin)
         {
             int suma = 0;
@@ -80,6 +81,17 @@ namespace EjerciciosC_
             }
             return listaRestada;
         }
+        public static List<string> diferenciarListas(List<string> listaRestada, List<string> listaResta)
+        {
+         
+            foreach (string str in listaResta)
+            {
+
+                listaRestada.RemoveAll(x => x == str);
+
+            }
+            return listaRestada;
+        }
         public static string listToCadena(List<string> lista)
         {
             string cadena= "";
@@ -93,6 +105,23 @@ namespace EjerciciosC_
             }
             if (cadena.Length > 1) {
                cadena = cadena.Substring(0, cadena.Length - 1);
+            }
+            return cadena;
+        }
+        public static string listToCadenaNumeros(List<int> lista)
+        {
+            string cadena = "";
+
+
+            foreach (int i in lista)
+            {
+
+                cadena += i + ",";
+
+            }
+            if (cadena.Length > 1)
+            {
+                cadena = cadena.Substring(0, cadena.Length - 1);
             }
             return cadena;
         }

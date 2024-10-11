@@ -25,7 +25,7 @@ namespace EjerciciosC_
 
             while (numero / 10 != 0)
             {   
-                listaDigitos = Utils.NumeroDigitos(numero);
+                listaDigitos = Utils.NumeroToDigitos(numero);
                 foreach (var item in listaDigitos)
                 {
                     aux = aux * item;
