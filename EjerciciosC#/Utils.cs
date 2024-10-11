@@ -57,6 +57,15 @@ namespace EjerciciosC_
             }
             return listaDigitos;
         }
+        public static int SumaDigitosList(List<int> lista,int origen, int fin)
+        {
+            int suma = 0;
+            for (int  i = origen;  i < fin;  i++)
+            {
+                suma = suma + lista[i];
+            }
+            return suma;
+        }
     }
 
 }

@@ -18,7 +18,7 @@ namespace EjerciciosC_
             Console.WriteLine("Escribe un número entero");
             string? cadena = Console.ReadLine();
             int numero = Utils.GetNumeroPorConsola(cadena);
-            char[] numeros = cadena?.ToCharArray();
+           
             List<int> listaDigitos= new List<int>();
             int cont = 0;
             int aux = 1;
