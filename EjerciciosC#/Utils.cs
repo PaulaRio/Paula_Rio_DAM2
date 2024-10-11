@@ -66,6 +66,36 @@ namespace EjerciciosC_
             }
             return suma;
         }
+        public static List<string> diferenciarCadenas(string cadenaRestada,string cadenaResta )
+        {
+            List<string> listaRestada = Utils.GetListStringFromString(cadenaRestada);
+            List<string> listaResta = Utils.GetListStringFromString(cadenaResta);
+
+
+            foreach (string str in listaResta)
+            {
+               
+              listaRestada.RemoveAll(x => x == str);
+                
+            }
+            return listaRestada;
+        }
+        public static string listToCadena(List<string> lista)
+        {
+            string cadena= "";
+
+
+            foreach (string str in lista)
+            {
+
+               cadena += str + ",";
+
+            }
+            if (cadena.Length > 1) {
+               cadena = cadena.Substring(0, cadena.Length - 1);
+            }
+            return cadena;
+        }
     }
 
 }
