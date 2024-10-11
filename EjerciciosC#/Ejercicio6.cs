@@ -15,7 +15,7 @@ namespace EjerciciosC_
     {
         public void Ejecutar()
         {
-            Console.WriteLine("Escribe un número de más de un dígito");
+            Console.WriteLine("Escribe un número entero");
             string? cadena = Console.ReadLine();
             int numero = Utils.GetNumeroPorConsola(cadena);
             char[] numeros = cadena?.ToCharArray();
@@ -34,10 +34,11 @@ namespace EjerciciosC_
                 }
                 Console.WriteLine($"El nuevo numero es: {aux}");
                 numero = aux;
+                aux=1;
                 cont++;
 
             }
-            Console.WriteLine($" El contador queda en{cont}");
+            Console.WriteLine($" El contador queda en {cont}");
 
 
 
