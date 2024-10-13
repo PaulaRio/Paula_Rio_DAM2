@@ -9,6 +9,11 @@ namespace EjerciciosC_
 {
     public static class Utils
     {
+        /// <summary>
+        /// Veerifica si lo introducido por consola es un numero
+        /// </summary>
+        /// <param name="numero"> cadena pasada por consola</param>
+        /// <returns>Devuelve un numero si el string es un numero, en caso contrario, lo notifica</returns>
         public static int GetNumeroPorConsola(string? numero)
         {
  
@@ -19,7 +24,11 @@ namespace EjerciciosC_
             }
             return val;
         }
-
+        /// <summary>
+        /// Obtiene una lista de numeros sacados del string introducido, separados por una coma
+        /// </summary>
+        /// <param name="datos">Cadena de numeros a extraer</param>
+        /// <returns>Lista de numeros </returns>
         public static List<int> GetListNumbersFromString(string? datos)
         {
             string[] splittedDatos = datos?.Split(",") ?? [];
@@ -35,6 +44,11 @@ namespace EjerciciosC_
             }
             return splittedDatosInt;
         }
+        /// <summary>
+        /// Obtiene una lista de elementos sacados del string introducido, separados por una coma
+        /// </summary>
+        /// <param name="datos">Cadena que contiene los elementos a extraer</param>
+        /// <returns>Lista de elementos </returns>
         public static List<string> GetListStringFromString(string? datos)
         {
             string[] splittedDatos = datos?.Split(",") ?? [];
@@ -47,7 +61,12 @@ namespace EjerciciosC_
            
             return splittedDatosString;
         }
-        public static List<int> NumeroToDigitos(int n)
+        /// <summary>
+        /// Separa los numeros de dos o más cifras en digitos, devolviendolos en una lista
+        /// </summary>
+        /// <param name="n">numero a separar</param>
+        /// <returns>Lista de digitos</returns>
+        public static List<int> NumbersToDigits(int n)
         {
             List<int> listaDigitos = new List<int>();
             while (n>0)
@@ -57,8 +76,14 @@ namespace EjerciciosC_
             }
             return listaDigitos;
         }
-       
-        public static int SumaDigitosList(List<int> lista,int origen, int fin)
+        /// <summary>
+        /// Suma los numeros pasadosen una lista
+        /// </summary>
+        /// <param name="lista">Lista de numeros a sumar</param>
+        /// <param name="origen">Posición desde a que queremos empezar a sumar</param>
+        /// <param name="fin">Posición a partir de la cual no queremos que siga sumando</param>
+        /// <returns>Suma de todos los numeros del list</returns>
+        public static int SumDigitsList(List<int> lista,int origen, int fin)
         {
             int suma = 0;
             for (int  i = origen;  i < fin;  i++)
@@ -67,7 +92,13 @@ namespace EjerciciosC_
             }
             return suma;
         }
-        public static List<string> diferenciarCadenas(string cadenaRestada,string cadenaResta )
+        /// <summary>
+        /// Resta los elementos de la segunda cadena a los de la primera
+        /// </summary>
+        /// <param name="cadenaRestada">Cadena que queremos devolver habiendo restado los elementos de la otra</param>
+        /// <param name="cadenaResta">Cadena que contiene los elementos que queremos retirar</param>
+        /// <returns>Lista de elementos de una cadena habiéndo retirado los de la segunda cadena</returns>
+        public static List<string> SubstractStrings(string cadenaRestada,string cadenaResta )
         {
             List<string> listaRestada = Utils.GetListStringFromString(cadenaRestada);
             List<string> listaResta = Utils.GetListStringFromString(cadenaResta);
@@ -81,7 +112,13 @@ namespace EjerciciosC_
             }
             return listaRestada;
         }
-        public static List<string> diferenciarListas(List<string> listaRestada, List<string> listaResta)
+        /// <summary>
+        /// Resta los elementos de la segunda lista a los de la primera
+        /// </summary>
+        /// <param name="listaRestada">Lista que queremos devolver habiendo restado los elementos de la otra</param>
+        /// <param name="listaResta">Lista que contiene los elementos que queremos retirar</param>
+        /// <returns>Lista de elementos de una lista habiéndo retirado los de la segunda lista</returns>
+        public static List<string> SubstractLists(List<string> listaRestada, List<string> listaResta)
         {
             List<string> resultado = new List<string>(listaRestada);
 
@@ -92,9 +129,14 @@ namespace EjerciciosC_
                 resultado.RemoveAll(x => x == str);
 
             }
-            return resultado;
+            return listaRestada;
         }
-        public static string listToCadena(List<string> lista)
+        /// <summary>
+        /// Pasa una lista a una cadena, donde los elementos estan separados por comas
+        /// </summary>
+        /// <param name="lista">Lista que queremos convertir a cadena</param>
+        /// <returns>Cadena con elementos separados por comas</returns>
+        public static string ListToString(List<string> lista)
         {
             string cadena= "";
 
@@ -110,7 +152,12 @@ namespace EjerciciosC_
             }
             return cadena;
         }
-        public static string listToCadenaNumeros(List<int> lista)
+        /// <summary>
+        /// Pasa una lista a una cadena de numeros, donde estos estan separados por comas
+        /// </summary>
+        /// <param name="lista">Lista que queremos convertir a cadena</param>
+        /// <returns>Cadena con numeros separados por comas</returns>
+        public static string ListToIntString(List<int> lista)
         {
             string cadena = "";
 

@@ -15,8 +15,8 @@ namespace EjerciciosC_
             string? cadenaRestada = Console.ReadLine();
             Console.WriteLine("Introduce otro array de numeros separado por comas");
             string? cadenaResta = Console.ReadLine();
-            List<string> resultado = Utils.diferenciarCadenas(cadenaRestada, cadenaResta);
-            Console.WriteLine(Utils.listToCadena(resultado));
+            List<string> resultado = Utils.SubstractStrings(cadenaRestada, cadenaResta);
+            Console.WriteLine(Utils.ListToString(resultado));
             
         }
     }

@@ -20,7 +20,7 @@ namespace EjerciciosC_
      
             int n = 0;
         
-            listaDigitos = Utils.NumeroToDigitos(numero);
+            listaDigitos = Utils.NumbersToDigits(numero);
   
             listaDigitos.Sort();
       

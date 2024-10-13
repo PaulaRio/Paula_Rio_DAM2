@@ -32,7 +32,7 @@ namespace EjerciciosC_
                    {
                     restar.Add(colores[i]);
                     restar.Add(colores[i + 1]);
-                    string cad = Utils.listToCadena(Utils.diferenciarListas(posibilidades, restar));
+                    string cad = Utils.ListToString(Utils.SubstractLists(posibilidades, restar));
                     nuevaLinea.Add(cad);
                     restar.Clear();
                     
