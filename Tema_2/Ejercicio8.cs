@@ -16,7 +16,7 @@ namespace EjerciciosC_
             Console.WriteLine("Introduce otro array de numeros separado por comas");
             string? cadenaResta = Console.ReadLine();
             List<string> resultado = Utils.SubstractStrings(cadenaRestada, cadenaResta);
-            Console.WriteLine(Utils.ListToString(resultado));
+            Console.WriteLine($"Los numeros restantes son: {Utils.ListToString(resultado)}");
             
         }
     }

@@ -129,7 +129,7 @@ namespace EjerciciosC_
                 resultado.RemoveAll(x => x == str);
 
             }
-            return listaRestada;
+            return resultado;
         }
         /// <summary>
         /// Pasa una lista a una cadena, donde los elementos estan separados por comas
