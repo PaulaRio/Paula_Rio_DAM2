@@ -83,14 +83,16 @@ namespace EjerciciosC_
         }
         public static List<string> diferenciarListas(List<string> listaRestada, List<string> listaResta)
         {
-         
+            List<string> resultado = new List<string>(listaRestada);
+
+
             foreach (string str in listaResta)
             {
 
-                listaRestada.RemoveAll(x => x == str);
+                resultado.RemoveAll(x => x == str);
 
             }
-            return listaRestada;
+            return resultado;
         }
         public static string listToCadena(List<string> lista)
         {
