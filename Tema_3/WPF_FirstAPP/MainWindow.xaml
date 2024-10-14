@@ -10,6 +10,8 @@
         <Button x:Name="ClickMePLease" Content="&#xD;&#xA;&#xD;&#xA;Click Me Pls" Margin="562,0,0,0" VerticalAlignment="Center" Height="97" Width="120" Click="Button_Click" HorizontalAlignment="Left"/>
         <Label x:Name="LabelFirstWPF" Content="Escriba un numero" HorizontalAlignment="Left" Margin="123,199,0,0" VerticalAlignment="Top" RenderTransformOrigin="-7.204,4.265"/>
         <TextBox x:Name="TextBoxWPF" HorizontalAlignment="Left" Margin="325,186,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="51"/>
+        <TextBox x:Name="TextBoxWPF_Copiar" HorizontalAlignment="Left" Margin="325,271,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="51" RenderTransformOrigin="0.579,2.084"/>
+        <TextBox x:Name="TextBoxWPF_Copiar1" HorizontalAlignment="Left" Margin="325,80,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="51"/>
 
     </Grid>
 </Window>

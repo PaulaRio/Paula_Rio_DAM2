@@ -25,14 +25,8 @@ namespace WPF_FirstAPP
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int?dato=
-            for (int i = 2; i < val; i++)
-            {
-                if (val % i == 0)
-                {
-                    return false;
-                }
-            }
+            int?dato=Utils.ConvertToNumber()
+            
             //if(TextBoxWPF.Text%2)
             LabelFirstWPF.Content = "Debes escribir un numero";
             return;
