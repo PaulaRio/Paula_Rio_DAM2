@@ -15,20 +15,21 @@ namespace EjerciciosC_
             string? cadena = Console.ReadLine();
             int numero = Utils.GetNumeroPorConsola(cadena);
             int aux = numero;
-            int i = numero;
+            
             int suma = 0;
             List<int> listaPotencias = new List<int>();
-            while (i>0)
+            for (int i = numero; i >0; i--)
             {
-                if(aux >= Math.Pow(i, 2))
+                int potencia = (int)Math.Pow(i, 2);
+                if (aux >= potencia)
                 {
                     listaPotencias.Add(i);
-                    suma = suma + (int)Math.Pow(i, 2);
-                    aux = i;
+                    suma = suma + potencia;
+                    aux = aux - potencia;
                 }
-               
-                i--;
+
             }
+            
             while (listaPotencias.Count<4)
             {
                 if(suma < numero) 
@@ -42,11 +43,10 @@ namespace EjerciciosC_
                 }
                 
             }
-            foreach (var item in listaPotencias)
-            {
+            
                 
-                Console.WriteLine(item);
-            }
+                Console.WriteLine(Utils.ListToIntString(listaPotencias).Replace(",","+"));
+            
             
         }
     }

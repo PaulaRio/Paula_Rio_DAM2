@@ -42,7 +42,7 @@ namespace EjerciciosC_
                 }
                 else
                 {
-                    Console.WriteLine(item.Key);
+                    Console.WriteLine($"Número sin repetición: {item.Key}");
                 }
                 
             }

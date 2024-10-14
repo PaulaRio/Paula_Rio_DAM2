@@ -20,8 +20,8 @@ namespace EjerciciosC_
            
                 for (int i = 0; i < splittedStringArray.Count; i++)
                 { 
-                sumaIzda = Utils.SumaDigitosList(splittedStringArray, 0, i );
-                sumaDcha = Utils.SumaDigitosList(splittedStringArray, i + 1, splittedStringArray.Count);
+                sumaIzda = Utils.SumDigitsList(splittedStringArray, 0, i );
+                sumaDcha = Utils.SumDigitsList(splittedStringArray, i + 1, splittedStringArray.Count);
                     if (sumaIzda == sumaDcha)
                     {
                         numeroCentral = i ;

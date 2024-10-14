@@ -25,7 +25,7 @@ namespace EjerciciosC_
 
             while (numero / 10 != 0)
             {   
-                listaDigitos = Utils.NumeroToDigitos(numero);
+                listaDigitos = Utils.NumbersToDigits(numero);
                 foreach (var item in listaDigitos)
                 {
                     aux = aux * item;
@@ -38,7 +38,7 @@ namespace EjerciciosC_
                 cont++;
 
             }
-            Console.WriteLine($" El contador queda en {cont}");
+            Console.WriteLine($" La persistencia multiplicativa es {cont}");
 
 
 
