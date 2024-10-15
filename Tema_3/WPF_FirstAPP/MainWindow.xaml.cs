@@ -25,12 +25,21 @@ namespace WPF_FirstAPP
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int?dato=Utils.ConvertToNumber()
-            
-            //if(TextBoxWPF.Text%2)
-            LabelFirstWPF.Content = "Debes escribir un numero";
-            return;
+            int? ladoUno =  Utils.ConvertToNumber(txtBoxUno.Text);
+            int? ladoDos = Utils.ConvertToNumber(txtBoxDos.Text);
+            int? ladoTres = Utils.ConvertToNumber(txtBoxTres.Text);
+            if (!ladoUno.HasValue|| !ladoDos.HasValue|| !ladoTres.HasValue)
+            {
+                LabelFirstWPF.Content = "Debes escribir números";
+                return;
+            }
+
+            LabelFirstWPF.Content = Utils.Triangle(ladoUno,ladoDos,ladoTres)  ; 
         }
 
+        private void TextBoxWPF_Copiar1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

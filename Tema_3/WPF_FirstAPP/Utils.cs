@@ -21,5 +21,37 @@ namespace WPF_FirstAPP
             }
             return val;
         }
+        public static bool IsNumberPrime(int val)
+        {
+            for (int i = 2; i < val; i++)
+            {
+                if (val % i == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public static string Triangle(int? uno, int? dos, int? tres)
+        {
+            string cadena= "";
+            if (uno == dos && tres == dos)
+            {
+                cadena="Es equilátero";
+            } else if(uno==dos&&dos!=tres|| dos == tres && dos != uno|| uno == tres && dos != tres)
+            {
+                cadena = "Es isósceles";
+            }
+            else
+            {
+
+                cadena = "Es escaleno";
+            }
+            return cadena;
+                
+        }
+
+        
     }
+
 }
