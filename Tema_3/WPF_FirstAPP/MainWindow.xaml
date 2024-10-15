@@ -7,11 +7,24 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="ClickMePLease" Content="&#xD;&#xA;&#xD;&#xA;Click Me Pls" Margin="562,0,0,0" VerticalAlignment="Center" Height="97" Width="120" Click="Button_Click" HorizontalAlignment="Left"/>
+        <Button x:Name="igual" Content="=" Margin="461,297,0,0" VerticalAlignment="Top" Height="37" Width="31" Click="Button_Click" HorizontalAlignment="Left" FontSize="18"/>
         <Label x:Name="LabelFirstWPF" Content="Escriba un numero" HorizontalAlignment="Left" Margin="123,199,0,0" VerticalAlignment="Top" RenderTransformOrigin="-7.204,4.265"/>
-        <TextBox x:Name="txtBoxDos" HorizontalAlignment="Left" Margin="325,186,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="51"/>
-        <TextBox x:Name="txtBoxTres" HorizontalAlignment="Left" Margin="325,271,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="51" RenderTransformOrigin="0.579,2.084"/>
-        <TextBox x:Name="txtBoxUno" HorizontalAlignment="Left" Margin="325,80,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="51" TextChanged="TextBoxWPF_Copiar1_TextChanged"/>
+        <TextBox x:Name="txtBoxUno" HorizontalAlignment="Left" Margin="277,50,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="227" Height="51" TextChanged="TextBoxWPF_Copiar1_TextChanged"/>
+        <Button x:Name="dos" Content="2" Margin="338,126,0,0" VerticalAlignment="Top" Height="37" Width="32" Click="Button_Click" HorizontalAlignment="Left" FontSize="18"/>
+        <Button x:Name="tres" Content="3" Margin="400,126,0,0" VerticalAlignment="Top" Height="37" Width="31" Click="Button_Click" HorizontalAlignment="Left" FontSize="18"/>
+        <Button x:Name="mas" Content="+" Margin="461,126,0,0" VerticalAlignment="Top" Height="37" Width="31" Click="Button_Click" HorizontalAlignment="Left" FontSize="18" RenderTransformOrigin="2.598,0.662"/>
+        <Button x:Name="cuatro" Content="4" Margin="277,180,0,0" VerticalAlignment="Top" Height="37" Width="31" Click="Button_Click" HorizontalAlignment="Left" FontSize="18" RenderTransformOrigin="0.291,2.128"/>
+        <Button x:Name="nueve" Content="9" Margin="400,237,0,0" VerticalAlignment="Top" Height="37" Width="31" Click="Button_Click" HorizontalAlignment="Left" FontSize="18"/>
+        <Button x:Name="ocho" Content="8" Margin="339,237,0,0" VerticalAlignment="Top" Height="37" Width="31" Click="Button_Click" HorizontalAlignment="Left" FontSize="18"/>
+        <Button x:Name="siete" Content="7" Margin="277,237,0,0" VerticalAlignment="Top" Height="37" Width="31" Click="Button_Click" HorizontalAlignment="Left" FontSize="18"/>
+        <Button x:Name="menos" Content="-" Margin="461,180,0,0" VerticalAlignment="Top" Height="37" Width="31" Click="Button_Click" HorizontalAlignment="Left" FontSize="18" RenderTransformOrigin="6.456,2.494"/>
+        <Button x:Name="seis" Content="6" Margin="400,180,0,0" VerticalAlignment="Top" Height="37" Width="31" Click="Button_Click" HorizontalAlignment="Left" FontSize="18" RenderTransformOrigin="4.745,2.228"/>
+        <Button x:Name="cinco" Content="5" Margin="339,180,0,0" VerticalAlignment="Top" Height="37" Width="31" Click="Button_Click" HorizontalAlignment="Left" FontSize="18"/>
+        <Button x:Name="por" Content="x" Margin="461,237,0,0" VerticalAlignment="Top" Height="37" Width="31" Click="Button_Click" HorizontalAlignment="Left" FontSize="18"/>
+        <Button x:Name="entre" Content="÷" Margin="400,297,0,0" VerticalAlignment="Top" Height="37" Width="31" Click="Button_Click" HorizontalAlignment="Left" FontSize="18"/>
+        <Button x:Name="pi" Content=" π" Margin="339,297,0,0" VerticalAlignment="Top" Height="37" Width="31" Click="Button_Click" HorizontalAlignment="Left" FontSize="18"/>
+        <Button x:Name="cero" Content="0" Margin="277,297,0,0" VerticalAlignment="Top" Height="37" Width="31" Click="Button_Click" HorizontalAlignment="Left" FontSize="18"/>
+        <Button x:Name="uno" Content="1" Margin="277,126,0,0" VerticalAlignment="Top" Height="37" Width="31" Click="Button_Click" HorizontalAlignment="Left" FontSize="18"/>
 
     </Grid>
 </Window>

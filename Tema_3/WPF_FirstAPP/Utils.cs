@@ -50,8 +50,27 @@ namespace WPF_FirstAPP
             return cadena;
                 
         }
+        public static string Calculadora(int? num, string? operador, int? tres)
+        {
+            //string cadena = "";
+            //if (uno == dos && tres == dos)
+            //{
+            //    cadena = "Es equilátero";
+            //}
+            //else if (uno == dos && dos != tres || dos == tres && dos != uno || uno == tres && dos != tres)
+            //{
+            //    cadena = "Es isósceles";
+            //}
+            //else
+            //{
 
-        
+            //    cadena = "Es escaleno";
+            //}
+            //return cadena;
+
+        }
+
+
     }
 
 }
