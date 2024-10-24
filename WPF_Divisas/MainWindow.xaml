@@ -23,16 +23,35 @@
 
         </Grid.RowDefinitions>
 
-        <Button Content="" Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,90,193,90" Click="Button_Click"  />
-
-        <TextBox TextWrapping="Wrap" Text="TextBox" Width="120"  Grid.Column="1" Grid.Row="0" Margin="37,90,36,90" TextChanged="TextBox_TextChanged"/>
-        <TextBox TextWrapping="Wrap" Text="TextBox" Width="120"  Grid.Column="3" Margin="37,90,37,90"/>
-        <TextBox TextWrapping="Wrap" Text="TextBox"  Width="120" Grid.Column="5" Margin="37,90,37,90"/>
-        <ListBox Grid.ColumnSpan="7" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="44,38,0,0" HorizontalAlignment="Center" Grid.Row="1"/>
-        <Button Grid.Column="5" Content="Cambiar" HorizontalAlignment="Left" Margin="96,161,0,0" VerticalAlignment="Top" Height="34" Width="90" RenderTransformOrigin="0.339,1.075"/>
         <Label Grid.Column="1" Content="Importe" HorizontalAlignment="Left" Margin="37,61,0,0" VerticalAlignment="Top"/>
+        <TextBox Grid.Column="1" TextWrapping="Wrap" Text="TextBox" Width="120"  Margin="37,90,37,90"/>
+
         <Label Grid.Column="3" Content="De" HorizontalAlignment="Left" Margin="37,64,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="de" Grid.Row="0" Grid.Column="3" SelectedIndex="0" SelectionChanged="de_SelectionChanged"  HorizontalAlignment="Left" Width="120"  Margin="37,90,37,90">
+            <ComboBoxItem Content="Euros"/>
+            <ComboBoxItem Content="Libras"/>
+            <ComboBoxItem Content="Dolares"/>
+
+        </ComboBox>
+
+        <Button Grid.Column="4" Grid.Row="0" Margin="12,90,12,90" Click="Button_Click" RenderTransformOrigin="1.22,0.541" >
+            <Image Source="\Resources\flecha.png" Stretch="Fill" RenderTransformOrigin="1.403,0.455" ></Image>
+        </Button>
+
         <Label Grid.Column="5" Content="a: " HorizontalAlignment="Left" Margin="37,64,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.498,0.042"/>
+        <ComboBox Name="a" Grid.Row="0" Grid.Column="5" SelectedIndex="0" SelectionChanged="de_SelectionChanged"  HorizontalAlignment="Left" Width="120"  Margin="37,90,37,90">
+            <ComboBoxItem Content="Euros"/>
+            <ComboBoxItem Content="Libras"/>
+            <ComboBoxItem Content="Dolares"/>
+        </ComboBox>
+
+        <Button Grid.Column="5" Content="Cambiar" HorizontalAlignment="Left" Margin="96,161,0,0" VerticalAlignment="Top" Height="34" Width="90" RenderTransformOrigin="0.339,1.075"/>
+
+
+
+        <ListBox Grid.ColumnSpan="7" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="44,38,0,0" HorizontalAlignment="Center" Grid.Row="1"/>
+
+
 
     </Grid>
 </Window>

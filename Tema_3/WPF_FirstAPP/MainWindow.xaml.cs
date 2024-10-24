@@ -16,30 +16,62 @@ namespace WPF_FirstAPP
     /// </summary>
     public partial class MainWindow : Window
     {
+        private double result;
+        private string _operator;
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-      
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            if (butt)
-            //int? numIzda =  Utils.ConvertToNumber(txtBoxUno.Text);
-            //int? numDcha = Utils.ConvertToNumber(txtBoxDos.Text);
-            //int? ladoTres = Utils.ConvertToNumber(txtBoxTres.Text);
-            //if (!ladoUno.HasValue|| !ladoDos.HasValue|| !ladoTres.HasValue)
-            //{
-            //    LabelFirstWPF.Content = "Debes escribir números";
-            //    return;
-            //}
-
-            //LabelFirstWPF.Content = Utils.Triangle(ladoUno,ladoDos,ladoTres)  ; 
+            Button button = sender as Button;
+            textBox.Text += button.Content.ToString();
         }
 
+        private void Operator_Click(object sender, RoutedEventArgs e)
+        {
+            if (double.TryParse(textBox.Text, out double number))
+            {
+                result = number;
+                Button button = sender as Button;
+                _operator = button.Content.ToString();
+                textBox.Clear();
+            }
+        }
 
+        private void Equals_Click(object sender, RoutedEventArgs e)
+        {
+            if (double.TryParse(textBox.Text, out double number))
+            {
+                switch (_operator)
+                {
+                    case "+":
+                        result += number;
+                        break;
+                    case "-":
+                        result -= number;
+                        break;
+                    case "x":
+                        result *= number;
+                        break;
+                    case "÷":
+                        if (number != 0)
+                            result /= number;
+                        else
+                            MessageBox.Show("No se puede dividir por cero.");
+                        break;
+                }
+                textBox.Text = result.ToString();
+            }
+        }
 
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            textBox.Clear();
+            result = 0;
+            _operator = string.Empty;
+        }
     }
 }

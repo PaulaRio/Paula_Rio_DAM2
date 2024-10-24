@@ -30,5 +30,15 @@ namespace WPF_Divisas
         {
 
         }
+
+        private void de_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+                
+        }
+
+        private void de_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
