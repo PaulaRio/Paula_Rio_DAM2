@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EjerciciosC", "Tema_2\Ejerc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF_FirstAPP", "Tema_3\WPF_FirstAPP\WPF_FirstAPP.csproj", "{A11DA797-F6EF-4736-B28F-FC7E77CB8EE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_Divisas", "WPF_Divisas\WPF_Divisas.csproj", "{62A1FE4F-1B88-4776-8546-8AD0B52FFD1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF_Divisas", "WPF_Divisas\WPF_Divisas.csproj", "{62A1FE4F-1B88-4776-8546-8AD0B52FFD1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestorArchivos", "GestorArchivos\GestorArchivos.csproj", "{85D4BE45-42DC-4C33-9479-885D832F755C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,22 @@ Global
 		{62A1FE4F-1B88-4776-8546-8AD0B52FFD1F}.Release|x64.Build.0 = Release|Any CPU
 		{62A1FE4F-1B88-4776-8546-8AD0B52FFD1F}.Release|x86.ActiveCfg = Release|Any CPU
 		{62A1FE4F-1B88-4776-8546-8AD0B52FFD1F}.Release|x86.Build.0 = Release|Any CPU
+		{85D4BE45-42DC-4C33-9479-885D832F755C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85D4BE45-42DC-4C33-9479-885D832F755C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85D4BE45-42DC-4C33-9479-885D832F755C}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{85D4BE45-42DC-4C33-9479-885D832F755C}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{85D4BE45-42DC-4C33-9479-885D832F755C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{85D4BE45-42DC-4C33-9479-885D832F755C}.Debug|x64.Build.0 = Debug|Any CPU
+		{85D4BE45-42DC-4C33-9479-885D832F755C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{85D4BE45-42DC-4C33-9479-885D832F755C}.Debug|x86.Build.0 = Debug|Any CPU
+		{85D4BE45-42DC-4C33-9479-885D832F755C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85D4BE45-42DC-4C33-9479-885D832F755C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85D4BE45-42DC-4C33-9479-885D832F755C}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{85D4BE45-42DC-4C33-9479-885D832F755C}.Release|ARM64.Build.0 = Release|Any CPU
+		{85D4BE45-42DC-4C33-9479-885D832F755C}.Release|x64.ActiveCfg = Release|Any CPU
+		{85D4BE45-42DC-4C33-9479-885D832F755C}.Release|x64.Build.0 = Release|Any CPU
+		{85D4BE45-42DC-4C33-9479-885D832F755C}.Release|x86.ActiveCfg = Release|Any CPU
+		{85D4BE45-42DC-4C33-9479-885D832F755C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

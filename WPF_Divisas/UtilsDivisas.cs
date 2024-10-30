@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPF_Divisas
 {
+    //private const double  EuroAdolar=1.05;
     public static class UtilsDivisas
     {
         public static int GetNumeroPorConsola(string? numero)
