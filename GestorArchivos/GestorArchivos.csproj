@@ -9,13 +9,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Page Remove="View\FileAbrirView.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="View\FileAbrirView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Controls\" />
-    <Folder Include="View\" />
-    <Folder Include="ViewModel\" />
     <Folder Include="Resoruces\" />
-    <Folder Include="Interfaces\" />
     <Folder Include="Utils\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
   </ItemGroup>
 
 </Project>
