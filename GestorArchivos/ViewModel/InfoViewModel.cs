@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestorArchivos.ViewModel
 {
-   public partial class InfoViewModel : ViewModelBase
+   public class InfoViewModel : ViewModelBase
     {
     }
 }
