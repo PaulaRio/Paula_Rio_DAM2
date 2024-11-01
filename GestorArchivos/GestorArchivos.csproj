@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Resoruces\**" />
+    <EmbeddedResource Remove="Resoruces\**" />
+    <None Remove="Resoruces\**" />
+    <Page Remove="Resoruces\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Remove="View\FileAbrirView.xaml" />
   </ItemGroup>
 
@@ -20,9 +27,10 @@
 
   <ItemGroup>
     <Folder Include="Controls\" />
-    <Folder Include="Resoruces\" />
+    <Folder Include="Controls\" />
     <Folder Include="Utils\" />
-    <Folder Include="Services\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
 
   <ItemGroup>

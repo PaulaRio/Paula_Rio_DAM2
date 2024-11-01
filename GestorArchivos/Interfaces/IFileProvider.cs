@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace GestorArchivos.Interfaces
 {
-    interface ICreateFile
+   public interface IFileProvider
     {
+        public void CreateFile(string nombreFichero);
     }
 }

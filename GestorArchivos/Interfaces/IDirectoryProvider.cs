@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GestorArchivos.Interfaces
 {
-    interface ICreateDirectory
+   public interface IDirectoryProvider
     {
-        public void CreateDirectory();
+        public void CreateDirectory(string nombreDirectorio);
     }
 }
