@@ -9,6 +9,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Menu FontSize="15" Grid.Row="0">
+            <MenuItem Header="_File" Click="MenuItem_Click">
+                <MenuItem Header="_Guardar"
+                  Command="{Binding SelectViewModelCommand}"
+                  CommandParameter="{Binding CambioDivisaViewModel}"/>
+                <MenuItem Header="_Borrar"
+                  Command="{Binding SelectViewModelCommand}"
+                  CommandParameter="{Binding HistoricoCambioDivisaViewModel}"/>
+                <MenuItem Header="_Abrir"
+                  Command="{Binding SelectViewModelCommand}"
+                  CommandParameter="{Binding FileAbrirViewModel}"/>
+            </MenuItem>
+            <MenuItem Header="_Info">
+                <MenuItem Header="_Close Application" 
+                  Command="{Binding ExitApplicationCommand}"/>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>
