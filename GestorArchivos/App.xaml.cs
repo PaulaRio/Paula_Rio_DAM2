@@ -1,6 +1,10 @@
 ﻿using System.Configuration;
 using System.Data;
 using System.Windows;
+using GestorArchivos.Interfaces;
+using GestorArchivos.Services;
+using GestorArchivos.ViewModel;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace GestorArchivos
 {
@@ -9,12 +13,40 @@ namespace GestorArchivos
     /// </summary>
     public partial class App : Application
     {
+
+        public App()
+        {
+            Services = ConfigureServices();
+        }
         protected override void OnStartup(StartupEventArgs e)
         {
-            
-            MainWindow = new MainWindow();
-            MainWindow.Show();
+
+
             base.OnStartup(e);
+
+            var mainWindow = Current.Services.GetService<MainWindow>();
+            mainWindow?.Show();
+        }
+        public new static App Current => (App)Application.Current;
+        public IServiceProvider Services { get; }
+
+        private static IServiceProvider ConfigureServices()
+        {
+            var services = new ServiceCollection();
+
+            //view principal
+            services.AddTransient<MainWindow>();
+
+            //view viewModels
+            services.AddTransient<MainViewModel>();
+            services.AddTransient<FileAbrirViewModel>();
+            services.AddTransient<InfoViewModel>();
+            services.AddTransient<PrincipalViewModel>();
+
+            //Services
+            services.AddSingleton<IDirectoryProvider, DirectoryService>();
+            services.AddSingleton<IFileProvider, FileService>();
+            return services.BuildServiceProvider();
         }
     }
 

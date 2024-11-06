@@ -16,20 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Remove="View\FileAbrirView.xaml" />
+    <None Remove="Resources\monitoBlanco.jpg" />
+    <None Remove="View\monitoBlanco.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="View\FileAbrirView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controls\" />
-    <Folder Include="Controls\" />
     <Folder Include="Utils\" />
-    <Folder Include="Resources\" />
     <Folder Include="Utils\" />
   </ItemGroup>
 
@@ -37,6 +29,28 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\monitoBlanco.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\monitoBlanco.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace GestorArchivos.View
 {
     /// <summary>
-    /// Lógica de interacción para FileView.xaml
+    /// Lógica de interacción para AbrirFileView.xaml
     /// </summary>
-    public partial class FileView : UserControl
+    public partial class AbrirFileView : UserControl
     {
-        public FileView()
+        public AbrirFileView()
         {
             InitializeComponent();
         }

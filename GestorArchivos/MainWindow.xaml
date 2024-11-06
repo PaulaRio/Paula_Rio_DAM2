@@ -6,10 +6,14 @@
         xmlns:local="clr-namespace:GestorArchivos"
         xmlns:view="clr-namespace:GestorArchivos.View"
         xmlns:viewmodel="clr-namespace:GestorArchivos.ViewModel" 
+        d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Menu FontSize="15" Grid.Row="0">
+            <MenuItem Header="_Info">
+                
+            </MenuItem>
             <MenuItem Header="_File" Click="MenuItem_Click">
                 <MenuItem Header="_Guardar"
                   Command="{Binding SelectViewModelCommand}"
@@ -21,10 +25,7 @@
                   Command="{Binding SelectViewModelCommand}"
                   CommandParameter="{Binding FileAbrirViewModel}"/>
             </MenuItem>
-            <MenuItem Header="_Info">
-                <MenuItem Header="_Close Application" 
-                  Command="{Binding ExitApplicationCommand}"/>
-            </MenuItem>
+           
         </Menu>
     </Grid>
 </Window>
