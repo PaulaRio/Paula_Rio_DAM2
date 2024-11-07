@@ -22,9 +22,10 @@
     </Window.Resources>
     <Grid>
         <Menu FontSize="15" Grid.Row="0">
-            <MenuItem Header="_Info"  Command="{Binding SelectViewModelCommand}"
+            <MenuItem Header="_Info">
+                <MenuItem Header="_Info" Command="{Binding SelectViewModelCommand}"
               CommandParameter="{Binding InfoViewModel}"        >
-                
+            </MenuItem>
             </MenuItem>
             <MenuItem Header="_File" Click="MenuItem_Click">
                 <MenuItem Header="_Guardar"/>
