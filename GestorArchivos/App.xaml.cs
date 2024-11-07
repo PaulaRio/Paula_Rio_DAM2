@@ -39,7 +39,7 @@ namespace GestorArchivos
 
             //view viewModels
             services.AddTransient<MainViewModel>();
-            services.AddTransient<FileAbrirViewModel>();
+            services.AddTransient<AbrirFileViewModel>();
             services.AddTransient<InfoViewModel>();
             services.AddTransient<PrincipalViewModel>();
 

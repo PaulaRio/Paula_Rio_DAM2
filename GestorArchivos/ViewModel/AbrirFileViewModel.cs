@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestorArchivos.ViewModel
 {
-   public class FileAbrirViewModel : ViewModelBase
+   public class AbrirFileViewModel : ViewModelBase
     {
     }
 }
