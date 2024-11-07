@@ -11,6 +11,8 @@
             <ColumnDefinition Width="*"/>
            
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="0" Width="" Source="/View/monitoBlanco.jpg"/>
+        <Image Grid.Column="0" Stretch="Fill"  Source="/View/monitoBlanco.jpg"/>
+        <TextBlock Text="Paula Río Delgado 2º DAM" FontSize="20"/>
+
     </Grid>
 </UserControl>
