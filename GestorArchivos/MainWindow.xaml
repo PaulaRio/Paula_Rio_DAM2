@@ -5,22 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestorArchivos"
         xmlns:view="clr-namespace:GestorArchivos.View"
-        xmlns:viewmodel="clr-namespace:GestorArchivos.ViewModel" 
-        d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
+        xmlns:viewModel="clr-namespace:GestorArchivos.ViewModel" 
+        d:DataContext="{d:DesignInstance Type=viewModel:MainViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
-        <DataTemplate DataType="{x:Type viewmodel:InfoViewModel}">
+        <DataTemplate DataType="{x:Type viewModel:InfoViewModel}">
             <view:InfoView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodel:PrincipalViewModel}">
+        <DataTemplate DataType="{x:Type viewModel:PrincipalViewModel}">
             <view:PrincipalView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodel:AbrirFileViewModel}">
+        <DataTemplate DataType="{x:Type viewModel:AbrirFileViewModel}">
             <view:AbrirFileView/>
         </DataTemplate>
     </Window.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <Menu FontSize="15" Grid.Row="0">
             <MenuItem Header="_Info">
                 <MenuItem Header="_Info" Command="{Binding SelectViewModelCommand}"
@@ -36,5 +40,6 @@
             </MenuItem>
            
         </Menu>
+        <ContentControl Grid.Row="1" Content="{Binding SelectedViewModel}"/>
     </Grid>
 </Window>

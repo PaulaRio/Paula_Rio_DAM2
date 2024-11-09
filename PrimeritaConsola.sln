@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF_FirstAPP", "Tema_3\WPF_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF_Divisas", "WPF_Divisas\WPF_Divisas.csproj", "{62A1FE4F-1B88-4776-8546-8AD0B52FFD1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestorArchivos", "GestorArchivos\GestorArchivos.csproj", "{85D4BE45-42DC-4C33-9479-885D832F755C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestorArchivos", "GestorArchivos\GestorArchivos.csproj", "{85D4BE45-42DC-4C33-9479-885D832F755C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
