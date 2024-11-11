@@ -15,6 +15,7 @@ namespace GestorArchivos.ViewModel
             FileAbrirViewModel = fileAbrir;
             InfoViewModel = info;
             PrincipalViewModel=principal;
+            SelectedViewModel = principal;
 
 
         }

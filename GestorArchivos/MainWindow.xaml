@@ -21,8 +21,14 @@
         </DataTemplate>
     </Window.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <!-- Status Bar 3-->
+        </Grid.RowDefinitions>
+        
         <Menu FontSize="15" Grid.Row="0">
-            <MenuItem Header="_Info">
+            <MenuItem Header="_Info" Click="MenuItem_Click">
                 <MenuItem Header="_Info" Command="{Binding SelectViewModelCommand}"
               CommandParameter="{Binding InfoViewModel}"        >
             </MenuItem>
@@ -36,5 +42,6 @@
             </MenuItem>
            
         </Menu>
+        <ContentControl Grid.Row="1" Content="{Binding SelectedViewModel}"/>
     </Grid>
 </Window>
