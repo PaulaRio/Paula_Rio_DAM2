@@ -2,21 +2,22 @@
 
 using System.Linq;
 
-string root = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+//string root = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+string rootFILES = "../../.." + "/FILES";
 Console.WriteLine(Directory.GetCurrentDirectory());
-Console.WriteLine(root);
+Console.WriteLine(rootFILES);
 string nameRandomDirectory = Path.GetRandomFileName().Replace(".", "");
 
-if (!Directory.Exists(root + "/FILES"))
+if (!Directory.Exists(rootFILES))
 { //Probar mejor a creae un string random con longitud limitada y hacer concat con .txt
-    Directory.CreateDirectory(root + "/FILES");
+    Directory.CreateDirectory(rootFILES);
     for (int i = 0; i < 2; i++)
     {
         string nameRandomFile = Path.GetRandomFileName().Replace(".", "") + ".txt";
-        File.Create(root + "/FILES/" + nameRandomFile);
+        File.Create(rootFILES  +"/"+ nameRandomFile);
     }
-       
-    Directory.CreateDirectory(root + "/FILES/"+ nameRandomDirectory);
+
+    Directory.CreateDirectory(rootFILES + "/" + nameRandomDirectory);
 }
 else
 {

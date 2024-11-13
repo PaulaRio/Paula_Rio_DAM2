@@ -21,6 +21,12 @@
         </DataTemplate>
     </Window.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            
+        </Grid.RowDefinitions>
+
         <Menu FontSize="15" Grid.Row="0">
             <MenuItem Header="_Info" Click="MenuItem_Click">
                 <MenuItem Header="_Info" Command="{Binding SelectViewModelCommand}"
