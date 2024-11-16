@@ -36,6 +36,7 @@ namespace GestorArchivos
 
             //view principal
             services.AddTransient<MainWindow>();
+           
 
             //view viewModels
             services.AddTransient<MainViewModel>();
@@ -46,6 +47,7 @@ namespace GestorArchivos
             //Services
             services.AddSingleton<IDirectoryProvider, DirectoryService>();
             services.AddSingleton<IFileProvider, FileService>();
+            services.AddSingleton<ICreateFILESService, CreateFILESService>();
             return services.BuildServiceProvider();
         }
     }

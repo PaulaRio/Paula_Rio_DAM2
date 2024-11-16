@@ -1,4 +1,5 @@
-﻿using GestorArchivos.Utils;
+﻿using GestorArchivos.Interfaces;
+using GestorArchivos.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace GestorArchivos.Services
 {
-    public class CreateFILES
+    public class CreateFILESService : ICreateFILESService
     {
         public void CreateDirectoryFILES()
         {
-           int numFilesDefault = 2;
+            int numFilesDefault = 2;
             int numDirectoryDefault = 1;
             if (DirectoryUtils.CreateDirectoryIfNotExists(Constants.ROOTFILES))
             {
@@ -25,7 +26,7 @@ namespace GestorArchivos.Services
                 {
                     Directory.CreateDirectory(Constants.ROOTFILES + "/" + DirectoryUtils.GenerateRandomDirectoryName);
                 }
-               
+
             }
 
 
