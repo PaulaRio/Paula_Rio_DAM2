@@ -9,10 +9,7 @@ namespace GestorArchivos.Utils
 {
     public static class DirectoryUtils
     {
-        public static bool CreateDirectoryIfNotExists(string path)
-        {
-            return Directory.Exists(path); 
-        }
+       
         public static string GenerateRandomDirectoryName()
         {
             return Path.GetRandomFileName().Replace(".", "");

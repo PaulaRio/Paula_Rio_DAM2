@@ -30,9 +30,9 @@
             </StackPanel>
         </ScrollViewer>
         <Grid.ContextMenu>
-            <ContextMenu>
-                <MenuItem>Crear carpeta</MenuItem>
-                <MenuItem>Crear fichero</MenuItem>
+            <ContextMenu >
+                <MenuItem Header="Crear carpeta"/>
+                <MenuItem Header="Crear fichero"/>
             </ContextMenu>
         </Grid.ContextMenu>
     </Grid>

@@ -12,7 +12,7 @@
        
            
        
-        <Image  Stretch="Fill"  Source="/View/monitoBlanco.jpg"/>
+        <Image  Stretch="Fill"  Source="/Resources/monitoBlanco.jpg"/>
         <TextBlock Text="Paula Río Delgado 2º DAM" FontSize="20"/>
 
     </Grid>

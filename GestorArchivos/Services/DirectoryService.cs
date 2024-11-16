@@ -2,6 +2,7 @@
 using GestorArchivos.Utils;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,17 +11,17 @@ namespace GestorArchivos.Services
 {
     public class DirectoryService : IDirectoryProvider
     {
-        public void CreateDirectory(string nombreDirectorio)
+        public void CreateNewDirectory(string nombreDirectorio)
         {
-            throw new NotImplementedException();
+            if (!Directory.Exists(Constants.ROOTFILES + "/" + nombreDirectorio))
+            {
+
+                Directory.CreateDirectory(Constants.ROOTFILES + "/" + nombreDirectorio );
+
+
+            }
         }
 
-        public void CreateDirectoryFILES()
-        {
-            DirectoryUtils.CreateDirectoryIfNotExists(Constants.ROOTFILES);
-            
-
-            
-        }
+        
     }
 }

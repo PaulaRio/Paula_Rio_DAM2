@@ -15,7 +15,7 @@ namespace GestorArchivos.Services
         {
             int numFilesDefault = 2;
             int numDirectoryDefault = 1;
-            if (DirectoryUtils.CreateDirectoryIfNotExists(Constants.ROOTFILES))
+            if (!Directory.Exists(Constants.ROOTFILES))
             {
                 Directory.CreateDirectory(Constants.ROOTFILES);
                 for (int i = 0; i < numFilesDefault; i++)

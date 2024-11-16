@@ -38,7 +38,6 @@
     <Resource Include="Resources\monitoBlanco.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="View\monitoBlanco.jpg" />
   </ItemGroup>
 
   <ItemGroup>

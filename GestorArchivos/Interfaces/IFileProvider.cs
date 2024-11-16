@@ -8,6 +8,6 @@ namespace GestorArchivos.Interfaces
 {
    public interface IFileProvider
     {
-        public void CreateFile(string nombreFichero);
+        public void CreateNewFile(string nombreFichero);
     }
 }
