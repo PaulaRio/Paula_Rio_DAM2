@@ -28,12 +28,12 @@
         </Grid.RowDefinitions>
 
         <Menu FontSize="15" Grid.Row="0">
-            <MenuItem Header="_Info" Click="MenuItem_Click">
+            <MenuItem Header="_Info" >
                 <MenuItem Header="_Info" Command="{Binding SelectViewModelCommand}"
               CommandParameter="{Binding InfoViewModel}"        >
             </MenuItem>
             </MenuItem>
-            <MenuItem Header="_File" Click="MenuItem_Click">
+            <MenuItem Header="_File" >
                 <MenuItem Header="_Guardar"/>
                 <MenuItem Header="_Borrar"/>
                 <MenuItem Header="_Abrir"

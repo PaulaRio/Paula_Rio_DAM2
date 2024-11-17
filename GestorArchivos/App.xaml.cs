@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows;
 using GestorArchivos.Interfaces;
 using GestorArchivos.Services;
+using GestorArchivos.View;
 using GestorArchivos.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -36,9 +37,11 @@ namespace GestorArchivos
 
             //view principal
             services.AddTransient<MainWindow>();
-           
+
 
             //view viewModels
+            services.AddTransient<PopUpCreateFileDirectoryView>();
+
             services.AddTransient<MainViewModel>();
             services.AddTransient<AbrirFileViewModel>();
             services.AddTransient<InfoViewModel>();

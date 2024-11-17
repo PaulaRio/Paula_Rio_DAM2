@@ -10,7 +10,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace GestorArchivos.View
@@ -18,7 +17,7 @@ namespace GestorArchivos.View
     /// <summary>
     /// Lógica de interacción para PopUpCreateFileDirectoryView.xaml
     /// </summary>
-    public partial class PopUpCreateFileDirectoryView : UserControl
+    public partial class PopUpCreateFileDirectoryView : Window
     {
         public PopUpCreateFileDirectoryView()
         {
