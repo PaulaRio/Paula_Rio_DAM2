@@ -9,5 +9,6 @@ namespace GestorArchivos.Interfaces
    public interface IFileProvider
     {
         public void CreateNewFile(string nombreFichero);
+        public List<string> getNameFiles();
     }
 }

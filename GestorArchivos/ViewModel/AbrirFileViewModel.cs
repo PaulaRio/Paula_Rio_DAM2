@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.Input;
+using GestorArchivos.Interfaces;
 using GestorArchivos.Models;
 
 namespace GestorArchivos.ViewModel
@@ -11,46 +14,55 @@ namespace GestorArchivos.ViewModel
    public class AbrirFileViewModel : ViewModelBase
     {
         public ObservableCollection<StackPanelModel> Items { get; set; }
-      
-
-        private async Task GenerateFILESStackPanelItems()
+        private IDirectoryProvider _directoryService;
+        private IFileProvider _fileService;
+        private ICreateFILESService _createFILESService;
+        public AbrirFileViewModel(IDirectoryProvider directoryService,IFileProvider fileService,ICreateFILESService createFILESService)
         {
-            int n = 2;
+            Items = new ObservableCollection<StackPanelModel>();
+            _directoryService = directoryService;
+            _fileService = fileService;
+            _createFILESService = createFILESService;
+        }
 
-            for (int i = 0; i < n; i++)
+        public override async Task LoadAsync()
+        {
+            Items.Clear();
+            _createFILESService.CreateDirectoryFILES();
+            await GenerateNewStackPanelItems();
+        }
+        //Seguir con el ejemplo que tengo en MainWindow con el cambio de Views
+        [RelayCommand]
+        private void createDirectory(object? parameter)
+        {
+
+        }
+        [RelayCommand]
+        private void createFile(object? parameter)
+        {
+
+        }
+
+        private async Task GenerateNewStackPanelItems()
+        {
+            foreach (var item in _directoryService.getNameDirectories())
+            {
+                Items.Add(new StackPanelModel
+                {
+                    ImageFileDirectory = "/Resources/Carpeta.jpg",
+                    NameFileDirectory = item
+                });
+            }
+            foreach (var item in _fileService.getNameFiles())
             {
                 Items.Add(new StackPanelModel
                 {
                     ImageFileDirectory = "/Resources/Fichero.png",
-                    NameFileDirectory = Utils.FileUtils.generateRandomFileTxtName()
+                    NameFileDirectory = item
                 });
             }
-            Items.Add(new StackPanelModel
-            {
-                ImageFileDirectory = "/Resources/Carpeta.png",
-                NameFileDirectory = Utils.DirectoryUtils.GenerateRandomDirectoryName()
-            });
-        }
-        //Probar a crear dos métodos con relaycommand que pasen tipo de Archivo diferente y con binding a items del menu context y que ademas de crear el stack cree el archivo en concreto
-        private async Task GenerateNewStackPanelItems(string tipoArchivo)
-        {
-            //Acuerdate porfa de crear la view para poder meter el nombre y que cree el archivo con el nombre para meterlo en el mismo metodo que el anterior
-            if (tipoArchivo.Equals("Directory"))
-            {
-                Items.Add(new StackPanelModel
-                {
-                    //ImagePath = sprite.sprites.back_default ?? Constantes.MISSINGNO_IMAGE_PATH,
-                    NameFileDirectory = Utils.DirectoryUtils.GenerateRandomDirectoryName()
-                });
-            }
-            else
-            {
-                Items.Add(new StackPanelModel
-                {
-                    //ImagePath = sprite.sprites.back_default ?? Constantes.MISSINGNO_IMAGE_PATH,
-                    NameFileDirectory = Utils.DirectoryUtils.GenerateRandomDirectoryName()
-                });
-            }
+                
+            
         }
     }
 }

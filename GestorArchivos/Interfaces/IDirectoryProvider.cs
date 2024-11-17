@@ -9,6 +9,8 @@ namespace GestorArchivos.Interfaces
    public interface IDirectoryProvider
     {
         public void CreateNewDirectory(string nombreDirectorio);
-      
+        public List<string> getNameDirectories();
+
+
     }
 }

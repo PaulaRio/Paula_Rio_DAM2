@@ -22,5 +22,16 @@ if (!Directory.Exists(rootFILES))
 else
 {
     Console.WriteLine("**Archivo ya existe.**");
+    foreach (var item in Directory.GetDirectories(rootFILES))
+    {
+      
+        Console.WriteLine(Path.GetFileName(item));
+    }
+    foreach (var item in Directory.GetFiles(rootFILES))
+    {
+
+        Console.WriteLine(Path.GetFileName(item));
+    }
+
 }
 

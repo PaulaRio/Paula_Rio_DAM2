@@ -12,7 +12,7 @@ namespace GestorArchivos.ViewModel
         private ViewModelBase? _selectedViewModel;
         public MainViewModel(AbrirFileViewModel fileAbrir, InfoViewModel info,PrincipalViewModel principal)
         {
-            FileAbrirViewModel = fileAbrir;
+            AbrirFileViewModel = fileAbrir;
             InfoViewModel = info;
             PrincipalViewModel=principal;
             SelectedViewModel = principal;
@@ -28,7 +28,7 @@ namespace GestorArchivos.ViewModel
             }
         }
 
-        public AbrirFileViewModel FileAbrirViewModel { get; }
+        public AbrirFileViewModel AbrirFileViewModel { get; }
         public InfoViewModel InfoViewModel { get; }
         public PrincipalViewModel PrincipalViewModel { get; }
 
@@ -44,6 +44,13 @@ namespace GestorArchivos.ViewModel
         {
             SelectedViewModel = parameter as ViewModelBase;
             await LoadAsync();
+        }
+
+        [RelayCommand]
+        private void ShowPopUp()
+        {
+            var popUpWindow = new PopUpWindow();  // Instanciamos la ventana emergente
+            popUpWindow.ShowDialog();  // Abrimos la ventana de forma bloqueante
         }
 
 

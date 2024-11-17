@@ -22,5 +22,16 @@ namespace GestorArchivos.Services
 
             }
         }
+        //Porfi , tengo que acordarme de modificar el codigo para que etsos metodos se puedan usar siempre, osea introducir ruta por parámetro
+        public List<string> getNameFiles()
+        {
+            List<string> namesFicheros = new List<string>();
+            foreach (var item in Directory.GetFiles(Constants.ROOTFILES))
+            {
+
+                namesFicheros.Add(Path.GetFileName(item));
+            }
+            return namesFicheros;
+        }
     }
 }

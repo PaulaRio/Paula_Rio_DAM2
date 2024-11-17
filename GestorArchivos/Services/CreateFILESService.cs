@@ -20,11 +20,13 @@ namespace GestorArchivos.Services
                 Directory.CreateDirectory(Constants.ROOTFILES);
                 for (int i = 0; i < numFilesDefault; i++)
                 {
-                    File.Create(Constants.ROOTFILES + "/" + FileUtils.generateRandomFileTxtName);
+                    var fileName = FileUtils.generateRandomFileTxtName();
+                    File.Create(Constants.ROOTFILES + "/" + fileName);
                 }
                 for (int i = 0; i < numDirectoryDefault; i++)
                 {
-                    Directory.CreateDirectory(Constants.ROOTFILES + "/" + DirectoryUtils.GenerateRandomDirectoryName);
+                    var dirName = DirectoryUtils.GenerateRandomDirectoryName();
+                    Directory.CreateDirectory(Constants.ROOTFILES + "/" + dirName);
                 }
 
             }

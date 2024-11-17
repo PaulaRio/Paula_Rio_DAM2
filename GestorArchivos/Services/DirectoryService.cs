@@ -21,7 +21,18 @@ namespace GestorArchivos.Services
 
             }
         }
+        public List<string> getNameDirectories()
+        {
+            List<string> namesDirectorios = new List<string>();
+            foreach (var item in Directory.GetDirectories(Constants.ROOTFILES))
+            {
 
+                namesDirectorios.Add(Path.GetFileName(item));
+            }
+            return namesDirectorios;
+        }
         
-    }
+
+
+}
 }
