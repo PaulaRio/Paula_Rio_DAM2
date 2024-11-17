@@ -16,7 +16,7 @@
         <DataTemplate DataType="{x:Type viewModel:PrincipalViewModel}">
             <view:PrincipalView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModel:AbrirFileViewModel}">
+        <DataTemplate DataType="{x:Type viewModel:OpenFileViewModel}">
             <view:AbrirFileView/>
         </DataTemplate>
     </Window.Resources>

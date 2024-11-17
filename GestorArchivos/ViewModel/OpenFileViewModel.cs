@@ -13,7 +13,7 @@ using GestorArchivos.View;
 
 namespace GestorArchivos.ViewModel
 {
-   public partial class  AbrirFileViewModel : ViewModelBase
+   public partial class  OpenFileViewModel : ViewModelBase
     {
         public ObservableCollection<StackPanelModel> Items { get; set; }
 
@@ -28,7 +28,7 @@ namespace GestorArchivos.ViewModel
         private IFileProvider _fileService;
         private ICreateFILESService _createFILESService;
         public PopUpCreateFileDirectoryView PopUpCreateFileDirectoryView { get; }
-        public AbrirFileViewModel(IDirectoryProvider directoryService,IFileProvider fileService,ICreateFILESService createFILESService, PopUpCreateFileDirectoryView popUp
+        public OpenFileViewModel(IDirectoryProvider directoryService,IFileProvider fileService,ICreateFILESService createFILESService, PopUpCreateFileDirectoryView popUp
             )
         {
             Items = new ObservableCollection<StackPanelModel>();
