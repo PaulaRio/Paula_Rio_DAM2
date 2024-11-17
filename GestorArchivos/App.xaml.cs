@@ -43,6 +43,7 @@ namespace GestorArchivos
             services.AddTransient<AbrirFileViewModel>();
             services.AddTransient<InfoViewModel>();
             services.AddTransient<PrincipalViewModel>();
+            services.AddTransient<PopUpCreateFileDirectoryViewModel>();
 
             //Services
             services.AddSingleton<IDirectoryProvider, DirectoryService>();

@@ -17,12 +17,15 @@ namespace GestorArchivos.ViewModel
         private IDirectoryProvider _directoryService;
         private IFileProvider _fileService;
         private ICreateFILESService _createFILESService;
-        public AbrirFileViewModel(IDirectoryProvider directoryService,IFileProvider fileService,ICreateFILESService createFILESService)
+        public PopUpCreateFileDirectoryViewModel PopUpCreateFileDirectoryViewModel { get; }
+        public AbrirFileViewModel(IDirectoryProvider directoryService,IFileProvider fileService,ICreateFILESService createFILESService, PopUpCreateFileDirectoryViewModel popUp
+            )
         {
             Items = new ObservableCollection<StackPanelModel>();
             _directoryService = directoryService;
             _fileService = fileService;
             _createFILESService = createFILESService;
+            PopUpCreateFileDirectoryViewModel = popUp; 
         }
 
         public override async Task LoadAsync()
@@ -32,7 +35,13 @@ namespace GestorArchivos.ViewModel
             await GenerateNewStackPanelItems();
         }
         //Seguir con el ejemplo que tengo en MainWindow con el cambio de Views
-       
+        [RelayCommand]
+        private async Task OpenCreateDirectory()
+        { }
+
+        [RelayCommand]
+        private async Task OpenCreateFile()
+        { }
         private async Task GenerateNewStackPanelItems()
         {
             foreach (var item in _directoryService.getNameDirectories())
