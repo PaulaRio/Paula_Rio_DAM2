@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GestorArchivos.Interfaces;
 using GestorArchivos.Models;
@@ -15,6 +16,14 @@ namespace GestorArchivos.ViewModel
    public partial class  AbrirFileViewModel : ViewModelBase
     {
         public ObservableCollection<StackPanelModel> Items { get; set; }
+
+
+        
+        private FileOrDirectoryModel _fileOrDir;
+
+        [ObservableProperty]
+        public string _Name;
+
         private IDirectoryProvider _directoryService;
         private IFileProvider _fileService;
         private ICreateFILESService _createFILESService;
@@ -39,7 +48,8 @@ namespace GestorArchivos.ViewModel
         [RelayCommand]
         private async Task OpenCreateDirectory()
         {
-
+            _fileOrDir = new FileOrDirectoryModel();
+            _fileOrDir.TypeFileorDirectory = "Carpeta";
             PopUpCreateFileDirectoryView.ShowDialog();
               await LoadAsync();
         }
@@ -47,17 +57,45 @@ namespace GestorArchivos.ViewModel
         [RelayCommand]
         private async Task OpenCreateFile()
         {
-
+            _fileOrDir = new FileOrDirectoryModel();
+            _fileOrDir.TypeFileorDirectory = "Fichero";
             PopUpCreateFileDirectoryView.ShowDialog();
             await LoadAsync();
+
         }
+
         [RelayCommand]
-        private async Task Cancel()
+        private void GetName()
         {
-
-            PopUpCreateFileDirectoryView.ShowDialog();
-            await LoadAsync();
+            string name = _Name;
+            _fileOrDir.NameFileorDirectory =name;
         }
+
+
+
+        [RelayCommand]
+        private async Task Create()
+        {   
+            if (_fileOrDir.TypeFileorDirectory.Equals("Fichero"))
+            {
+                _fileService.CreateNewFile(_fileOrDir.NameFileorDirectory);
+            }
+            else
+            {
+                _directoryService.CreateNewDirectory(_fileOrDir.NameFileorDirectory);
+
+            }
+        }
+
+       
+        [RelayCommand]
+        private void Cancel()
+        {
+            PopUpCreateFileDirectoryView.Close();
+        }
+
+       
+
         private async Task GenerateNewStackPanelItems()
         {
             foreach (var item in _directoryService.getNameDirectories())

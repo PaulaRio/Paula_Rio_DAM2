@@ -26,10 +26,10 @@
         <StackPanel Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Label Content="Nombre" HorizontalContentAlignment="Center" FontSize="30" >
             </Label>
-            <TextBox BorderBrush="Black" FontSize="30" Margin="30" Width="101" />
+            <TextBox BorderBrush="Black" FontSize="30" Margin="30" Width="101" Text="{Binding Name}"/>
         </StackPanel>
-        <Button Grid.Column="0" Grid.Row="2" Margin="30,26,0,32" Content="Cancel" Background="LightGray" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-        <Button Grid.Column="2" Grid.Row="2" Margin="0,18,10,22" Content="Create" Background="Blue" FontSize="25" Foreground="White" HorizontalContentAlignment="Center" Height="60" />
+        <Button Grid.Column="0" Grid.Row="2" Margin="30,26,0,32" Content="Cancel" Background="LightGray" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Command="{Binding CancelCommand}" />
+        <Button Grid.Column="2" Grid.Row="2" Margin="0,18,10,22" Content="Create" Background="Blue" FontSize="25" Foreground="White" HorizontalContentAlignment="Center" Height="60" Command="{Binding CreateCommand}" />
 
     </Grid>
 </Window>
