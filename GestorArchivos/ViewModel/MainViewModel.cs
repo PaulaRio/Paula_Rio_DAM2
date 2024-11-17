@@ -46,13 +46,7 @@ namespace GestorArchivos.ViewModel
             await LoadAsync();
         }
 
-        [RelayCommand]
-        private void ShowPopUp()
-        {
-            var popUpWindow = new PopUpWindow();  // Instanciamos la ventana emergente
-            popUpWindow.ShowDialog();  // Abrimos la ventana de forma bloqueante
-        }
-
+       
 
     }
 
