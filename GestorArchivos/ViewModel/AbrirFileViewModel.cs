@@ -51,6 +51,13 @@ namespace GestorArchivos.ViewModel
             PopUpCreateFileDirectoryView.ShowDialog();
             await LoadAsync();
         }
+        [RelayCommand]
+        private async Task Cancel()
+        {
+
+            PopUpCreateFileDirectoryView.ShowDialog();
+            await LoadAsync();
+        }
         private async Task GenerateNewStackPanelItems()
         {
             foreach (var item in _directoryService.getNameDirectories())
