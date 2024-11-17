@@ -11,7 +11,7 @@ using GestorArchivos.Models;
 
 namespace GestorArchivos.ViewModel
 {
-   public class AbrirFileViewModel : ViewModelBase
+   public partial class  AbrirFileViewModel : ViewModelBase
     {
         public ObservableCollection<StackPanelModel> Items { get; set; }
         private IDirectoryProvider _directoryService;
@@ -32,17 +32,7 @@ namespace GestorArchivos.ViewModel
             await GenerateNewStackPanelItems();
         }
         //Seguir con el ejemplo que tengo en MainWindow con el cambio de Views
-        [RelayCommand]
-        private void createDirectory(object? parameter)
-        {
-
-        }
-        [RelayCommand]
-        private void createFile(object? parameter)
-        {
-
-        }
-
+       
         private async Task GenerateNewStackPanelItems()
         {
             foreach (var item in _directoryService.getNameDirectories())

@@ -31,8 +31,8 @@
         </ScrollViewer>
         <Grid.ContextMenu>
             <ContextMenu >
-                <MenuItem Header="Crear carpeta" Command="{Binding CreateDirectoryCommand}" />
-                <MenuItem Header="Crear fichero" Command="{Binding CreateFileCommand}/>
+                <MenuItem Header="Crear carpeta" />
+                <MenuItem Header="Crear fichero" />
             </ContextMenu>
         </Grid.ContextMenu>
     </Grid>

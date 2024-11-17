@@ -12,7 +12,7 @@ namespace GestorArchivos.ViewModel
         private ViewModelBase? _selectedViewModel;
         public MainViewModel(AbrirFileViewModel fileAbrir, InfoViewModel info,PrincipalViewModel principal)
         {
-            AbrirFileViewModel = fileAbrir;
+            FileAbrirViewModel = fileAbrir;
             InfoViewModel = info;
             PrincipalViewModel=principal;
             SelectedViewModel = principal;
@@ -28,7 +28,7 @@ namespace GestorArchivos.ViewModel
             }
         }
 
-        public AbrirFileViewModel AbrirFileViewModel { get; }
+        public AbrirFileViewModel FileAbrirViewModel { get; }
         public InfoViewModel InfoViewModel { get; }
         public PrincipalViewModel PrincipalViewModel { get; }
 
