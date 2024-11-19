@@ -29,6 +29,6 @@
         <Button x:Name="pi" Content="π" Margin="339,297,0,0" VerticalAlignment="Top" Height="37" Width="31" Click="Button_Click" HorizontalAlignment="Left" FontSize="18"/>
         <Button x:Name="entre" Content="÷" Margin="400,297,0,0" VerticalAlignment="Top" Height="37" Width="31" Click="Button_Click" HorizontalAlignment="Left" FontSize="18"/>
         <Button x:Name="igual" Content="=" Margin="461,297,0,0" VerticalAlignment="Top" Height="37" Width="31" Click="Button_Click" HorizontalAlignment="Left" FontSize="18"/>
-
+        
     </Grid>
 </Window>
