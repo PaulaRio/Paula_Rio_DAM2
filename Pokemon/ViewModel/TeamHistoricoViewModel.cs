@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pokemon.ViewModel
 {
-    internal class TeamHistoricoViewModel
+    public class TeamHistoricoViewModel
     {
     }
 }

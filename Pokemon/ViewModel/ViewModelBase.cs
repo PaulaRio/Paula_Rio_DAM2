@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Pokemon.ViewModel
 {
-    public class BattleViewModel
+    public class ViewModelBase : ObservableObject
     {
+        public virtual Task LoadAsync() => Task.CompletedTask;
     }
 }
