@@ -29,5 +29,8 @@
             <MenuItem Header="Historico"/>
         </Menu>
         <ContentControl Grid.Row="1" Content="{Binding SelectedViewModel}"/>
+        <view:BattleView/>
+        <view:BattleView/>
+        <view:BattleView/>
     </Grid>
 </Window>

@@ -10,7 +10,7 @@ namespace Pokemon.ViewModel
     public partial class MainViewModel : ViewModelBase
     {
         private ViewModelBase? _selectedViewModel;
-        public MainViewModel(BattleViewModel battle, TeamHistoricoViewModel teamHistorico)
+        public MainViewModel(BattleViewModel battle, TeamViewModel teamHistorico)
         {
             BattleViewModel = battle;
             TeamHistoricoViewModel = teamHistorico;
@@ -28,7 +28,7 @@ namespace Pokemon.ViewModel
         }
 
         public BattleViewModel BattleViewModel { get; }
-        public TeamHistoricoViewModel TeamHistoricoViewModel { get; }
+        public TeamViewModel TeamHistoricoViewModel { get; }
         
 
         public async override Task LoadAsync()
