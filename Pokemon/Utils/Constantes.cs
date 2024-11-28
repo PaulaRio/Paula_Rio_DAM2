@@ -8,8 +8,9 @@ namespace Pokemon.Utils
 {
     public static class Constantes
     {
-        public const string POKE_URL= "https://pokeapi.co/api/v2/type/";
-        //public const int MAX_POKE_ITEMS = 15;
+        public const string POKE_URL= "https://pokeapi.co/api/v2/pokemon/";
+        
         public const string MISSINGNO_IMAGE_PATH = "../Resources/missingNo.jpg";
+        public const string POKE_URL_ = "https://pokeapi.co/api/v2/pokemon/";
     }
 }

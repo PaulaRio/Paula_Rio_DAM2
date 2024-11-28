@@ -42,6 +42,7 @@ namespace Pokemon
             services.AddTransient<BattleViewModel>();
             services.AddTransient<TeamViewModel>();
             services.AddTransient<HistoricoViewModel>();
+            services.AddTransient<ImportViewModel>();
 
 
             //Services

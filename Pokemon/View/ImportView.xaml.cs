@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Pokemon.View
 {
     /// <summary>
-    /// Lógica de interacción para TeamHistoricoView.xaml
+    /// Lógica de interacción para ImportView.xaml
     /// </summary>
-    public partial class TeamHistoricoView : UserControl
+    public partial class ImportView : UserControl
     {
-        public TeamHistoricoView()
+        public ImportView()
         {
             InitializeComponent();
         }

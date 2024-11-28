@@ -12,8 +12,14 @@
         <DataTemplate DataType="{x:Type viewModel:BattleViewModel}">
             <view:BattleView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModel:TeamHistoricoViewModel}">
-            <view:TeamHistoricoView/>
+        <DataTemplate DataType="{x:Type viewModel:TeamViewModel}">
+            <view:TeamView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:HistoricoViewModel}">
+            <view:HistoricoView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ImportViewModel}">
+            <view:ImportView/>
         </DataTemplate>
     </Window.Resources>
     <Grid>
@@ -27,10 +33,9 @@
             <MenuItem Header="Battle"/>
             <MenuItem Header="Team"/>
             <MenuItem Header="Historico"/>
+            <MenuItem Header="Import"/>
         </Menu>
         <ContentControl Grid.Row="1" Content="{Binding SelectedViewModel}"/>
-        <view:BattleView/>
-        <view:BattleView/>
-        <view:BattleView/>
+      
     </Grid>
 </Window>

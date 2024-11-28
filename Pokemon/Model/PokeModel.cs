@@ -31,7 +31,7 @@ namespace Pokemon.Model
     public class Types
     {
         [JsonPropertyName("name")]
-        public string NombreType { get; set; }
+        public string Nombre { get; set; }
         [JsonPropertyName("url")]
         public string Url { get; set; }
     }
