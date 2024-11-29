@@ -19,7 +19,7 @@ namespace Pokemon.ViewModel
             PokeModel requestData = await HttpJsonClient<PokeModel>.Get(Constantes.POKE_URL) ?? new PokeModel();
             foreach (var element in requestData.Results)
             {
-                _CurrentPokemon=element.NombreType;
+                _CurrentPokemon=element.Nombre;
             }
         }
     }

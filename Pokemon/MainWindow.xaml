@@ -7,7 +7,8 @@
         xmlns:view="clr-namespace:Pokemon.View"
         xmlns:viewModel="clr-namespace:Pokemon.ViewModel" 
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Background="LightPink">
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModel:BattleViewModel}">
             <view:BattleView/>
@@ -28,12 +29,18 @@
             <RowDefinition Height="*" />
 
         </Grid.RowDefinitions>
-
-        <Menu FontSize="15" Grid.Row="0">
-            <MenuItem Header="Battle"/>
-            <MenuItem Header="Team"/>
-            <MenuItem Header="Historico"/>
-            <MenuItem Header="Import"/>
+        
+        <Menu FontSize="15" Grid.Row="0" HorizontalAlignment="Stretch" Margin="20" Width="300"  Height="30" >
+            
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="1" Columns="4"  />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <MenuItem Header="Battle" Width="auto" BorderBrush="Gray" Background="AliceBlue" />
+            <MenuItem Header="Team" Width="auto" BorderBrush="Gray" Background="AliceBlue"/>
+            <MenuItem Header="Historico" Width="auto" BorderBrush="Gray" Background="AliceBlue"/>
+            <MenuItem Header="Import" Width="auto" BorderBrush="Gray" Background="AliceBlue"/>
         </Menu>
         <ContentControl Grid.Row="1" Content="{Binding SelectedViewModel}"/>
       
