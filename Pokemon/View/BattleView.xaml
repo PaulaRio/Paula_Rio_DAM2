@@ -9,67 +9,84 @@
              d:DesignHeight="450" d:DesignWidth="800"
              Background="LightPink">
 
-    <Grid>
 
-        <Grid >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <!-- Parte Superior -->
-            <StackPanel VerticalAlignment="Top" Grid.Row="0" Height="320">
+
+    <Grid >
+        <!-- Parte Superior -->
+        <!--<Grid VerticalAlignment="Top" HorizontalAlignment="Center">
+              
                 <ItemsControl ItemsSource="{Binding Items, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                    <StackPanel Orientation="Horizontal" Height="322" Width="378">
-                        <TextBlock Text="120" FontSize="24" Foreground="Red" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Left"/>
-                        <Image  Width="100" Height="100" Margin="10"/>
-                        <ProgressBar Value="45" Maximum="100" Width="107" Height="20" HorizontalAlignment="Right" RenderTransformOrigin="1.464,0.559" />
+                    <StackPanel Orientation="Horizontal" Height="322" Width="500" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock Text="120" FontSize="24" Foreground="Red" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Left" />
+                        <Image  Width="100" Height="100" Margin="10" RenderTransformOrigin="0.5,0.5" />
+                        <ProgressBar Value="45" Maximum="100" Width="150" Height="20" RenderTransformOrigin="1.79,0.662" />
                     </StackPanel>
                 </ItemsControl>
+            </Grid>-->
+        <Grid VerticalAlignment="Top" Margin="0,10,0,0" Height="310">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- TextBlock Izquierdo -->
+            <TextBlock Grid.Column="0" Text="120" FontSize="36" Foreground="Red" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="133,166,0,0" RenderTransformOrigin="0.473,1.753" Height="40" FontWeight="Bold"/>
+
+            <!-- Imagen en el Centro -->
+            <Image Grid.Column="1"  Width="150" Height="150" HorizontalAlignment="Left"  Margin="63,86,0,0"/>
+
+            <!-- Barra de Progreso Derecha -->
+            <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="266,159,0,0" Grid.ColumnSpan="2">
+                <TextBlock Text="45%" HorizontalAlignment="Center" FontSize="16" Foreground="Blue" />
+                <ProgressBar Value="45" Maximum="100" Width="220" Height="25" />
             </StackPanel>
 
-            <Border Height="120" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="10" BorderBrush="Gray" BorderThickness="2">
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Color="Gray" Offset="1" />
-                        <GradientStop Color="LightGray" Offset="0" />
-                    </LinearGradientBrush>
-                </Border.Background>
-                <Border.CornerRadius>
-                    <CornerRadius TopLeft="20" TopRight="20" BottomLeft="0" BottomRight="0"/>
-                </Border.CornerRadius>
-            </Border>
-            <!-- Parte Inferior -->
-            <Grid VerticalAlignment="Bottom">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+        </Grid>
 
-                <!-- Botones -->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+        <Border Height="120" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="10" BorderBrush="Gray" BorderThickness="2">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="Gray" Offset="1" />
+                    <GradientStop Color="LightGray" Offset="0" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.CornerRadius>
+                <CornerRadius TopLeft="20" TopRight="20" BottomLeft="0" BottomRight="0"/>
+            </Border.CornerRadius>
+        </Border>
+        <!-- Parte Inferior -->
+        <Grid VerticalAlignment="Bottom">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-                <Button Content="Escapar" Background="Red" Foreground="White" Grid.Column="0"  
+            <!-- Botones -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Content="Escapar" Background="Red" Foreground="White" Grid.Column="0"  
             Height="40"
             HorizontalAlignment="Center"
             VerticalAlignment="Center" Width="100" FontSize="22"/>
-                <Button Content="Atacar" Background="Blue" Foreground="White" Grid.Column="1" 
+            <Button Content="Atacar" Background="Blue" Foreground="White" Grid.Column="1" 
             Height="70"
             HorizontalAlignment="Center"
             VerticalAlignment="Center" Width="150" FontSize="22" />
-                <Button Content="Capturar" Background="Magenta" Foreground="White" Grid.Column="2" 
+            <Button Content="Capturar" Background="Magenta" Foreground="White" Grid.Column="2" 
             Height="50"
             HorizontalAlignment="Center"
             VerticalAlignment="Center" Width="100" FontSize="22" />
 
-                <!-- Barra de Captura -->
-                <ProgressBar  Grid.Row="1" Grid.ColumnSpan="3" Value="0" Maximum="100" Height="20" Margin="10" HorizontalAlignment="Stretch"  />
+            <!-- Barra de Captura -->
+            <ProgressBar  Grid.Row="1" Grid.ColumnSpan="3" Value="0" Maximum="100" Height="20" Margin="10" HorizontalAlignment="Stretch"  />
 
-            </Grid>
         </Grid>
-
     </Grid>
+
+
 </UserControl>
