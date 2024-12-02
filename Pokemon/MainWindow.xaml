@@ -7,6 +7,7 @@
         xmlns:view="clr-namespace:Pokemon.View"
         xmlns:viewModel="clr-namespace:Pokemon.ViewModel" 
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=viewModel:MainViewModel}"
         Title="MainWindow" Height="450" Width="800"
         Background="LightPink">
     <Window.Resources>
@@ -37,10 +38,14 @@
                     <UniformGrid Rows="1" Columns="4"  />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
-            <MenuItem Header="Battle" Width="auto" BorderBrush="Gray" Background="AliceBlue" />
-            <MenuItem Header="Team" Width="auto" BorderBrush="Gray" Background="AliceBlue"/>
-            <MenuItem Header="Historico" Width="auto" BorderBrush="Gray" Background="AliceBlue"/>
-            <MenuItem Header="Import" Width="auto" BorderBrush="Gray" Background="AliceBlue"/>
+            <MenuItem Header="Battle" Width="auto" BorderBrush="Gray" Background="AliceBlue" Command="{Binding SelectViewModelCommand}"
+              CommandParameter="{Binding BattleViewModel}"/>
+            <MenuItem Header="Team" Width="auto" BorderBrush="Gray" Background="AliceBlue" Command="{Binding SelectViewModelCommand}"
+              CommandParameter="{Binding TeamViewModel}"/>
+            <MenuItem Header="Historico" Width="auto" BorderBrush="Gray" Background="AliceBlue" Command="{Binding SelectViewModelCommand}"
+              CommandParameter="{Binding HistoricoViewModel}"/>
+            <MenuItem Header="Import" Width="auto" BorderBrush="Gray" Background="AliceBlue" Command="{Binding SelectViewModelCommand}"
+              CommandParameter="{Binding ImportViewModel}"/>
         </Menu>
         <ContentControl Grid.Row="1" Content="{Binding SelectedViewModel}"/>
       

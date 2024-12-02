@@ -12,7 +12,7 @@ namespace Pokemon.Model
     {
         public PokeModel()
         {
-            Results = new List<Types>();
+            Results = new List<Pokes>();
         }
 
         [JsonPropertyName("count")]
@@ -25,10 +25,10 @@ namespace Pokemon.Model
         public string Previous { get; set; }
 
         [JsonPropertyName("results")]
-        public List<Types> Results { get; set; }
+        public List<Pokes> Results { get; set; }
     }
 
-    public class Types
+    public class Pokes
     {
         [JsonPropertyName("name")]
         public string Nombre { get; set; }
