@@ -9,6 +9,7 @@ namespace Pokemon.Model
     public class PokemonSpriteModel
     {
         public Sprites sprites { get; set; }
+        public List<Stat> stats { get; set; }
     }
 
     public class Sprites
@@ -21,5 +22,11 @@ namespace Pokemon.Model
         public object front_female { get; set; }
         public string front_shiny { get; set; }
         public object front_shiny_female { get; set; }
+    }
+    public class Stat
+    {
+        public int base_stat { get; set; }
+        public int effort { get; set; }
+        public Stat stat { get; set; }
     }
 }

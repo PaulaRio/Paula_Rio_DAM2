@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace Pokemon.Model
         public PokeModel()
         {
             Results = new List<Pokes>();
+          
         }
 
         [JsonPropertyName("count")]
@@ -35,4 +37,7 @@ namespace Pokemon.Model
         [JsonPropertyName("url")]
         public string Url { get; set; }
     }
+
+   
+
 }

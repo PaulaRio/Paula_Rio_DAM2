@@ -36,7 +36,7 @@ namespace Pokemon.ViewModel
 
         public override async Task LoadAsync()
         {
-            PokeModel requestData = await HttpJsonClient<PokeModel>.Get(Constantes.POKE_URL) ?? new PokeModel();
+            PokeModel requestData = await HttpJsonClient<PokeModel>.Get(Constantes.ALlPOKE_URL) ?? new PokeModel();
             foreach (var element in requestData.Results)
             {
                 AllPokemons.Add(element.Nombre);
@@ -50,14 +50,15 @@ namespace Pokemon.ViewModel
         private async Task GenerateCurrentPokemon()
         {
             //Porfi Pau del futuro, requerda hacer un Utils de esto
-            int randomId = new Random().Next(1, 20);
+            int randomId = new Random().Next(1, 100);
             string pokeAleatorio = AllPokemons[randomId];
             
             PokemonSpriteModel peticionSprite; 
             peticionSprite = await HttpJsonClient<PokemonSpriteModel>.Get($"{Constantes.POKE_URL}/{pokeAleatorio}");
             //Item.ImagePath = peticionSprite.sprites.front_default ?? Constantes.MISSINGNO_IMAGE_PATH;
-            _CurrentPokemonPath= peticionSprite.sprites.front_default ?? Constantes.MISSINGNO_IMAGE_PATH;
-        
+            CurrentPokemonPath= peticionSprite.sprites.front_default ?? Constantes.MISSINGNO_IMAGE_PATH;
+           
+
 
 
 

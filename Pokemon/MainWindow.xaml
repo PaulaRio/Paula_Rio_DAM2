@@ -8,7 +8,7 @@
         xmlns:viewModel="clr-namespace:Pokemon.ViewModel" 
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=viewModel:MainViewModel}"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="600" Width="800"
         Background="LightPink">
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModel:BattleViewModel}">
