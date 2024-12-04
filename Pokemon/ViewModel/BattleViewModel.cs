@@ -49,7 +49,7 @@ namespace Pokemon.ViewModel
         }
         private async Task GenerateCurrentPokemon()
         {
-            //Porfi Pau del futuro, requerda hacer un Utils de esto
+            // TODO: Porfi Pau del futuro, requerda hacer un Utils de esto
             int randomId = new Random().Next(1, 100);
             string pokeAleatorio = AllPokemons[randomId];
             

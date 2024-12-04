@@ -4,14 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pokemon.ViewModel
+namespace Pokemon.Services
 {
-    public class HistoricoViewModel : ViewModelBase
+    internal class PokeService
     {
-
-
-
-
-
     }
 }

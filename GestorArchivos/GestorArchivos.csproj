@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <None Remove="Resources\Carpeta.jpg" />
+    <None Remove="Resources\descarga.png" />
     <None Remove="Resources\Fichero.png" />
     <None Remove="Resources\monitoBlanco.jpg" />
     <None Remove="View\monitoBlanco.jpg" />
@@ -30,6 +31,9 @@
 
   <ItemGroup>
     <Resource Include="Resources\Carpeta.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\descarga.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Fichero.png">
