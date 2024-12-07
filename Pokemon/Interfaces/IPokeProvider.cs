@@ -3,5 +3,7 @@
     public interface IPokeProvider
     {
         bool IsShiny();
+
+        int NumAtack();
     }
 }

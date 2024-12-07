@@ -32,6 +32,8 @@ namespace Pokemon.ViewModel
         [ObservableProperty]
         public int _ChangingPokeHP;
 
+        public int ActualPokeHP;
+
         [ObservableProperty]
         public int _OurChangingHP;
 
@@ -55,7 +57,7 @@ namespace Pokemon.ViewModel
             _CurrentPokemonPath=null;
             _CurrentPokemonHP= 0;
             _CurrentPokemonAttack = 0;
-            _OurChangingHP=1000;
+            _OurChangingHP=100;
             _ColorIsShiny = "Red";
             _pokeService = pokeService;
 
@@ -77,6 +79,32 @@ namespace Pokemon.ViewModel
 
         [RelayCommand]
         private async Task Escape_Click(object? parameter)
+        {
+            await GenerateCurrentPokemon();
+        }
+
+        [RelayCommand]
+        private async Task Atack_Click(object? parameter)
+        {
+            ActualPokeHP = ActualPokeHP - _pokeService.NumAtack();
+            ChangingPokeHP = (100/CurrentPokemonHP) * ActualPokeHP;
+            Console.WriteLine(ChangingPokeHP);
+            if (ActualPokeHP <= 0) 
+            {
+                await GenerateCurrentPokemon();
+            }
+            else
+            {
+                OurChangingHP = OurChangingHP - (CurrentPokemonAttack/10);
+
+            }
+
+
+
+        }
+
+        [RelayCommand]
+        private async Task Capture_Click(object? parameter)
         {
             await GenerateCurrentPokemon();
         }
@@ -103,8 +131,10 @@ namespace Pokemon.ViewModel
 
 
             CurrentPokemonHP = peticionSprite.stats[0].base_stat ;
+            ActualPokeHP = CurrentPokemonHP;
+            ChangingPokeHP = 100;
 
-            CurrentPokemonAttack= peticionSprite.stats[1].base_stat;
+            CurrentPokemonAttack = peticionSprite.stats[1].base_stat;
 
         }
     }

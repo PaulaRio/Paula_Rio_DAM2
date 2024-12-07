@@ -30,7 +30,7 @@
             <!-- Barra de Progreso Derecha -->
             <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="266,159,0,0" Grid.ColumnSpan="2">
                 <TextBlock HorizontalAlignment="Center" FontSize="16" Foreground="Blue" Text="{Binding ElementName=HpStat, Path=Value, StringFormat={}{0:0}%}" />
-                <ProgressBar Value="{Binding ChangingPokeHP}"   Maximum="{Binding CurrentPokemonHP}" Width="220" Height="25" Name="HpStat" />
+                <ProgressBar Value="{Binding ChangingPokeHP}"   Maximum="100" Width="220" Height="25" Name="HpStat" />
             </StackPanel>
 
         </Grid>
@@ -68,11 +68,13 @@
             <Button Content="Atacar" Background="Blue" Foreground="White" Grid.Column="1" 
             Height="70"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center" Width="150" FontSize="22" />
+            VerticalAlignment="Center" Width="150" FontSize="22" 
+            Command="{Binding Atack_ClickCommand}"/>
             <Button Content="Capturar" Background="Magenta" Foreground="White" Grid.Column="2" 
             Height="50"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center" Width="100" FontSize="22" />
+            VerticalAlignment="Center" Width="100" FontSize="22" 
+            Command="{Binding Capture_ClickCommand}" />
 
 
             <!--<ProgressBar  Grid.Row="1" Grid.ColumnSpan="3" Value="0" Maximum="100" Height="20" Margin="10" HorizontalAlignment="Stretch"  />-->

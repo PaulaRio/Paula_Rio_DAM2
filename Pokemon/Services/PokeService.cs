@@ -11,9 +11,21 @@ namespace Pokemon.Services
     {
         public bool IsShiny()
         {
-            int randomNumber = new Random().Next(1, 100);
+            int randomNumber = new Random().Next(1, 101);
 
             return randomNumber <= 5;
+        }
+
+        public bool CaptureSuccess(int PokeLifePercentage)
+        {
+            int randomNumber = new Random().Next(1, 101);
+
+            return randomNumber <= (100- PokeLifePercentage);
+        }
+
+        public int NumAtack()
+        {
+            return new Random().Next(0, 41);
         }
     }
 }
