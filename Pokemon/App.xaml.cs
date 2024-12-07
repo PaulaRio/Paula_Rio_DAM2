@@ -2,6 +2,8 @@
 using System.Data;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
+using Pokemon.Interfaces;
+using Pokemon.Services;
 using Pokemon.ViewModel;
 
 namespace Pokemon
@@ -46,7 +48,7 @@ namespace Pokemon
 
 
             //Services
-
+            services.AddSingleton<IPokeProvider, PokeService>();
             return services.BuildServiceProvider();
         }
     }

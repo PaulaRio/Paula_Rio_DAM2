@@ -22,7 +22,7 @@
             </Grid.ColumnDefinitions>
 
             <!-- TextBlock Izquierdo -->
-            <TextBlock Grid.Column="0" Text="120" FontSize="36" Foreground="Red" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="133,166,0,0" RenderTransformOrigin="0.473,1.753" Height="40" FontWeight="Bold"/>
+            <TextBlock Grid.Column="0" Text="{Binding CurrentPokemonAttack}" FontSize="36" Foreground="{Binding ColorIsShiny}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="133,166,0,0" RenderTransformOrigin="0.473,1.753" Height="40" FontWeight="Bold"/>
 
             <!-- Imagen en el Centro -->
             <Image Grid.Column="1"  Source="{Binding CurrentPokemonPath}" Stretch="Uniform"  Width="200" Height="200" HorizontalAlignment="Left"  Margin="28,90,0,20"/>
@@ -30,7 +30,7 @@
             <!-- Barra de Progreso Derecha -->
             <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="266,159,0,0" Grid.ColumnSpan="2">
                 <TextBlock HorizontalAlignment="Center" FontSize="16" Foreground="Blue" Text="{Binding ElementName=HpStat, Path=Value, StringFormat={}{0:0}%}" />
-                <ProgressBar Value="70" Maximum="100" Width="220" Height="25" Name="HpStat" />
+                <ProgressBar Value="{Binding ChangingPokeHP}"   Maximum="{Binding CurrentPokemonHP}" Width="220" Height="25" Name="HpStat" />
             </StackPanel>
 
         </Grid>
@@ -63,7 +63,8 @@
             <Button Content="Escapar" Background="Red" Foreground="White" Grid.Column="0"  
             Height="40"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center" Width="100" FontSize="22"/>
+            VerticalAlignment="Center" Width="100" FontSize="22"
+             Command="{Binding Escape_ClickCommand}"/>
             <Button Content="Atacar" Background="Blue" Foreground="White" Grid.Column="1" 
             Height="70"
             HorizontalAlignment="Center"
@@ -75,7 +76,7 @@
 
 
             <!--<ProgressBar  Grid.Row="1" Grid.ColumnSpan="3" Value="0" Maximum="100" Height="20" Margin="10" HorizontalAlignment="Stretch"  />-->
-            <ProgressBar   Grid.Row="1" Grid.ColumnSpan="3" Height="20" Minimum="0" Maximum="100" Value="75" Name="pbStatus" />
+            <ProgressBar   Grid.Row="1" Grid.ColumnSpan="3" Height="20" Minimum="0" Maximum="100" Value="{Binding OurChangingHP}" Name="pbStatus" />
             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=pbStatus, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Grid>
     </Grid>
