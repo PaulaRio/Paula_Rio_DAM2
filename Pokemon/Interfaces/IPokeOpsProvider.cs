@@ -1,6 +1,6 @@
 ﻿namespace Pokemon.Interfaces
 {
-    public interface IPokeProvider
+    public interface IPokeOpsProvider
     {
         bool IsShiny();
 

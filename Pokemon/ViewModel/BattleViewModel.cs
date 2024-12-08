@@ -18,8 +18,8 @@ namespace Pokemon.ViewModel
     {
         private static readonly Random _random = new();
 
-        private IPokeProvider _pokeService;
-
+        private IPokeOpsProvider _pokeService;
+        private readonly IHistoricoProvider _historicoApiService;
         [ObservableProperty]
         public string _CurrentPokemonPath;
 
@@ -50,7 +50,7 @@ namespace Pokemon.ViewModel
 
 
 
-        public BattleViewModel(IPokeProvider pokeService)
+        public BattleViewModel(IPokeOpsProvider pokeService,IHistoricoProvider historicoApiService)
         {
 
            // _Item = new StackPanelItemModel();
@@ -60,12 +60,13 @@ namespace Pokemon.ViewModel
             _OurChangingHP=100;
             _ColorIsShiny = "Red";
             _pokeService = pokeService;
+            _historicoApiService = historicoApiService;
 
         }
 
         public override async Task LoadAsync()
         {
-            PokeModel requestData = await HttpJsonClient<PokeModel>.Get(Constantes.ALLPOKE_URL) ?? new PokeModel();
+            PokeModel requestData = await HttpJsonClient<PokeModel>.GetPokeApi(Constantes.ALLPOKE_URL) ?? new PokeModel();
             foreach (var element in requestData.Results)
             {
                 AllPokemons.Add(element.Nombre);
@@ -112,11 +113,11 @@ namespace Pokemon.ViewModel
         private async Task GenerateCurrentPokemon()
         {
             // TODO: Porfi Pau del futuro, requerda hacer un Utils de esto
-            int randomId = new Random().Next(1, 100);
+            int randomId = new Random().Next(1, 101);
             string pokeAleatorio = AllPokemons[randomId];
             
             PokemonSpriteModel peticionSprite; 
-            peticionSprite = await HttpJsonClient<PokemonSpriteModel>.Get($"{Constantes.POKE_URL}/{pokeAleatorio}");
+            peticionSprite = await HttpJsonClient<PokemonSpriteModel>.GetPokeApi($"{Constantes.POKE_URL}/{pokeAleatorio}");
             //Item.ImagePath = peticionSprite.sprites.front_default ?? Constantes.MISSINGNO_IMAGE_PATH;
             if (_pokeService.IsShiny())
             {

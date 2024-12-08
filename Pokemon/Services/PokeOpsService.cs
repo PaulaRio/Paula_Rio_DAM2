@@ -7,7 +7,7 @@ using Pokemon.Interfaces;
 
 namespace Pokemon.Services
 {
-    internal class PokeService : IPokeProvider
+    internal class PokeOpsService : IPokeOpsProvider
     {
         public bool IsShiny()
         {

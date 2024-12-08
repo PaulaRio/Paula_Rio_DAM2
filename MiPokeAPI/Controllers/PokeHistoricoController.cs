@@ -20,7 +20,7 @@ namespace MiPokeAPI.Controllers
         {
            return Pokemons;
         }
-        [HttpGet]
+        [HttpGet("catched")]
         public IEnumerable<HistoricoDTO> GetCatched()
         {
             List<HistoricoDTO> capturedPokemons = new List<HistoricoDTO>();
@@ -31,5 +31,26 @@ namespace MiPokeAPI.Controllers
             return capturedPokemons;
            
         }
+        [HttpPost]
+        public List<HistoricoDTO> Post([FromBody] HistoricoDTO pokemon)
+        {
+            Pokemons.Add(pokemon);
+            return Pokemons;
+        }
+
+        [HttpDelete]
+        public bool DeleteAll()
+        {
+            if(Pokemons.Count==0)
+            {
+                return false;
+            }
+            Pokemons.Clear();
+            return true;
+        }
+
+        
+
+
     }
 }
