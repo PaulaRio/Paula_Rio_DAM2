@@ -122,7 +122,11 @@ namespace Pokemon.ViewModel
                 OurChangingHP = OurChangingHP - (CurrentPokemonAttack/10);
                 _DamageReceivedTrainer += CurrentPokemonAttack;
             }
-
+            if (OurChangingHP <=0)
+            {
+                MessageBox.Show("Game Over");
+                Application.Current.Shutdown();
+            }
 
 
         }
@@ -141,7 +145,7 @@ namespace Pokemon.ViewModel
                 }
                 else
                 {
-                    OurChangingHP =+ 5;
+                    OurChangingHP += 5;
                     _DamageDonePokemon = _DamageReceivedTrainer - 5;
                 }
                
@@ -159,7 +163,7 @@ namespace Pokemon.ViewModel
         {
             if (!string.IsNullOrEmpty(CurrentPokemonPath))
             {
-                bool guardadoExitoso = await GuardarHistoricoActualAsync(_PokeName);
+                 await GuardarHistoricoActualAsync(_PokeName);
                 
             }
           
@@ -171,7 +175,7 @@ namespace Pokemon.ViewModel
 
             CurrentPokemonPath = _Shiny ? peticionSprite.sprites.front_shiny ?? Constantes.MISSINGNO_IMAGE_PATH: 
                 peticionSprite.sprites.front_default ?? Constantes.MISSINGNO_IMAGE_PATH;
-            ColorIsShiny = _Shiny ? "Gold": "Red"; //TODO CONSTANTES MAGIC STRING AND NU,BER
+            ColorIsShiny = _Shiny ? Constantes.COLOR_SHINY: Constantes.COLOR_NORMAL; 
             
 
 
@@ -207,7 +211,7 @@ namespace Pokemon.ViewModel
                 };
 
                 
-                var resultado = await HttpJsonClient<PokeHistoricoModel>.Post("pokeHistorico", historico);
+                var resultado = await HttpJsonClient<PokeHistoricoModel>.Post(Constantes.HISTORICO_PATH, historico);
                 return resultado != null;
             }
             catch (Exception ex)

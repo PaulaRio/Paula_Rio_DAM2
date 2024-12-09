@@ -9,6 +9,19 @@
              d:DesignHeight="450" d:DesignWidth="800"
              Background="LightPink">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Button Command="{Binding LoadFromFileCommand}" Content="Upload" Width="120" Height="50" 
+                    FontSize="16" Background="LightGreen" BorderBrush="DarkGreen" BorderThickness="2"/>
+
+
+        <Image  Source="../Resources/check.png" Grid.Row="1" HorizontalAlignment="Center" Margin="0,52,0,73" Height="100" Width="100"/>
+
+
+
+
     </Grid>
 </UserControl>

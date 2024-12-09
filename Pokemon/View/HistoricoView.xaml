@@ -32,7 +32,7 @@ ColumnWidth="Auto"
 ScrollViewer.VerticalScrollBarVisibility="Auto"
 ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
         <Button Command="{Binding SaveToFileCommand}" Grid.Row="1" VerticalAlignment="Bottom" Width="40" Height="40" Margin="15">
-            <Image Source="../Resources/descarga.png" Height="40" Width="40"></Image>
+            <Image Source="../Resources/descarga.png" Height="40" Width="40"/>
         </Button>
        
     </Grid>
