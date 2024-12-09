@@ -13,17 +13,34 @@ namespace Pokemon.ViewModel
     public class TeamViewModel : ViewModelBase
     {
         public ObservableCollection<StackPanelItemModel> Items { get; set; }
-        private async Task GenerateStackPanelItems(PokeModel pokemonsByType, int indexStartShowPokemon,
-            List<Task<PokemonSpriteModel>> peticionesSprite, int numPokemonsGrid)
+        public List<string> NamePokeTeam = new List<string>();
+        public override async Task LoadAsync()
+        {
+            await GenerateStackPanelItems();
+           
+        }
+        private async Task GenerateStackPanelItems()
         {
             int contador = 0;
             PokemonSpriteModel sprite;
-           
-                sprite = await peticionesSprite[contador];
-                contador++;
-                Items.Add(new StackPanelItemModel
+            List<PokeHistoricoModel> requestMyAPIData = await HttpJsonClient<PokeHistoricoModel>.GetListMyApi(Constantes.HISTORICO_PATH) ?? new List<PokeHistoricoModel>();
+            
+            PokeModel requestData = await HttpJsonClient<PokeModel>.GetPokeApi(Constantes.ALLPOKE_URL) ?? new PokeModel();
+            foreach (var item in requestMyAPIData)
+            {
+                if (item.@catch && !NamePokeTeam.Contains(item.pokeName))
                 {
-                    ImagePath = sprite.sprites.front_default ?? Constantes.MISSINGNO_IMAGE_PATH,
+                    NamePokeTeam.Add(item.pokeName);
+
+                }
+                else
+                {
+
+                }
+            }
+            Items.Add(new StackPanelItemModel
+                {
+                    //ImagePath = sprite.sprites.front_default ?? Constantes.MISSINGNO_IMAGE_PATH,
                     //PokemonName = pokemonsByType.pokemon[i].pokemon.name
                 });
             

@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Pokemon.Interfaces;
@@ -84,8 +85,13 @@ namespace Pokemon.ViewModel
                 AllPokemons.Add(element.Nombre);
             }
 
+            if (string.IsNullOrEmpty(CurrentPokemonPath))
+            {
+                await GenerateCurrentPokemon();
+
+            }
+
             
-            await GenerateCurrentPokemon();
 
 
         }
@@ -125,19 +131,20 @@ namespace Pokemon.ViewModel
         private async Task Capture_Click(object? parameter)
         {
             if (_pokeService.CaptureSuccess(ChangingPokeHP))
-            {
-                _DamageDonePokemon = OurChangingHP;
+            {   MessageBox.Show("Pokemon capturado");
                 _Catch = true;
                 _DateEnd = DateTime.Now;
                 if (_Shiny)
                 {
                     OurChangingHP = 100;
+                    _DamageDonePokemon = 0;
                 }
                 else
                 {
-                    OurChangingHP = OurChangingHP + 5;
+                    OurChangingHP =+ 5;
+                    _DamageDonePokemon = _DamageReceivedTrainer - 5;
                 }
-                _DamageDonePokemon = _DamageDonePokemon - OurChangingHP;
+               
                 await GenerateCurrentPokemon();
             }
             else
@@ -155,23 +162,17 @@ namespace Pokemon.ViewModel
                 bool guardadoExitoso = await GuardarHistoricoActualAsync(_PokeName);
                 
             }
-            // TODO: Porfi Pau del futuro, requerda hacer un Utils de esto
+          
             int randomId = new Random().Next(1, AllPokemons.Count);
             _PokeName = AllPokemons[randomId];
             
-            PokemonSpriteModel peticionSprite; 
-            peticionSprite = await HttpJsonClient<PokemonSpriteModel>.GetPokeApi($"{Constantes.POKE_URL}/{_PokeName}");
+            PokemonSpriteModel peticionSprite = await HttpJsonClient<PokemonSpriteModel>.GetPokeApi($"{Constantes.POKE_URL}/{_PokeName}");
             _Shiny = _pokeService.IsShiny();
-            if (_Shiny)
-            {
-                CurrentPokemonPath = peticionSprite.sprites.front_shiny ?? Constantes.MISSINGNO_IMAGE_PATH;
-                ColorIsShiny = "Gold";
-            }
-            else
-            { 
-            CurrentPokemonPath = peticionSprite.sprites.front_default ?? Constantes.MISSINGNO_IMAGE_PATH;
-                ColorIsShiny = "Red";
-            }
+
+            CurrentPokemonPath = _Shiny ? peticionSprite.sprites.front_shiny ?? Constantes.MISSINGNO_IMAGE_PATH: 
+                peticionSprite.sprites.front_default ?? Constantes.MISSINGNO_IMAGE_PATH;
+            ColorIsShiny = _Shiny ? "Gold": "Red"; //TODO CONSTANTES MAGIC STRING AND NU,BER
+            
 
 
             CurrentPokemonHP = peticionSprite.stats[0].base_stat ;
@@ -195,14 +196,14 @@ namespace Pokemon.ViewModel
 
                 PokeHistoricoModel historico = new PokeHistoricoModel
                 {
-                    DateStart = _DateStart,
-                    DateEnd = _DateEnd,
-                    PokeName = name,
-                    DamageDoneTrainer = _SumDamageDoneTrainer,
-                    DamageReceivedTrainer = _DamageReceivedTrainer,
-                    DamageDonePokemon = _DamageDonePokemon,
-                    Catch = _Catch,
-                    Shiny = _Shiny
+                    dateStart = _DateStart,
+                    dateEnd = _DateEnd,
+                    pokeName = name,
+                    damageDoneTrainer = _SumDamageDoneTrainer,
+                    damageReceivedTrainer = _DamageReceivedTrainer,
+                    damageDonePokemon = _DamageDonePokemon,
+                    @catch = _Catch,
+                    shiny = _Shiny
                 };
 
                 

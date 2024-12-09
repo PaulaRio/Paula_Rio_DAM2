@@ -29,6 +29,23 @@ namespace Pokemon.Utils
              }
             return default;
            }
+        public static async Task<List<T>?> GetListMyApi(string path)
+        {
+            try
+            {
+                using HttpClient httpClient = new HttpClient();
+                {
+                    HttpResponseMessage datos = await httpClient.GetAsync($"{Constantes.BASE_URL}{path}");
+                    string dataget = await datos.Content.ReadAsStringAsync();
+                    return JsonSerializer.Deserialize<List<T>>(dataget);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return default;
+        }
         public static async Task<T?> GetPokeApi(string url)
         {
             try

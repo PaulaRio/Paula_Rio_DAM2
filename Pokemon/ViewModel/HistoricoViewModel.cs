@@ -15,6 +15,7 @@ using Pokemon.Model;
 using Pokemon.Services;
 using Pokemon.Utils;
 
+
 namespace Pokemon.ViewModel
 {
     public partial class HistoricoViewModel : ViewModelBase
@@ -44,15 +45,24 @@ namespace Pokemon.ViewModel
             }
         }
 
+        public async Task CargarTabla()
+        {
+
+            List<PokeHistoricoModel> requestData = await HttpJsonClient<PokeHistoricoModel>.GetListMyApi(Constantes.HISTORICO_PATH) ?? new List<PokeHistoricoModel>();
+            foreach (var element in requestData)
+            {
+                Pokemons.Add(element);
+            }
+
+        }
+
 
 
         public override async Task LoadAsync()
         {
-            //var historicoData =  HttpJsonClient<PokeHistoricoModel>.GetMyApi;
-            //Pokemons.Add(historicoData);
+            Pokemons.Clear();
+            await CargarTabla();
 
-           
-               
         }
 
 
