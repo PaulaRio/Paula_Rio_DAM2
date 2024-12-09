@@ -30,7 +30,7 @@ namespace Pokemon.ViewModel
             {
                 if (item.@catch && !NamePokeTeam.Contains(item.pokeName))
                 {
-                    NamePokeTeam.Add(item.pokeName);
+                //    NamePokeTeam.Add(item.pokeName);
 
                 }
                 else
