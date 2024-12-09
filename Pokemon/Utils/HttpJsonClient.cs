@@ -19,8 +19,8 @@ namespace Pokemon.Utils
                 using HttpClient httpClient = new HttpClient();
                 {
                 HttpResponseMessage datos = await httpClient.GetAsync($"{Constantes.BASE_URL}{path}");
-                string dataget = await datos.Content.ReadAsStringAsync();
-                return JsonSerializer.Deserialize<T>(dataget);
+                string dataget = await datos.Content.ReadAsStringAsync();       
+                 return JsonSerializer.Deserialize<T>(dataget);
                 }
              }
              catch (Exception ex)

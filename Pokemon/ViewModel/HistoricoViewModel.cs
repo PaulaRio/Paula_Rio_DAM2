@@ -8,6 +8,9 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Microsoft.Win32;
+using Pokemon.Interfaces;
 using Pokemon.Model;
 using Pokemon.Services;
 using Pokemon.Utils;
@@ -16,17 +19,31 @@ namespace Pokemon.ViewModel
 {
     public partial class HistoricoViewModel : ViewModelBase
     {
-       // private readonly HistoricoApiService<PokeHistoricoModel> _historicoApiService;
+        private readonly IFileService<PokeHistoricoModel> _fileService;
+         
+
+        public HistoricoViewModel(IFileService<PokeHistoricoModel> fileService) 
+        {
+            _fileService = fileService;
+            Pokemons = new ObservableCollection<PokeHistoricoModel>();
+        }
         [ObservableProperty]
         private ObservableCollection<PokeHistoricoModel> pokemons;
 
-        public HistoricoViewModel() 
+        [RelayCommand]
+        public void SaveToFile()
         {
-            //_historicoApiService = historicoApiService;
-            Pokemons = new ObservableCollection<PokeHistoricoModel>();
+            var saveFileDialog = new SaveFileDialog
+            {
+                Filter = Constantes.JSON_FILTER
+            };
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                _fileService.Save(saveFileDialog.FileName, Pokemons);
+            }
         }
 
-       
 
 
         public override async Task LoadAsync()

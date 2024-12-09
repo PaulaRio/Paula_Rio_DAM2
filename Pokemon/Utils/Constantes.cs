@@ -14,5 +14,6 @@ namespace Pokemon.Utils
         public const string JSON_FILTER = "JSON Files (*.json)|*.json|All Files (*.*)|*.*";
         public const string BASE_URL = "http://localhost:5000/";
         public const string HISTORICO_PATH = "pokeHistorico";
+    
     }
 }
