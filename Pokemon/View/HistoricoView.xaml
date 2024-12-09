@@ -19,7 +19,7 @@
         <DataGrid 
 Grid.Row="1" 
 x:Name="MyDataGrid"       
-ItemsSource="{Binding Contacts}" 
+ItemsSource="{Binding Pokemons}" 
 AutoGenerateColumns="True" 
 Margin="10" 
 CanUserResizeColumns="True"

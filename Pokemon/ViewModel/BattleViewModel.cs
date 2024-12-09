@@ -19,7 +19,7 @@ namespace Pokemon.ViewModel
         private static readonly Random _random = new();
 
         private IPokeOpsProvider _pokeService;
-        private readonly IHistoricoProvider _historicoApiService;
+       // private readonly IHistoricoProvider _historicoApiService;
         [ObservableProperty]
         public string _CurrentPokemonPath;
 
@@ -34,6 +34,24 @@ namespace Pokemon.ViewModel
 
         public int ActualPokeHP;
 
+        private DateTime _DateStart;
+
+        private DateTime _DateEnd;
+
+        private string _PokeName;
+
+        private int _DamageDoneTrainer;
+
+        private int _SumDamageDoneTrainer;
+
+        private int _DamageReceivedTrainer;
+
+        private int _DamageDonePokemon;
+
+        private bool _Catch;
+
+        private bool _Shiny;
+
         [ObservableProperty]
         public int _OurChangingHP;
 
@@ -42,26 +60,20 @@ namespace Pokemon.ViewModel
 
 
         public ObservableCollection<string> AllPokemons { get; } = new();
-       
 
-        //[ObservableProperty]
-        //public StackPanelItemModel _Item;
-
-
-
-
-        public BattleViewModel(IPokeOpsProvider pokeService,IHistoricoProvider historicoApiService)
+        //IHistoricoProvider historicoApiService
+        public BattleViewModel(IPokeOpsProvider pokeService)
         {
 
-           // _Item = new StackPanelItemModel();
+          
             _CurrentPokemonPath=null;
             _CurrentPokemonHP= 0;
             _CurrentPokemonAttack = 0;
             _OurChangingHP=100;
             _ColorIsShiny = "Red";
             _pokeService = pokeService;
-            _historicoApiService = historicoApiService;
-
+            //_historicoApiService = historicoApiService;
+            
         }
 
         public override async Task LoadAsync()
@@ -72,7 +84,7 @@ namespace Pokemon.ViewModel
                 AllPokemons.Add(element.Nombre);
             }
 
-            //_CurrentPokemon= requestData.Results[randomId].Nombre;
+            
             await GenerateCurrentPokemon();
 
 
@@ -87,17 +99,22 @@ namespace Pokemon.ViewModel
         [RelayCommand]
         private async Task Atack_Click(object? parameter)
         {
-            ActualPokeHP = ActualPokeHP - _pokeService.NumAtack();
+            int damage = _pokeService.NumAtack();
+            _SumDamageDoneTrainer += damage;
+            ActualPokeHP = ActualPokeHP - damage;
+
             ChangingPokeHP = (100/CurrentPokemonHP) * ActualPokeHP;
             Console.WriteLine(ChangingPokeHP);
             if (ActualPokeHP <= 0) 
             {
+                _DateEnd = DateTime.Now;
+                
                 await GenerateCurrentPokemon();
             }
             else
             {
                 OurChangingHP = OurChangingHP - (CurrentPokemonAttack/10);
-
+                _DamageReceivedTrainer += CurrentPokemonAttack;
             }
 
 
@@ -107,19 +124,45 @@ namespace Pokemon.ViewModel
         [RelayCommand]
         private async Task Capture_Click(object? parameter)
         {
-            await GenerateCurrentPokemon();
+            if (_pokeService.CaptureSuccess(ChangingPokeHP))
+            {
+                _DamageDonePokemon = OurChangingHP;
+                _Catch = true;
+                _DateEnd = DateTime.Now;
+                if (_Shiny)
+                {
+                    OurChangingHP = 100;
+                }
+                else
+                {
+                    OurChangingHP = OurChangingHP + 5;
+                }
+                _DamageDonePokemon = _DamageDonePokemon - OurChangingHP;
+                await GenerateCurrentPokemon();
+            }
+            else
+            {
+                _DateEnd = DateTime.Now;
+                await GenerateCurrentPokemon();
+            }
+            
         }
 
         private async Task GenerateCurrentPokemon()
         {
+            if (!string.IsNullOrEmpty(CurrentPokemonPath))
+            {
+                bool guardadoExitoso = await GuardarHistoricoActualAsync(_PokeName);
+                
+            }
             // TODO: Porfi Pau del futuro, requerda hacer un Utils de esto
-            int randomId = new Random().Next(1, 101);
-            string pokeAleatorio = AllPokemons[randomId];
+            int randomId = new Random().Next(1, AllPokemons.Count);
+            _PokeName = AllPokemons[randomId];
             
             PokemonSpriteModel peticionSprite; 
-            peticionSprite = await HttpJsonClient<PokemonSpriteModel>.GetPokeApi($"{Constantes.POKE_URL}/{pokeAleatorio}");
-            //Item.ImagePath = peticionSprite.sprites.front_default ?? Constantes.MISSINGNO_IMAGE_PATH;
-            if (_pokeService.IsShiny())
+            peticionSprite = await HttpJsonClient<PokemonSpriteModel>.GetPokeApi($"{Constantes.POKE_URL}/{_PokeName}");
+            _Shiny = _pokeService.IsShiny();
+            if (_Shiny)
             {
                 CurrentPokemonPath = peticionSprite.sprites.front_shiny ?? Constantes.MISSINGNO_IMAGE_PATH;
                 ColorIsShiny = "Gold";
@@ -134,9 +177,45 @@ namespace Pokemon.ViewModel
             CurrentPokemonHP = peticionSprite.stats[0].base_stat ;
             ActualPokeHP = CurrentPokemonHP;
             ChangingPokeHP = 100;
-
+            
             CurrentPokemonAttack = peticionSprite.stats[1].base_stat;
 
+
+            _SumDamageDoneTrainer = 0;
+            _DamageDonePokemon = 0;
+            _DamageReceivedTrainer = 0;
+            _Catch = false;
+
+            _DateStart = DateTime.Now;
         }
+        private async Task<bool> GuardarHistoricoActualAsync(string name)
+        {
+            try
+            {
+
+                PokeHistoricoModel historico = new PokeHistoricoModel
+                {
+                    DateStart = _DateStart,
+                    DateEnd = _DateEnd,
+                    PokeName = name,
+                    DamageDoneTrainer = _SumDamageDoneTrainer,
+                    DamageReceivedTrainer = _DamageReceivedTrainer,
+                    DamageDonePokemon = _DamageDonePokemon,
+                    Catch = _Catch,
+                    Shiny = _Shiny
+                };
+
+                
+                var resultado = await HttpJsonClient<PokeHistoricoModel>.Post("pokeHistorico", historico);
+                return resultado != null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al guardar el histórico: {ex.Message}");
+                return false;
+            }
+        }
+
+
     }
 }

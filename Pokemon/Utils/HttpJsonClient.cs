@@ -11,7 +11,8 @@ namespace Pokemon.Utils
 {
     public static class HttpJsonClient<T>
     {
-           public static async Task<T?> GetMyApi(string path)
+        
+        public static async Task<T?> GetMyApi(string path)
            {
              try
              {
@@ -43,6 +44,37 @@ namespace Pokemon.Utils
             {
                 Console.WriteLine(ex.Message);
             }
+            return default;
+        }
+        public static async Task<T?> Post<T>(string path, T data)
+        {
+            try
+            {
+                using HttpClient httpClient = new HttpClient();
+                
+                string jsonData = JsonSerializer.Serialize(data);
+
+                
+                using StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+                
+                HttpResponseMessage response = await httpClient.PostAsync($"{Constantes.BASE_URL}{path}", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    
+                    return JsonSerializer.Deserialize<T>(responseContent);
+                }
+               
+                return default;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error en la solicitud POST: {ex.Message}");
+            }
+
             return default;
         }
 

@@ -49,7 +49,7 @@ namespace Pokemon
 
             //Services
             services.AddSingleton<IPokeOpsProvider, PokeOpsService>();
-            services.AddSingleton<IHistoricoProvider, HistoricoApiService>();
+            //services.AddSingleton(typeof(IHistoricoProvider<>),typeof( HistoricoApiService<>));
             return services.BuildServiceProvider();
         }
     }

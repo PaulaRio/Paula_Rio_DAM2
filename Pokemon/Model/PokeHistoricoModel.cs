@@ -9,13 +9,14 @@ namespace Pokemon.Model
     public class PokeHistoricoModel
     {
 
-        public string? DataStart { get; set; }
-        public string? DateEnd { get; set; }
+        public DateTime? DateStart { get; set; }
+        public DateTime? DateEnd { get; set; }
         public string? PokeName { get; set; }
-        public string? PokeDamageDoneTrainerName { get; set; }
-        public string? DamageReceivedTrainer { get; set; }
-        public string? DamageDonePokemon { get; set; }
-        public string? Catch { get; set; }
+        public int? DamageDoneTrainer { get; set; }
+        public int? DamageReceivedTrainer { get; set; }
+        public int? DamageDonePokemon { get; set; }
+        public bool? Catch { get; set; }
+        public bool? Shiny { get; set; }
 
     }
 }

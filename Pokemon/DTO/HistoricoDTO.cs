@@ -4,10 +4,10 @@ namespace Pokemon.DTO
 {
     public class HistoricoDTO
     {
-        [JsonPropertyName("startDate")]
-        public DateTime? StartDate { get; set; }
-        [JsonPropertyName("endDate")]
-        public DateTime? EndDate { get; set; }
+        [JsonPropertyName("dateStart")]
+        public DateTime? DateStart { get; set; }
+        [JsonPropertyName("dateEnd")]
+        public DateTime? DateEnd { get; set; }
         [JsonPropertyName("pokeName")]
         public string PokeName { get; set; }
         [JsonPropertyName("damageDoneTrainer")]
@@ -18,6 +18,8 @@ namespace Pokemon.DTO
         public int DamageDonePokemon { get; set; }
         [JsonPropertyName("catch")]
         public bool Catch { get; set; }
+        [JsonPropertyName("shiny")]
+        public bool Shiny { get; set; }
 
 
 
