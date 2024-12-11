@@ -16,13 +16,6 @@
         <DataTemplate DataType="{x:Type viewModel:Ventana2ViewModel}">
             <view:Ventana2View/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModel:ImportViewModel}">
-            <view:ImportView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModel:ExportViewModel}">
-            <view:ExportView/>
-        </DataTemplate>
-
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -32,16 +25,21 @@
         </Grid.RowDefinitions>
 
         <Menu FontSize="15" Grid.Row="0" Margin="150,20,225,20"  Height="30"  >
-            
+            <!--<ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="1" Columns="4"  />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>-->
             <MenuItem  Header="Galaxy Overview"  BorderBrush="Gray" Background="AliceBlue" Command="{Binding SelectViewModelCommand}"
           CommandParameter="{Binding PrincipalViewModel}" Height="29"/>
             <MenuItem Header="Ventana" Width="100"  BorderBrush="Gray" Background="AliceBlue" Command="{Binding SelectViewModelCommand}"
           CommandParameter="{Binding Ventana2ViewModel}" RenderTransformOrigin="0.925,0.635"/>
-            <MenuItem Header="Import Data" Width="100"  BorderBrush="Gray" Background="AliceBlue" Command="{Binding SelectViewModelCommand}" 
-         CommandParameter="{Binding ImportViewModel}"/>
-            <MenuItem Header="Export Data" Width="100"  BorderBrush="Gray" Background="AliceBlue" Command="{Binding SelectViewModelCommand}" 
-          CommandParameter="{Binding ExportViewModel}"/>
-           
+            <MenuItem Header="Import Data" Width="100"  BorderBrush="Gray" Background="AliceBlue" Command="{Binding SelectViewModelCommand}"
+          CommandParameter="{Binding Import}"/>
+            <MenuItem Header="Export Data" Width="100"  BorderBrush="Gray" Background="AliceBlue" Command="{Binding SelectViewModelCommand}"
+          CommandParameter="{Binding Export}"/>
+            <!--<MenuItem Header="Galaxy Grid View" Width="100"  BorderBrush="Gray" Background="AliceBlue" Command="{Binding SelectViewModelCommand}"
+          CommandParameter="{Binding Ventana2ViewModel}"/>-->
 
         </Menu>
         <ContentControl Grid.Row="1" Content="{Binding SelectedViewModel}"/>

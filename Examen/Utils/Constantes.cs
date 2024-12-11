@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Examen.Utils
 {
-    public static class Constants
+    public static class Constantes
     {
         #region Math
         public const string Mas = "+";
@@ -28,7 +28,7 @@ namespace Examen.Utils
         public const string BASE_URL = "http://localhost:5000/";
         public const string LIBROS_PATH = "libro";
         public const string ALLPOKE_URL = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100/";
-        public const string HISTORICO_PATH = "pokeHistorico";
+        public const string PLANETAS_PATH = "Galaxy";
         #endregion
 
         #region Files

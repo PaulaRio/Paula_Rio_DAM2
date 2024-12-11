@@ -18,9 +18,9 @@ namespace Examen.View
     /// <summary>
     /// Lógica de interacción para VentanaView.xaml
     /// </summary>
-    public partial class VentanaView : UserControl
+    public partial class Ventana2View : UserControl
     {
-        public VentanaView()
+        public Ventana2View()
         {
             InitializeComponent();
         }

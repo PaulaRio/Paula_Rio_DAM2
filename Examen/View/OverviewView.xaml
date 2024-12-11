@@ -5,13 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Examen.View"
              xmlns:view="clr-namespace:Examen.View"
-             xmlns:viewModel="clr-namespace:Examen.ViewModel" d:DataContext="{d:DesignInstance Type=viewModel:VentanaViewModel}"
+             xmlns:viewModel="clr-namespace:Examen.ViewModel" d:DataContext="{d:DesignInstance Type=viewModel:PrincipalViewModel}"
              mc:Ignorable="d" 
-             Background="LightCyan"
+             Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <!--<StackPanel >-->
-            <!--<ItemsControl ItemsSource="{Binding Items, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel >
+            <ItemsControl ItemsSource="{Binding Items, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal"/>
@@ -21,20 +25,14 @@
                     <DataTemplate>
                         <Border Margin="5">
                             <StackPanel>
-                                <Image Source="{Binding  ImageFileDirectory}" Stretch="Uniform" Height="100"/>
-                                <TextBlock Text="{Binding NameFileDirectory}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Image Source="{Binding  ImagePlanet}" Stretch="Uniform" Height="100"/>
+                                <TextBlock Text="{Binding Nameplanet}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </StackPanel>
-        </ScrollViewer>
-        <Grid.ContextMenu>
-            <ContextMenu >
-                <MenuItem Name="Carpeta" Header="Crear carpeta" Command="{Binding OpenCreateDirectoryCommand}" />
-                <MenuItem  Name="Fichero" Header="Crear fichero" Command="{Binding OpenCreateFileCommand}" />
-            </ContextMenu>
-        </Grid.ContextMenu>-->
+        <Button  Command="{Binding Add_ClickCommand}" Content="Add New Planet" Grid.Row="1" HorizontalAlignment="Left" Margin="20" Width="150" Height="40"/>
     </Grid>
 </UserControl>

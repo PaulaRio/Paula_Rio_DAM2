@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Examen.ViewModel;
+using Examen.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,10 @@ namespace Examen.ViewModel
     public partial class MainViewModel : ViewModelBase
     {
         private ViewModelBase? _selectedViewModel;
-        public MainViewModel(VentanaViewModel ventana, Ventana2ViewModel ventana2, PrincipalViewModel principal)
+        public MainViewModel( Ventana2ViewModel ventana2, PrincipalViewModel principal, ImportViewModel import, ExportViewModel export)
         {
-            VentanaViewModel = ventana;
+            ImportViewModel=import;
+            ExportViewModel = export;
             Ventana2ViewModel = ventana2;
             PrincipalViewModel =principal;
             SelectedViewModel = principal;
@@ -29,8 +31,9 @@ namespace Examen.ViewModel
             }
         }
 
-        public VentanaViewModel VentanaViewModel { get; }
 
+        public ImportViewModel ImportViewModel { get; }
+        public ExportViewModel ExportViewModel { get; }
         public Ventana2ViewModel Ventana2ViewModel { get; }
 
         public PrincipalViewModel PrincipalViewModel { get; }

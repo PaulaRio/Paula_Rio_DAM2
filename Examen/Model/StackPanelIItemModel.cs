@@ -9,7 +9,7 @@ namespace Pokemon.Models
 {
     public class StackPanelItemModel
     {
-        public string ImagePath { get; set; }
-        public string Text { get; set; }
+        public string ImagePlanet { get; set; }
+        public string NamePlanet { get; set; }
     }
 }

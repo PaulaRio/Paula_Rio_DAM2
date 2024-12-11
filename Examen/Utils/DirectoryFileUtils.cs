@@ -13,18 +13,18 @@ namespace Examen.Utils
         {
             int numFilesDefault = 2;
             int numDirectoryDefault = 1;
-            if (!Directory.Exists(Constants.ROOTFILES))
+            if (!Directory.Exists(Constantes.ROOTFILES))
             {
-                Directory.CreateDirectory(Constants.ROOTFILES);
+                Directory.CreateDirectory(Constantes.ROOTFILES);
                 for (int i = 0; i < numFilesDefault; i++)
                 {
                     var fileName = generateRandomFileTxtName();
-                    File.Create(Constants.ROOTFILES + "/" + fileName);
+                    File.Create(Constantes.ROOTFILES + "/" + fileName);
                 }
                 for (int i = 0; i < numDirectoryDefault; i++)
                 {
                     var dirName = GenerateRandomDirectoryName();
-                    Directory.CreateDirectory(Constants.ROOTFILES + "/" + dirName);
+                    Directory.CreateDirectory(Constantes.ROOTFILES + "/" + dirName);
                 }
 
             }

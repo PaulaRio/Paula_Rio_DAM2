@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Examen.View
 {
     /// <summary>
-    /// Lógica de interacción para Ventana2View.xaml
+    /// Lógica de interacción para ExportView.xaml
     /// </summary>
-    public partial class Ventana2View : UserControl
+    public partial class ExportView : UserControl
     {
-        public Ventana2View()
+        public ExportView()
         {
             InitializeComponent();
         }

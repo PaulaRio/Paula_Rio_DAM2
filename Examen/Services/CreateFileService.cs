@@ -13,10 +13,10 @@ namespace Examen.Services
     {
         public void CreateNewFile(string nombreFichero)
         {
-            if (!File.Exists(Constants.ROOTFILES + "/" + nombreFichero + ".txt"))
+            if (!File.Exists(Constantes.ROOTFILES + "/" + nombreFichero + ".txt"))
             {
 
-                File.Create(Constants.ROOTFILES + "/" + nombreFichero + ".txt");
+                File.Create(Constantes.ROOTFILES + "/" + nombreFichero + ".txt");
 
 
             }
@@ -25,7 +25,7 @@ namespace Examen.Services
         public List<string> getNameFiles()
         {
             List<string> namesFicheros = new List<string>();
-            foreach (var item in Directory.GetFiles(Constants.ROOTFILES))
+            foreach (var item in Directory.GetFiles(Constantes.ROOTFILES))
             {
 
                 namesFicheros.Add(Path.GetFileName(item));

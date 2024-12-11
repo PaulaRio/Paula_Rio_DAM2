@@ -13,10 +13,10 @@ namespace Examen.Services
     {
         public void CreateNewDirectory(string nombreDirectorio)
         {
-            if (!Directory.Exists(Constants.ROOTFILES + "/" + nombreDirectorio))
+            if (!Directory.Exists(Constantes.ROOTFILES + "/" + nombreDirectorio))
             {
 
-                Directory.CreateDirectory(Constants.ROOTFILES + "/" + nombreDirectorio );
+                Directory.CreateDirectory(Constantes.ROOTFILES + "/" + nombreDirectorio );
 
 
             }
@@ -24,7 +24,7 @@ namespace Examen.Services
         public List<string> getNameDirectories()
         {
             List<string> namesDirectorios = new List<string>();
-            foreach (var item in Directory.GetDirectories(Constants.ROOTFILES))
+            foreach (var item in Directory.GetDirectories(Constantes.ROOTFILES))
             {
 
                 namesDirectorios.Add(Path.GetFileName(item));

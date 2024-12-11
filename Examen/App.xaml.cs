@@ -6,6 +6,7 @@ using Examen.Services;
 using Examen.View;
 using Examen.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
+using Examen.ViewModel;
 
 namespace Examen
 {
@@ -42,9 +43,10 @@ namespace Examen
             services.AddTransient<PopUpCreateFileDirectoryView>();
 
             services.AddTransient<MainViewModel>();
-            services.AddTransient<VentanaViewModel>();
             services.AddTransient<Ventana2ViewModel>();
             services.AddTransient<PrincipalViewModel>();
+            services.AddTransient<ImportViewModel>();
+            services.AddTransient<ExportViewModel>();
             services.AddTransient<PopUpCreateFileDirectoryViewModel>();
 
             //Services
