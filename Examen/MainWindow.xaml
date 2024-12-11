@@ -31,7 +31,7 @@
 
         </Grid.RowDefinitions>
 
-        <Menu FontSize="15" Grid.Row="0" Margin="150,20,225,20"  Height="30"  >
+        <Menu FontSize="15" Grid.Row="0" HorizontalAlignment="Center"  Height="30"  >
             
             <MenuItem  Header="Galaxy Overview"  BorderBrush="Gray" Background="AliceBlue" Command="{Binding SelectViewModelCommand}"
           CommandParameter="{Binding PrincipalViewModel}" Height="29"/>

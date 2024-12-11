@@ -53,6 +53,7 @@ namespace Examen
             services.AddSingleton<IDirectoryProvider, DirectoryService>();
             services.AddSingleton<ICreateFileProvider, CreateFileService>();
             services.AddSingleton<IEjemploProvider, EjemploService>();
+            services.AddSingleton(typeof(IFileService<>), typeof(FileService<>));
             return services.BuildServiceProvider();
         }
     }
