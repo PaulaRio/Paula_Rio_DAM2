@@ -2,6 +2,7 @@
 using ProPokeAPI.Models.DTOs.UserDto;
 using AutoMapper;
 using ProPokeAPI.Models.Entity;
+using ProPokeAPI.Models.DTOs.CategoryDto;
 
 namespace ProPokeAPI.AutoMapper
 {
@@ -9,8 +10,10 @@ namespace ProPokeAPI.AutoMapper
     {
         public ApplicationMapper()
         {
-            
-            //CreateMap<EditorialEntity, CreateEditorialDTO>().ReverseMap();
+
+
+            CreateMap<Category, CategoryDto>().ReverseMap();
+            CreateMap<Category, CreateCategoryDto>().ReverseMap();
             CreateMap<AppUser, UserDto>().ReverseMap();
         }
     }
