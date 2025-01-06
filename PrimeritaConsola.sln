@@ -19,9 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pokemon", "Pokemon\Pokemon.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstApi", "FirstApi\FirstApi.csproj", "{1E7850B9-20CD-4F55-809D-21948E7F3504}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiPokeAPI", "MiPokeAPI\MiPokeAPI.csproj", "{4656D63D-8DC6-40E7-9FFB-02F41D0022F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiPokeAPI", "MiPokeAPI\MiPokeAPI.csproj", "{4656D63D-8DC6-40E7-9FFB-02F41D0022F7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceExplorer", "Examen\SpaceExplorer.csproj", "{F1A5816C-3045-4A6C-B85A-3F70EDEEC824}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProPokeAPI", "ProPokeAPI\ProPokeAPI.csproj", "{4B12C6DA-6023-4E18-AAA7-256F8D5A261B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -195,6 +197,22 @@ Global
 		{F1A5816C-3045-4A6C-B85A-3F70EDEEC824}.Release|x64.Build.0 = Release|Any CPU
 		{F1A5816C-3045-4A6C-B85A-3F70EDEEC824}.Release|x86.ActiveCfg = Release|Any CPU
 		{F1A5816C-3045-4A6C-B85A-3F70EDEEC824}.Release|x86.Build.0 = Release|Any CPU
+		{4B12C6DA-6023-4E18-AAA7-256F8D5A261B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B12C6DA-6023-4E18-AAA7-256F8D5A261B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B12C6DA-6023-4E18-AAA7-256F8D5A261B}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{4B12C6DA-6023-4E18-AAA7-256F8D5A261B}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{4B12C6DA-6023-4E18-AAA7-256F8D5A261B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4B12C6DA-6023-4E18-AAA7-256F8D5A261B}.Debug|x64.Build.0 = Debug|Any CPU
+		{4B12C6DA-6023-4E18-AAA7-256F8D5A261B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4B12C6DA-6023-4E18-AAA7-256F8D5A261B}.Debug|x86.Build.0 = Debug|Any CPU
+		{4B12C6DA-6023-4E18-AAA7-256F8D5A261B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B12C6DA-6023-4E18-AAA7-256F8D5A261B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B12C6DA-6023-4E18-AAA7-256F8D5A261B}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{4B12C6DA-6023-4E18-AAA7-256F8D5A261B}.Release|ARM64.Build.0 = Release|Any CPU
+		{4B12C6DA-6023-4E18-AAA7-256F8D5A261B}.Release|x64.ActiveCfg = Release|Any CPU
+		{4B12C6DA-6023-4E18-AAA7-256F8D5A261B}.Release|x64.Build.0 = Release|Any CPU
+		{4B12C6DA-6023-4E18-AAA7-256F8D5A261B}.Release|x86.ActiveCfg = Release|Any CPU
+		{4B12C6DA-6023-4E18-AAA7-256F8D5A261B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
