@@ -9,7 +9,8 @@ namespace Pokemon.Model
 {
     public class PokeHistoricoModel
     {
-        
+        public int id { get; set; }
+
         public DateTime dateStart { get; set; }
         
         public DateTime dateEnd { get; set; }

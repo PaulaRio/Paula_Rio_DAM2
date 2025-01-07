@@ -1,10 +1,10 @@
-﻿namespace Pokemon.DTO
+﻿namespace ProPokeAPI.Models.DTOs.HistoricoDto
 {
     public class HistoricoDTO
     {
         public int Id { get; set; }
-        public DateTime DateStart { get; set; }
-        public DateTime DateEnd { get; set; }
+        public DateTime? DateStart { get; set; }
+        public DateTime? DateEnd { get; set; }
         public string PokeName { get; set; }  
         public int  DamageDoneTrainer { get; set; }
         public int DamageReceivedTrainer { get; set; }

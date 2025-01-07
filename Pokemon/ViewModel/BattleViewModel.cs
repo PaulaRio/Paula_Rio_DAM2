@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -32,6 +33,11 @@ namespace Pokemon.ViewModel
 
         [ObservableProperty]
         public int _ChangingPokeHP;
+
+        //TODO: espablecer id en base a los count de la base de datos.
+        private int _contadorId;
+
+        private int _currentPokemonId;
 
         public int ActualPokeHP;
 
@@ -70,7 +76,7 @@ namespace Pokemon.ViewModel
             _CurrentPokemonPath=null;
             _CurrentPokemonHP= 0;
             _CurrentPokemonAttack = 0;
-            _OurChangingHP=100;
+            _OurChangingHP =100;
             _ColorIsShiny = "Red";
             _pokeService = pokeService;
             //_historicoApiService = historicoApiService;
@@ -92,8 +98,6 @@ namespace Pokemon.ViewModel
             }
 
             
-
-
         }
 
         [RelayCommand]
@@ -166,7 +170,10 @@ namespace Pokemon.ViewModel
                  await GuardarHistoricoActualAsync(_PokeName);
                 
             }
-          
+
+            _currentPokemonId = _contadorId;
+            _contadorId++;
+
             int randomId = new Random().Next(1, AllPokemons.Count);
             _PokeName = AllPokemons[randomId];
             
