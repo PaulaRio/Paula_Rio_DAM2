@@ -40,7 +40,8 @@ namespace BasicApp
 
             services.AddTransient<MainViewModel>();
             services.AddTransient<LoginViewModel>();
-           
+            services.AddTransient<RegistrationViewModel>();
+
             //Services
             //services.AddSingleton<IPokeOpsProvider, PokeOpsService>();
             //services.AddSingleton(typeof(IFileService<>), typeof(FileService<>));

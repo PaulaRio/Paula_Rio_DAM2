@@ -10,10 +10,11 @@ namespace BasicApp.ViewModel
     public partial class MainViewModel : ViewModelBase
     {
         private ViewModelBase? _selectedViewModel;
-        public MainViewModel(LoginViewModel login)
+        public MainViewModel()
         {
-            LoginViewModel = login;
-            SelectedViewModel = login;
+            LoginViewModel = new LoginViewModel(this);
+            RegistrationViewModel = new RegistrationViewModel(this);
+            SelectedViewModel = LoginViewModel;
 
 
         }
@@ -26,8 +27,9 @@ namespace BasicApp.ViewModel
             }
         }
 
-        public LoginViewModel LoginViewModel { get; }
-        
+        public LoginViewModel LoginViewModel { get; set; }
+        public RegistrationViewModel RegistrationViewModel { get; set; }
+
 
         public async override Task LoadAsync()
         {

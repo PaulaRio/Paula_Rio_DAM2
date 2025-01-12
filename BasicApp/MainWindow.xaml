@@ -14,7 +14,10 @@
         <DataTemplate DataType="{x:Type viewModel:LoginViewModel}">
             <view:LoginView/>
         </DataTemplate>
-        
+        <DataTemplate DataType="{x:Type viewModel:RegistrationViewModel}">
+            <view:RegistrationView/>
+        </DataTemplate>
+
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
