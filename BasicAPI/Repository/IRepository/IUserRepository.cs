@@ -1,5 +1,6 @@
-﻿using BasicAPI.Models.DTOs.UserDto;
-using RestAPI.Models.Entity;
+﻿
+using BasicAPI.Models.DTOs.UserDto;
+using BasicAPI.Models.Entity;
 
 namespace BasicAPI.Repository.IRepository
 {

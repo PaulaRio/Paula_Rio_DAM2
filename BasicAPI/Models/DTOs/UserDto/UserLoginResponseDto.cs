@@ -1,4 +1,4 @@
-﻿using RestAPI.Models.Entity;
+﻿using BasicAPI.Models.Entity;
 
 namespace BasicAPI.Models.DTOs.UserDto
 {

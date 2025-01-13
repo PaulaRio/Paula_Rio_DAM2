@@ -9,23 +9,24 @@
              d:DataContext="{d:DesignInstance Type=viewModel:LoginViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="MediumBlue">
-    
+             Background="DodgerBlue">
+
     <Grid>
         <Border CornerRadius="10" Background="White" Width="300" Height="400" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20">
             <StackPanel>
-                
-                <TextBox Text="Login" FontWeight="Bold" FontSize="24" Foreground="#333" Margin="0,0,0,20" HorizontalAlignment="Center"/>
 
-               
+                <!--<TextBox Text="Login" FontWeight="Bold" FontSize="24" Foreground="#333" Margin="0,0,0,20" HorizontalAlignment="Center"/>-->
+                <Label Content="Login" FontWeight="Bold" FontSize="24" Foreground="#333" Margin="0,0,0,20" HorizontalAlignment="Center" Height="35" Width="90" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+
                 <Border BorderThickness="0,0,0,2" BorderBrush="LightGray" Margin="0,0,0,10" >
                     <ui:TextBox PlaceholderText="Enter your email" Height="40" Margin="0,0,0,10"  />
                 </Border>
-               
+
                 <Border BorderThickness="0,0,0,2" BorderBrush="LightGray" Margin="0,0,0,10">
                     <ui:PasswordBox PlaceholderText="Confirm a password" Height="40" Margin="0,0,0,10" />
                 </Border>
-             
+
                 <Grid Margin="0,0,0,20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>

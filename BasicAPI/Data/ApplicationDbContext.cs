@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using System.Collections.Generic;
+using System.Reflection.Emit;
+using BasicAPI.Models.Entity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using RestAPI.Models.Entity;
 
 namespace BasicAPI.Data
 {
@@ -15,10 +17,9 @@ namespace BasicAPI.Data
             base.OnModelCreating(modelBuilder);
         }
         //Add models here
-
+       
         public DbSet<User> Users { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
-      
-
+        
     }
 }

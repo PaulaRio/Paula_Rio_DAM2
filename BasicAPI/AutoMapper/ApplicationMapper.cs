@@ -1,7 +1,7 @@
 ﻿using BasicAPI.Models.DTOs.UserDto;
 using AutoMapper;
-
-using RestAPI.Models.Entity;
+using BasicAPI.Models.DTOs;
+using BasicAPI.Models.Entity;
 
 namespace BasicAPI.AutoMapper
 {
@@ -9,7 +9,7 @@ namespace BasicAPI.AutoMapper
     {
         public ApplicationMapper()
         {
-            
+           
             CreateMap<AppUser, UserDto>().ReverseMap();
         }
     }

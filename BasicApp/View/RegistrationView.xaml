@@ -9,7 +9,7 @@
              d:DataContext="{d:DesignInstance Type=viewModel:LoginViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800"
-             Background="MediumBlue">
+             Background="DodgerBlue">
     <Grid>
         <Border CornerRadius="10" Background="White" Width="300" Height="600" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20">
             <StackPanel>

@@ -1,4 +1,4 @@
-﻿using RestAPI.Attributes;
+﻿using BasicAPI.Attributes;
 using System.ComponentModel.DataAnnotations;
 
 namespace BasicAPI.Models.DTOs.UserDto
@@ -7,8 +7,6 @@ namespace BasicAPI.Models.DTOs.UserDto
     {
         [Required(ErrorMessage = "Field required: Name")]
         public string Name { get; set; }
-        [Required(ErrorMessage = "Field required: UserName")]
-        public string UserName { get; set; }
         [Required(ErrorMessage = "Field required: Email")]
         public string Email { get; set; }
         [Required(ErrorMessage = "Field required: Password")]

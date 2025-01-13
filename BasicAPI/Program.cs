@@ -1,17 +1,13 @@
 using BasicAPI.AutoMapper;
 using BasicAPI.Data;
+using BasicAPI.Models.Entity;
 using BasicAPI.Repository;
 using BasicAPI.Repository.IRepository;
-using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using RestAPI.Models.Entity;
-
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +19,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 // Add services to the container.
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddAutoMapper(typeof(ApplicationMapper));
 //Logger setup

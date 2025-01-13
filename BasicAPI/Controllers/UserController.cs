@@ -35,7 +35,7 @@ namespace BasicAPI.Controllers
                 return BadRequest(new { error = "Incorrect Input", message = ModelState });
             }
 
-            if (!_userRepository.IsUniqueUser(userRegistrationDto.UserName))
+            if (!_userRepository.IsUniqueUser(userRegistrationDto.Email))
             {
                 _reponseApi.StatusCode = HttpStatusCode.BadRequest;
                 _reponseApi.IsSuccess = false;

@@ -1,6 +1,4 @@
-﻿using BasicAPI.Data;
-using BasicAPI.Models.DTOs.UserDto;
-using BasicAPI.Repository.IRepository;
+﻿
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
@@ -8,7 +6,10 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Security.Cryptography;
-using RestAPI.Models.Entity;
+using BasicAPI.Models.Entity;
+using BasicAPI.Repository.IRepository;
+using BasicAPI.Data;
+using BasicAPI.Models.DTOs.UserDto;
 
 namespace BasicAPI.Repository
 {
@@ -48,7 +49,7 @@ namespace BasicAPI.Repository
 
         public async Task<UserLoginResponseDto> Login(UserLoginDto userLoginDto)
         {
-            var user = _context.AppUsers.FirstOrDefault(u => u.UserName.ToLower() == userLoginDto.UserName.ToLower());
+            var user = _context.AppUsers.FirstOrDefault(u => u.Email.ToLower() == userLoginDto.Email.ToLower());
             bool isValid = await _userManager.CheckPasswordAsync(user, userLoginDto.Password);
 
             //user doesn't exist ?
@@ -94,10 +95,9 @@ namespace BasicAPI.Repository
         {
             AppUser user = new AppUser()
             {
-                UserName = userRegistrationDto.UserName,
                 Name = userRegistrationDto.Name,
-                Email = userRegistrationDto.UserName,
-                NormalizedEmail = userRegistrationDto.UserName.ToUpper(),
+                Email = userRegistrationDto.Email,
+                NormalizedEmail = userRegistrationDto.Email.ToUpper(),
             };
 
             var result = await _userManager.CreateAsync(user, userRegistrationDto.Password);
@@ -112,7 +112,7 @@ namespace BasicAPI.Repository
                 await _roleManager.CreateAsync(new IdentityRole("register"));
             }
             await _userManager.AddToRoleAsync(user, "admin");
-            AppUser? newUser = _context.AppUsers.FirstOrDefault(u => u.UserName == userRegistrationDto.UserName);
+            AppUser? newUser = _context.AppUsers.FirstOrDefault(u => u.UserName == userRegistrationDto.Email);
 
             return new UserLoginResponseDto
             {
