@@ -11,12 +11,13 @@ namespace BasicAPI.Models.Entity
 
         [Required]
         [MaxLength(50)]
-        public string Name { get; set; }
-        public DateTime ReleaseDate { get; set; }
-        [Required]
-        public int Damage { get; set; }
+        public string Title { get; set; }
 
-        [Required, MaxLength(50)]
-        public string Bastidor { get; set; }
+        public DateTime ReleaseDate { get; set; }
+
+        [Required]
+        public int LifetimeGross  { get; set; }
+
+       
     }
 }
