@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BasicAPI.Models.Entity
 {
-    public class SGhibliEntity
+    public class GhibliEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -13,6 +13,8 @@ namespace BasicAPI.Models.Entity
         [MaxLength(50)]
         public string Title { get; set; }
 
+        [Required]
+        [Column(TypeName = "date")]
         public DateTime ReleaseDate { get; set; }
 
         [Required]

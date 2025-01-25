@@ -2,6 +2,7 @@
 using AutoMapper;
 using BasicAPI.Models.DTOs;
 using BasicAPI.Models.Entity;
+using BasicAPI.Models.DTOs.Ghibli;
 
 namespace BasicAPI.AutoMapper
 {
@@ -10,6 +11,7 @@ namespace BasicAPI.AutoMapper
         public ApplicationMapper()
         {
            
+            CreateMap<GhibliEntity, GhibliDTO>().ReverseMap();
             CreateMap<AppUser, UserDto>().ReverseMap();
         }
     }
