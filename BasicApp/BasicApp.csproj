@@ -9,12 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
-    <Folder Include="Services\" />
-    <Folder Include="Utils\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="WPF-UI" Version="3.0.5" />
 	<PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
 	<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />

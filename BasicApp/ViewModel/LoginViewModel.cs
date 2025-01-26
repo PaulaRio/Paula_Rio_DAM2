@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using BasicApp.View;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BasicApp.ViewModel
 {
@@ -13,23 +14,34 @@ namespace BasicApp.ViewModel
     {
 
 
-        private readonly MainViewModel _mainViewModel;
+        private  MainViewModel _mainViewModel;
 
-        public LoginViewModel(MainViewModel mainViewModel)
+        //public LoginViewModel(MainViewModel mainViewModel)
+        public LoginViewModel()
         {
-            _mainViewModel = mainViewModel;
+           // _mainViewModel = App.Current.Services.GetService<MainViewModel>();
         }
 
   
         [RelayCommand]
         private void Register_Click()
         {
-            _mainViewModel.SelectedViewModel = _mainViewModel.RegistrationViewModel;
+            _mainViewModel.SelectViewModel(_mainViewModel.RegistrationViewModel) ;
+           
+        }
+
+        [RelayCommand]
+        private void Data_Click()
+        {
+           
+            _mainViewModel.SelectViewModel(_mainViewModel.DataViewModel);
+           
+           
         }
 
         public override Task LoadAsync()
         {
-            
+            _mainViewModel = App.Current.Services.GetService<MainViewModel>();
             return Task.CompletedTask;
         }
     }

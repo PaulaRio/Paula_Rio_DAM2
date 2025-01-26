@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:BasicApp.View"
              xmlns:viewModel="clr-namespace:BasicApp.ViewModel" 
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-             d:DataContext="{d:DesignInstance Type=viewModel:LoginViewModel}"
+             d:DataContext="{d:DesignInstance Type=viewModel:RegistrationViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800"
              Background="DodgerBlue">

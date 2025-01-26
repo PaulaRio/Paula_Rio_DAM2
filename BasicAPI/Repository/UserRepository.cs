@@ -39,12 +39,12 @@ namespace BasicAPI.Repository
 
         public ICollection<AppUser> GetUsers()
         {
-            return _context.AppUsers.OrderBy(user => user.UserName).ToList();
+            return _context.AppUsers.OrderBy(user => user.Email).ToList();
         }
 
-        public bool IsUniqueUser(string userName)
+        public bool IsUniqueUser(string Email)
         {
-            return !_context.AppUsers.Any(user => user.UserName == userName);
+            return !_context.AppUsers.Any(user => user.Email == Email);
         }
 
         public async Task<UserLoginResponseDto> Login(UserLoginDto userLoginDto)
@@ -73,7 +73,7 @@ namespace BasicAPI.Repository
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.UserName.ToString()),
+                    new Claim(ClaimTypes.Name, user.Email.ToString()),
                     new Claim(ClaimTypes.Role, roles.FirstOrDefault())
 
                 }),
@@ -95,6 +95,7 @@ namespace BasicAPI.Repository
         {
             AppUser user = new AppUser()
             {
+                UserName = userRegistrationDto.Email,
                 Name = userRegistrationDto.Name,
                 Email = userRegistrationDto.Email,
                 NormalizedEmail = userRegistrationDto.Email.ToUpper(),
@@ -112,7 +113,7 @@ namespace BasicAPI.Repository
                 await _roleManager.CreateAsync(new IdentityRole("register"));
             }
             await _userManager.AddToRoleAsync(user, "admin");
-            AppUser? newUser = _context.AppUsers.FirstOrDefault(u => u.UserName == userRegistrationDto.Email);
+            AppUser? newUser = _context.AppUsers.FirstOrDefault(u => u.Email == userRegistrationDto.Email);
 
             return new UserLoginResponseDto
             {

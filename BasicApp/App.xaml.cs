@@ -1,6 +1,8 @@
 ﻿using System.Configuration;
 using System.Data;
 using System.Windows;
+using BasicApp.Interfaces;
+using BasicApp.Services;
 using BasicApp.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -32,19 +34,19 @@ namespace BasicApp
             var services = new ServiceCollection();
 
             //view principal
-            services.AddTransient<MainWindow>();
+            services.AddSingleton<MainWindow>();
 
 
             //view viewModels
 
 
-            services.AddTransient<MainViewModel>();
-            services.AddTransient<LoginViewModel>();
-            services.AddTransient<RegistrationViewModel>();
-            services.AddTransient<DataViewModel>();
+            services.AddSingleton<MainViewModel>();
+            services.AddSingleton<LoginViewModel>();
+            services.AddSingleton<RegistrationViewModel>();
+            services.AddSingleton<DataViewModel>();
 
             //Services
-            //services.AddSingleton<IPokeOpsProvider, PokeOpsService>();
+            services.AddSingleton<IGhibliProvider, GhibliService>();
             //services.AddSingleton(typeof(IFileService<>), typeof(FileService<>));
             return services.BuildServiceProvider();
         }

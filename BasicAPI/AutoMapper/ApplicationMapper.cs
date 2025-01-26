@@ -12,6 +12,7 @@ namespace BasicAPI.AutoMapper
         {
            
             CreateMap<GhibliEntity, GhibliDTO>().ReverseMap();
+            CreateMap<GhibliEntity, CreateGhibliDTO>().ReverseMap();
             CreateMap<AppUser, UserDto>().ReverseMap();
         }
     }

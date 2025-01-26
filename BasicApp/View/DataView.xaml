@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BasicApp.View"
+             xmlns:viewModel="clr-namespace:BasicApp.ViewModel" 
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             d:DataContext="{d:DesignInstance Type=viewModel:DataViewModel}"
              mc:Ignorable="d" 
              Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
@@ -14,7 +16,23 @@
             <ColumnDefinition Width="*"/>
 
         </Grid.ColumnDefinitions>
-
+        <ui:DataGrid 
+         Grid.Column="1" 
+         x:Name="MyDataGrid"       
+         ItemsSource="{Binding Films}" 
+         AutoGenerateColumns="True" 
+         Margin="10" 
+         CanUserResizeColumns="True"
+         CanUserResizeRows="False"
+         VerticalAlignment="Top"
+         HorizontalAlignment="Left"
+         Foreground="Black"
+         BorderBrush="Black"
+         MinRowHeight="25"
+         MaxHeight="400" 
+         ColumnWidth="Auto"
+         ScrollViewer.VerticalScrollBarVisibility="Auto"
+         ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
         <Border Grid.Column="0" Background="#6A0DAD">
             <StackPanel>
                 <!-- Logo -->
@@ -27,74 +45,53 @@
                 </Border>
 
                 <!-- Opciones del menú -->
-                <ui:Button Command="{Binding SelectViewModelCommand}" 
-                        CommandParameter="{Binding LoginViewModel}" 
+                <ui:Button  
                         Background="Transparent" Foreground="White" 
                         BorderBrush="Transparent" 
                         Margin="10" Padding="10" 
                         HorizontalAlignment="Left"
-                        Content="Login!"
-                        Icon="{ui:SymbolIcon Fluent24}"/>
+                        Content="Taquilla"  FontSize="30" >
+                    <ui:Button.Icon>
+                        <ui:SymbolIcon Symbol="Video32" />
+                    </ui:Button.Icon>
+                </ui:Button >
 
-                <Button Command="{Binding SelectViewModelCommand}" 
-                        CommandParameter="{Binding RegisterViewModel}" 
+                <ui:Button 
                         Background="Transparent" Foreground="White" 
                         BorderBrush="Transparent" 
                         Margin="10" Padding="10" 
-                        HorizontalAlignment="Left">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="📂" FontSize="18" Margin="0,0,10,0" />
-                        <TextBlock Text="Abrir Archivo" FontSize="16"/>
-                    </StackPanel>
-                </Button>
+                        HorizontalAlignment="Left"
+                        Content="Personaje" FontSize="30">
+                    <ui:Button.Icon>
+                        <ui:SymbolIcon Symbol="ZoomFit20"/>
+                    </ui:Button.Icon>
+                </ui:Button>
 
-                <Button Command="{Binding SelectViewModelCommand}" 
-                        CommandParameter="{Binding PrincipalViewModel}" 
+                <ui:Button 
                         Background="Transparent" Foreground="White" 
                         BorderBrush="Transparent" 
                         Margin="10" Padding="10" 
-                        HorizontalAlignment="Left">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="🏠" FontSize="18" Margin="0,0,10,0" />
-                        <TextBlock Text="Principal" FontSize="16"/>
-                    </StackPanel>
-                </Button>
-
+                        HorizontalAlignment="Left"
+                        Content="Adjuntar" FontSize="30">
+                    <ui:Button.Icon>
+                        <ui:SymbolIcon Symbol="Attach20"/>
+                    </ui:Button.Icon>
+                </ui:Button>
 
                 <StackPanel VerticalAlignment="Bottom" Margin="10">
-                    <Button Background="Transparent" 
+                    <ui:Button Background="Transparent" 
                             Foreground="White" 
                             BorderBrush="Transparent" 
-                            HorizontalAlignment="Left">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="⚙️" FontSize="18" Margin="0,0,10,0" />
-                            <TextBlock Text="Logout" FontSize="16"/>
-                        </StackPanel>
-                    </Button>
+                            HorizontalAlignment="Left"
+                            Content="Logout"  FontSize="30"  Command="{Binding Logout_ClickCommand}">
+                        <ui:Button.Icon>
+                            <ui:SymbolIcon Symbol="Settings20"/>
+                        </ui:Button.Icon>
+                    </ui:Button>
                 </StackPanel>
             </StackPanel>
         </Border>
-        <ScrollViewer Grid.Column="1">
-            <StackPanel >
-                <ItemsControl ItemsSource="{Binding Items, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Border Margin="5">
-                                <StackPanel>
-                                    <Image Source="{Binding ImagePath}" Stretch="Uniform" Height="100"/>
-                                    <TextBlock Text="{Binding PokemonName}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Border>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </StackPanel>
-        </ScrollViewer>
+       
 
     </Grid>
 </UserControl>

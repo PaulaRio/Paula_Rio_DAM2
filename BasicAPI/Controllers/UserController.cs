@@ -32,6 +32,7 @@ namespace BasicAPI.Controllers
         {
             if (!ModelState.IsValid)
             {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
                 return BadRequest(new { error = "Incorrect Input", message = ModelState });
             }
 
@@ -39,7 +40,7 @@ namespace BasicAPI.Controllers
             {
                 _reponseApi.StatusCode = HttpStatusCode.BadRequest;
                 _reponseApi.IsSuccess = false;
-                _reponseApi.ErrorMessages.Add("Username already exists");
+                _reponseApi.ErrorMessages.Add("Email already exists");
                 return BadRequest();
             }
 

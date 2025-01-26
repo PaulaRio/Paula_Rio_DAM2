@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BasicApp.ViewModel
 {
     public partial class RegistrationViewModel : ViewModelBase
     {
-        private readonly MainViewModel _mainViewModel;
+        private MainViewModel _mainViewModel;
 
-        public RegistrationViewModel(MainViewModel mainViewModel)
+        public RegistrationViewModel()
         {
-            _mainViewModel = mainViewModel;
+            
         }
 
 
@@ -25,7 +26,7 @@ namespace BasicApp.ViewModel
 
         public override Task LoadAsync()
         {
-
+            _mainViewModel = App.Current.Services.GetService<MainViewModel>();
             return Task.CompletedTask;
         }
     }

@@ -10,14 +10,19 @@ namespace BasicApp.ViewModel
     public partial class MainViewModel : ViewModelBase
     {
         private ViewModelBase? _selectedViewModel;
-        public MainViewModel()
-        {
-            LoginViewModel = new LoginViewModel(this);
-            RegistrationViewModel = new RegistrationViewModel(this);
-            SelectedViewModel = LoginViewModel;
+        public LoginViewModel LoginViewModel { get; set; }
+        public RegistrationViewModel RegistrationViewModel { get; set; }
 
+        public DataViewModel DataViewModel { get; set; }
+        public MainViewModel(LoginViewModel loginViewModel, RegistrationViewModel registrationViewModel, DataViewModel dataViewModel )
+        {
+            _selectedViewModel = loginViewModel;
+            LoginViewModel = loginViewModel;
+            RegistrationViewModel =registrationViewModel;
+            DataViewModel = dataViewModel;
 
         }
+         
         public ViewModelBase? SelectedViewModel
         {
             get => _selectedViewModel;
@@ -26,9 +31,6 @@ namespace BasicApp.ViewModel
                 SetProperty(ref _selectedViewModel, value);
             }
         }
-
-        public LoginViewModel LoginViewModel { get; set; }
-        public RegistrationViewModel RegistrationViewModel { get; set; }
 
 
         public async override Task LoadAsync()
@@ -39,7 +41,7 @@ namespace BasicApp.ViewModel
             }
         }
         [RelayCommand]
-        private async void SelectViewModel(object? parameter)
+        public async void SelectViewModel(object? parameter)
         {
             SelectedViewModel = parameter as ViewModelBase;
             await LoadAsync();
