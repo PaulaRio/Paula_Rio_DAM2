@@ -24,5 +24,22 @@ namespace BasicApp.View
         {
             InitializeComponent();
         }
+        private void MyDataGrid_AutoGeneratingColum(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "Estreno")
+            {
+                var column = e.Column as DataGridTextColumn;
+                if (column != null)
+                {
+                    column.Binding = new Binding("Estreno")
+                    {
+                        StringFormat = "dd/MM/yyyy"
+                    };
+                }
+            }
+        }
+
+
+
     }
 }

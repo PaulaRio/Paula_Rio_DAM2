@@ -16,11 +16,19 @@
             <ColumnDefinition Width="*"/>
 
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ui:Button Content="Add" HorizontalAlignment="Right" Grid.Column="1" Foreground="White" 
+                   Background="Green" Margin="0,18,40,0" VerticalAlignment="Top"   Command="{Binding Add_ClickCommand}"/>
         <ui:DataGrid 
          Grid.Column="1" 
+         Grid.Row="1"
          x:Name="MyDataGrid"       
          ItemsSource="{Binding Films}" 
          AutoGenerateColumns="True" 
+         AutoGeneratingColumn="MyDataGrid_AutoGeneratingColum" 
          Margin="10" 
          CanUserResizeColumns="True"
          CanUserResizeRows="False"
@@ -33,7 +41,7 @@
          ColumnWidth="Auto"
          ScrollViewer.VerticalScrollBarVisibility="Auto"
          ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
-        <Border Grid.Column="0" Background="#6A0DAD">
+        <Border Grid.Column="0" Grid.RowSpan="2" Background="#6A0DAD">
             <StackPanel>
                 <!-- Logo -->
                 <Border Background="#8E44AD" Padding="10">
@@ -91,7 +99,7 @@
                 </StackPanel>
             </StackPanel>
         </Border>
-       
+
 
     </Grid>
 </UserControl>

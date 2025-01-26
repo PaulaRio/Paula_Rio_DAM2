@@ -14,9 +14,10 @@ namespace BasicApp.DTO
         [JsonPropertyName("title")]
         public string Titulo { get; set; }
         [JsonPropertyName("releaseDate")]
-        public DateTime Estreno { get; set; }
+        public String Estreno { get; set; }
         [JsonPropertyName("lifetimeGross")]
         public int Taquilla { get; set; }
         
+
     }
 }

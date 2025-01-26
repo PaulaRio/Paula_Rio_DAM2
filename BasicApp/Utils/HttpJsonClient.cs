@@ -22,21 +22,7 @@ namespace BasicApp.Utils
                     HttpResponseMessage request = await httpClient.GetAsync($"{Constants.BASE_URL}{path}");
                     if (request.StatusCode==System.Net.HttpStatusCode.Unauthorized)
                     {
-                        LoginDTO loginDTO = new LoginDTO
-                        {
-                            Password = "wnD/LbJq?9t,}-628%)",
-                            Email = "random@gmail.net"
-                        };
-                        HttpContent httpContent = new StringContent(JsonSerializer.Serialize(loginDTO),  Encoding.UTF8, "application/json");
-
-                        HttpResponseMessage requestToken = await httpClient.PostAsync($"{Constants.BASE_URL}{Constants.LOGIN_PATH}/login", httpContent);
-
-                        string dataTokenRequest = await requestToken.Content.ReadAsStringAsync();
-                        UserDTO tokenUser = JsonSerializer.Deserialize<UserDTO>(dataTokenRequest);
-
-                        Token=tokenUser?.Result?.Token ??string.Empty;
-                        httpClient.DefaultRequestHeaders.Remove("Authorization");
-                        httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {Token}");
+                        await RenovarToken(httpClient);
                         request = await httpClient.GetAsync($"{Constants.BASE_URL}{path}");
                     }
                     string dataRequest = await request.Content.ReadAsStringAsync();
@@ -48,6 +34,87 @@ namespace BasicApp.Utils
                 Console.WriteLine(ex.Message);
             }
             return default;
+        }
+        public static async Task<T?> Post<T>(string path, T data)
+        {
+            try
+            {
+                using HttpClient httpClient = new HttpClient();
+
+                string jsonData = JsonSerializer.Serialize(data);
+
+
+                using StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+
+                HttpResponseMessage response = await httpClient.PostAsync($"{Constants.BASE_URL}{path}", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+
+                    string responseContent = await response.Content.ReadAsStringAsync();
+
+                    return JsonSerializer.Deserialize<T>(responseContent);
+                }
+
+                return default;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error en la solicitud POST: {ex.Message}");
+            }
+
+            return default;
+        }
+        public static async Task<UserDTO?> LoginPost<T>(string path, T data)
+        {
+            try
+            {
+                using HttpClient httpClient = new HttpClient();
+
+                string jsonData = JsonSerializer.Serialize(data);
+
+
+                HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+
+                HttpResponseMessage response = await httpClient.PostAsync($"{Constants.BASE_URL}{path}", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+
+                    string responseContent = await response.Content.ReadAsStringAsync();
+
+                    return JsonSerializer.Deserialize<UserDTO>(responseContent);
+                }
+
+                return default;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error en la solicitud POST: {ex.Message}");
+            }
+
+            return default;
+        }
+
+        private static async Task RenovarToken(HttpClient httpClient)
+        {
+            LoginDTO loginDTO = new LoginDTO
+            {
+                Password = "wnD/LbJq?9t,}-628%)",
+                Email = "random@gmail.net"
+            };
+            HttpContent httpContent = new StringContent(JsonSerializer.Serialize(loginDTO), Encoding.UTF8, "application/json");
+
+            HttpResponseMessage requestToken = await httpClient.PostAsync($"{Constants.BASE_URL}{Constants.LOGIN_PATH}/login", httpContent);
+
+            string dataTokenRequest = await requestToken.Content.ReadAsStringAsync();
+            UserDTO tokenUser = JsonSerializer.Deserialize<UserDTO>(dataTokenRequest);
+
+            Token = tokenUser?.Result?.Token ?? string.Empty;
+            httpClient.DefaultRequestHeaders.Remove("Authorization");
+            httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {Token}");
         }
     }
 }

@@ -20,11 +20,11 @@
 
 
                 <Border BorderThickness="0,0,0,2" BorderBrush="LightGray" Margin="0,0,0,10" >
-                    <ui:TextBox PlaceholderText="Enter your email" Height="40" Margin="0,0,0,10"  />
+                    <ui:TextBox  Text="{Binding Email}" PlaceholderText="Enter your email" Height="40" Margin="0,0,0,10"  />
                 </Border>
 
                 <Border BorderThickness="0,0,0,2" BorderBrush="LightGray" Margin="0,0,0,10">
-                    <ui:PasswordBox PlaceholderText="Confirm a password" Height="40" Margin="0,0,0,10" />
+                    <ui:PasswordBox PlaceholderText="Confirm a password" Height="40" Margin="0,0,0,10" Password="{Binding Password, Mode=TwoWay}" />
                 </Border>
 
                 <Grid Margin="0,0,0,20">

@@ -4,9 +4,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
 using BasicApp.DTO;
 using BasicApp.Interfaces;
 using BasicApp.Utils;
+using BasicApp.View;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +21,8 @@ namespace BasicApp.ViewModel
     public partial class DataViewModel : ViewModelBase
     { 
         private readonly IGhibliProvider _ghibliProvider;
+        [ObservableProperty]
+        private DateTime? _releaseDate;
 
         private  MainViewModel _mainViewModel;
         public DataViewModel(IGhibliProvider ghibliProvider)
@@ -35,6 +41,38 @@ namespace BasicApp.ViewModel
             _mainViewModel.SelectViewModel(_mainViewModel.LoginViewModel);
 
         }
+
+        private void MyDataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "Estreno")
+            {
+                var column = e.Column as DataGridTextColumn;
+                if (column != null)
+                {
+                    column.Binding = new Binding("Estreno")
+                    {
+                        StringFormat = "dd/MM/yyyy"
+                    };
+                }
+            }
+        }
+
+        [RelayCommand]
+        private void Add_Click()
+        {
+            var popUpWindow = App.Current.Services.GetService<AddView>();
+
+            popUpWindow?.Show();
+
+
+        }
+
+
+       
+
+
+
+
 
         public async Task CargarTabla()
         {

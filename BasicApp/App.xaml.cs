@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows;
 using BasicApp.Interfaces;
 using BasicApp.Services;
+using BasicApp.View;
 using BasicApp.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -35,6 +36,7 @@ namespace BasicApp
 
             //view principal
             services.AddSingleton<MainWindow>();
+            services.AddTransient<AddView>();
 
 
             //view viewModels
@@ -44,6 +46,7 @@ namespace BasicApp
             services.AddSingleton<LoginViewModel>();
             services.AddSingleton<RegistrationViewModel>();
             services.AddSingleton<DataViewModel>();
+            services.AddSingleton<AddViewModel>();
 
             //Services
             services.AddSingleton<IGhibliProvider, GhibliService>();

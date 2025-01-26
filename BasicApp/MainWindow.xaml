@@ -8,7 +8,7 @@
         xmlns:viewModel="clr-namespace:BasicApp.ViewModel" 
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="600" Width="800"
          Background="White">
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModel:LoginViewModel}">
