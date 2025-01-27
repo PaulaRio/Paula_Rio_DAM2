@@ -8,7 +8,7 @@
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       d:DataContext="{d:DesignInstance Type=viewModel:AddViewModel}"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="450"
+      Height="450" Width="450"
       Title="AddView">
 
     <Grid>
@@ -16,7 +16,7 @@
             <StackPanel>
 
                
-                <Label Content="Login" FontWeight="Bold" FontSize="24" Foreground="White" Margin="0,0,0,20" HorizontalAlignment="Center" Height="35" Width="90" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Label Content="Add" FontWeight="Bold" FontSize="24" Foreground="White" Margin="0,0,0,20" HorizontalAlignment="Center" Height="35" Width="90" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
 
                 <Border BorderThickness="0,0,0,2" BorderBrush="LightGray" Margin="0,0,0,10" >
