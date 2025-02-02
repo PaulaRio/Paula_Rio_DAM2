@@ -1,0 +1,8 @@
+Patricia urquiola
+-Crear estructura básica
+-Adaptar la API hecha en clase
+-Crear BD en SQLserver (dbeaver)
+-Ajustar media para que se vea en moviles y ordenadores
+-Crear login (CRUD)
+-Permitir navegar por los productos
+-Mediante programacion gestionar pujas y guardarlas en la base de datos
