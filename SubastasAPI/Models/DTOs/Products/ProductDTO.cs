@@ -1,6 +1,7 @@
 ﻿namespace SubastasAPI.Models.DTOs.Products
 {
-    public class CreateProductDTO
+    public class ProductDTO : CreateProductDTO
     {
+        public int Id { get; set; }
     }
 }
