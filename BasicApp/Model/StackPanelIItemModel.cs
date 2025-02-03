@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace BasicApp.Models
+namespace SubastasAPI.Models
 {
     public class StackPanelItemModel
     {

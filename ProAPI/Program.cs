@@ -1,7 +1,7 @@
-using BasicAPI.AutoMapper;
-using BasicAPI.Data;
-using BasicAPI.Repository;
-using BasicAPI.Repository.IRepository;
+using SubastasAPI.AutoMapper;
+using SubastasAPI.Data;
+using SubastasAPI.Repository;
+using SubastasAPI.Repository.IRepository;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using RestAPI.Models.Entity;
+using SubastasAPI.Models.Entity;
 
 using System.Text;
 

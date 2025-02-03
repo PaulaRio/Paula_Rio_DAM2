@@ -1,4 +1,4 @@
-﻿namespace BasicAPI.Models.DTOs.UserDto
+﻿namespace SubastasAPI.Models.DTOs.UserDto
 {
     public class UserDto
     {

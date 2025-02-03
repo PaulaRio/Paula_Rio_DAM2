@@ -1,13 +1,13 @@
-﻿using BasicAPI.Models.DTOs;
-using BasicAPI.Models.DTOs.UserDto;
-using BasicAPI.Repository;
-using BasicAPI.Repository.IRepository;
+﻿using SubastasAPI.Models.DTOs;
+using SubastasAPI.Models.DTOs.UserDto;
+using SubastasAPI.Repository;
+using SubastasAPI.Repository.IRepository;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace BasicAPI.Controllers
+namespace SubastasAPI.Controllers
 {
     [Route("api/users")]
     [ApiController]

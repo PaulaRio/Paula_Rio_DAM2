@@ -1,7 +1,7 @@
-﻿using RestAPI.Attributes;
+﻿using SubastasAPI.Attributes;
 using System.ComponentModel.DataAnnotations;
 
-namespace BasicAPI.Models.DTOs.UserDto
+namespace SubastasAPI.Models.DTOs.UserDto
 {
     public class UserRegistrationDto
     {
