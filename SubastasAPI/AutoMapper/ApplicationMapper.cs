@@ -2,7 +2,9 @@
 using AutoMapper;
 using SubastasAPI.Models.DTOs;
 using SubastasAPI.Models.Entity;
-using SubastasAPI.Models.DTOs.Ghibli;
+using SubastasAPI.Models.DTOs.Products;
+using SubastasAPI.Models.DTOs.Puja;
+
 
 namespace SubastasAPI.AutoMapper
 {
@@ -10,9 +12,10 @@ namespace SubastasAPI.AutoMapper
     {
         public ApplicationMapper()
         {
-           
-            CreateMap<GhibliEntity, GhibliDTO>().ReverseMap();
-            CreateMap<GhibliEntity, CreateGhibliDTO>().ReverseMap();
+            CreateMap<ProductEntity, ProductDTO>().ReverseMap();
+            CreateMap<ProductEntity, CreateProductDTO>().ReverseMap();
+            CreateMap<PujaEntity, PujaDTO>().ReverseMap();
+            CreateMap<PujaEntity, CreatePujaDTO>().ReverseMap();
             CreateMap<AppUser, UserDto>().ReverseMap();
         }
     }

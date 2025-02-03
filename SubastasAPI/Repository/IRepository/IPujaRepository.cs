@@ -2,7 +2,7 @@
 
 namespace SubastasAPI.Repository.IRepository
 {
-    public interface IGhibliRepository : IRepository<GhibliEntity>
+    public interface IPujaRepository : IRepository<PujaEntity>
     {
     }
 }
