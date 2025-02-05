@@ -12,8 +12,7 @@ namespace SubastasAPI.Models.DTOs.UserDto
         [Required(ErrorMessage = "Field required: Password")]
         [PasswordValidation]
         public string Password { get; set; }
-        [Required(ErrorMessage = "Field required: Role")]
-        public string Role { get; set; }
+        
 
     }
 }

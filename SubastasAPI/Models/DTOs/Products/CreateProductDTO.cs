@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using SubastasAPI.Models.DTOs.Puja;
 
 namespace SubastasAPI.Models.DTOs.Products
 {
@@ -27,7 +28,10 @@ namespace SubastasAPI.Models.DTOs.Products
         [Required(ErrorMessage = "Photo is required")]
         public string Photo { get; set; }
 
-        
+       
+        public ICollection<PujaDTO> Pujas { get; set; }
+
+
     }
     
 }

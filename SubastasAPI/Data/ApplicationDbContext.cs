@@ -16,10 +16,10 @@ namespace SubastasAPI.Data
         {
             base.OnModelCreating(modelBuilder);
             //modelBuilder.Entity<PujaEntity>()
-            //       .HasOne(p => p.Product)  // Una puja pertenece a un producto
-            //       .WithMany()               // Un producto puede tener muchas pujas
-            //       .HasForeignKey(p => p.IdProduct)  // IdProduct es la clave foránea
-            //       .HasPrincipalKey(p => p.Id) // Asegura que referencia a ProductEntity.Id
+            //       .HasOne(p => p.Product)  
+            //       .WithMany()               
+            //       .HasForeignKey(p => p.IdProduct) 
+            //       .HasPrincipalKey(p => p.Id) 
             //       .OnDelete(DeleteBehavior.Cascade);
         }
         //Add models here

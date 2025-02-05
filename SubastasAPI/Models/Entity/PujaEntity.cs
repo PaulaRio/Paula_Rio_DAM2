@@ -15,7 +15,8 @@ namespace SubastasAPI.Models.Entity
         [Required]
         public int IdProduct { get; set; }
 
-        [ForeignKey("IdProduct")]
-        public ProductEntity Product { get; set; }
+
+
+
     }
 }

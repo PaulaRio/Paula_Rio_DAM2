@@ -18,7 +18,7 @@ namespace SubastasAPI.Repository
         private readonly ApplicationDbContext _context;
         private readonly string secretKey;
         private readonly UserManager<AppUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
+        //private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IMapper _mapper;
         private readonly int TokenExpirationDays = 7;
 
@@ -28,7 +28,7 @@ namespace SubastasAPI.Repository
             _context = context;
             secretKey = config.GetValue<string>("ApiSettings:SecretKey");
             _userManager = userManager;
-            _roleManager = roleManager;
+            //_roleManager = roleManager;
             _mapper = mapper;
         }
 
@@ -59,7 +59,7 @@ namespace SubastasAPI.Repository
             }
 
             //User does exist
-            var roles = await _userManager.GetRolesAsync(user);
+            //var roles = await _userManager.GetRolesAsync(user);
 
             var tokenHandler = new JwtSecurityTokenHandler();
          
@@ -74,7 +74,7 @@ namespace SubastasAPI.Repository
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name, user.Email.ToString()),
-                    new Claim(ClaimTypes.Role, roles.FirstOrDefault())
+                    //new Claim(ClaimTypes.Role, roles.FirstOrDefault())
 
                 }),
                 Expires = DateTime.UtcNow.AddMinutes(TokenExpirationDays),
@@ -106,12 +106,12 @@ namespace SubastasAPI.Repository
             {
                 return null;
             }
-            if (!await _roleManager.RoleExistsAsync("admin"))
-            {
-                //this will run only for first time the roles are created
-                await _roleManager.CreateAsync(new IdentityRole("admin"));
-                await _roleManager.CreateAsync(new IdentityRole("register"));
-            }
+            //if (!await _roleManager.RoleExistsAsync("admin"))
+            //{
+            //    //this will run only for first time the roles are created
+            //    await _roleManager.CreateAsync(new IdentityRole("admin"));
+            //    await _roleManager.CreateAsync(new IdentityRole("register"));
+            //}
             await _userManager.AddToRoleAsync(user, "admin");
             AppUser? newUser = _context.AppUsers.FirstOrDefault(u => u.Email == userRegistrationDto.Email);
 
