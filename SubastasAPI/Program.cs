@@ -19,7 +19,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 // Add services to the container.
-
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IPujaRepository, PujaRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddAutoMapper(typeof(ApplicationMapper));
@@ -36,22 +36,22 @@ builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<A
 //Setting Authentication Code
 var key = builder.Configuration.GetValue<string>("ApiSettings:SecretKey");
 
-builder.Services.AddAuthentication(auth =>
-{
-    auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(x =>
-{
-    x.RequireHttpsMetadata = false;
-    x.SaveToken = true;
-    x.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key)),
-        ValidateIssuer = false,
-        ValidateAudience = false
-    };
-});
+//builder.Services.AddAuthentication(auth =>
+//{
+//    auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+//    auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+//}).AddJwtBearer(x =>
+//{
+//    x.RequireHttpsMetadata = false;
+//    x.SaveToken = true;
+//    x.TokenValidationParameters = new TokenValidationParameters
+//    {
+//        ValidateIssuerSigningKey = true,
+//        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key)),
+//        ValidateIssuer = false,
+//        ValidateAudience = false
+//    };
+//});
 
 
 
