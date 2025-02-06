@@ -1,7 +1,7 @@
-﻿using SubastasAPI.Models.DTOs.UserDto;
-using SubastasAPI.Models.Entity;
+﻿using RestAPI.Models.DTOs.UserDto;
+using RestAPI.Models.Entity;
 
-namespace SubastasAPI.Repository.IRepository
+namespace RestAPI.Repository.IRepository
 {
     public interface IUserRepository
     {

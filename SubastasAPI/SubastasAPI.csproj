@@ -4,8 +4,6 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>71d1c2ab-06bc-45d8-868d-0cb0cc722319</UserSecretsId>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +16,10 @@
 	<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.2" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.2" />
     
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

@@ -155,30 +155,6 @@ namespace SubastasAPI.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("SubastasAPI.Models.DTOs.Puja.PujaDTO", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<float>("Bid")
-                        .HasColumnType("real");
-
-                    b.Property<int>("IdProduct")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProductEntityId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductEntityId");
-
-                    b.ToTable("PujaDTO");
-                });
-
             modelBuilder.Entity("SubastasAPI.Models.Entity.AppUser", b =>
                 {
                     b.Property<string>("Id")
@@ -276,8 +252,8 @@ namespace SubastasAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ReleaseYear")
-                        .HasColumnType("date");
+                    b.Property<int>("ReleaseYear")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -298,7 +274,12 @@ namespace SubastasAPI.Migrations
                     b.Property<int>("IdProduct")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ProductEntityId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductEntityId");
 
                     b.ToTable("Puja");
                 });
@@ -379,7 +360,7 @@ namespace SubastasAPI.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SubastasAPI.Models.DTOs.Puja.PujaDTO", b =>
+            modelBuilder.Entity("SubastasAPI.Models.Entity.PujaEntity", b =>
                 {
                     b.HasOne("SubastasAPI.Models.Entity.ProductEntity", null)
                         .WithMany("Pujas")

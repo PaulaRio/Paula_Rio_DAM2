@@ -19,8 +19,7 @@ namespace SubastasAPI.Models.Entity
         public string Brand { get; set; }
 
         [Required]
-        [Column(TypeName = "date")]
-        public DateTime ReleaseYear { get; set; }
+        public int ReleaseYear { get; set; }
 
         [Required(ErrorMessage = "Description is required")]
         [MaxLength(1000, ErrorMessage = "Max char is 1000")]
@@ -29,7 +28,7 @@ namespace SubastasAPI.Models.Entity
         [Required(ErrorMessage = "Photo is required")]
         public string Photo { get; set; }
 
-        public ICollection<PujaDTO> Pujas { get; set; }
+        public ICollection<PujaEntity> Pujas { get; set; }
 
 
     }

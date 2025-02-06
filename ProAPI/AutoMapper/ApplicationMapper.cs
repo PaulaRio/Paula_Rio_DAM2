@@ -1,9 +1,8 @@
 ﻿using SubastasAPI.Models.DTOs.UserDto;
 using AutoMapper;
+using RestAPI.Models.Entity;
 
-using SubastasAPI.Models.Entity;
-
-namespace SubastasAPI.AutoMapper
+namespace RestAPI.AutoMapper
 {
     public class ApplicationMapper : Profile
     {

@@ -1,6 +1,6 @@
-﻿using SubastasAPI.Data;
-using SubastasAPI.Models.DTOs.UserDto;
-using SubastasAPI.Repository.IRepository;
+﻿using RestAPI.Data;
+using RestAPI.Models.DTOs.UserDto;
+using RestAPI.Repository.IRepository;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
@@ -8,9 +8,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Security.Cryptography;
-using SubastasAPI.Models.Entity;
+using RestAPI.Models.Entity;
 
-namespace SubastasAPI.Repository
+namespace RestAPI.Repository
 {
     public class UserRepository : IUserRepository
     {

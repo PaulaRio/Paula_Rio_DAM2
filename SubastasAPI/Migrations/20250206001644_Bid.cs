@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SubastasAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class Subastas : Migration
+    public partial class Bid : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -59,27 +59,13 @@ namespace SubastasAPI.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Brand = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    ReleaseYear = table.Column<DateTime>(type: "date", nullable: false),
+                    ReleaseYear = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     Photo = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Product", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Puja",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Bid = table.Column<float>(type: "real", nullable: false),
-                    IdProduct = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Puja", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -204,20 +190,20 @@ namespace SubastasAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PujaDTO",
+                name: "Puja",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductEntityId = table.Column<int>(type: "int", nullable: true),
                     Bid = table.Column<float>(type: "real", nullable: false),
-                    IdProduct = table.Column<int>(type: "int", nullable: false)
+                    IdProduct = table.Column<int>(type: "int", nullable: false),
+                    ProductEntityId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PujaDTO", x => x.Id);
+                    table.PrimaryKey("PK_Puja", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PujaDTO_Product_ProductEntityId",
+                        name: "FK_Puja_Product_ProductEntityId",
                         column: x => x.ProductEntityId,
                         principalTable: "Product",
                         principalColumn: "Id");
@@ -263,8 +249,8 @@ namespace SubastasAPI.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PujaDTO_ProductEntityId",
-                table: "PujaDTO",
+                name: "IX_Puja_ProductEntityId",
+                table: "Puja",
                 column: "ProductEntityId");
         }
 
@@ -288,9 +274,6 @@ namespace SubastasAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "Puja");
-
-            migrationBuilder.DropTable(
-                name: "PujaDTO");
 
             migrationBuilder.DropTable(
                 name: "Users");

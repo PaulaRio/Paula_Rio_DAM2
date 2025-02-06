@@ -1,6 +1,6 @@
-﻿using System.Net;
+﻿    using System.Net;
 
-namespace SubastasAPI.Models.DTOs
+namespace RestAPI.Models.DTOs
 {
     public class ResponseApi
     {

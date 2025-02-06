@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SubastasAPI.DTO;
+using BasicApp.DTO;
 
-namespace SubastasAPI.Interfaces
+namespace BasicApp.Interfaces
 {
     public interface IGhibliProvider
     {

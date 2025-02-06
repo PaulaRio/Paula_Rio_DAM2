@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SubastasAPI.Models.DTOs.UserDto
+namespace RestAPI.Models.DTOs.UserDto
 {
     public class UserLoginDto
     {

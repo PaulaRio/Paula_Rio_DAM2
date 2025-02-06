@@ -64,14 +64,14 @@ builder.Services.AddEndpointsApiExplorer();
 //Swagger Configuration
 builder.Services.AddSwaggerGen(options =>
 {
-    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        Description = "JWT Auth Bearer Token \r\n\r\n" +
-        "Insert The token with the following format: Bearer thgashqkssuqj",
-        Name = "Authorization",
-        In = ParameterLocation.Header,
-        Scheme = "Bearer"
-    });
+    //options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    //{
+    //    Description = "JWT Auth Bearer Token \r\n\r\n" +
+    //    "Insert The token with the following format: Bearer thgashqkssuqj",
+    //    Name = "Authorization",
+    //    In = ParameterLocation.Header,
+    //    Scheme = "Bearer"
+    //});
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -111,8 +111,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors("CorsPolicy");
-app.UseAuthentication();
-app.UseAuthorization();
+//app.UseAuthentication();
+//app.UseAuthorization();
 
 app.MapControllers();
 

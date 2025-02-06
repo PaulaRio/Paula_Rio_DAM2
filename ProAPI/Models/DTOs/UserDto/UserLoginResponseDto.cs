@@ -1,6 +1,8 @@
-﻿using SubastasAPI.Models.Entity;
+﻿
 
-namespace SubastasAPI.Models.DTOs.UserDto
+using RestAPI.Models.Entity;
+
+namespace RestAPI.Models.DTOs.UserDto
 {
     public class UserLoginResponseDto
     {

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using RestAPI.Models.Entity;
 
-namespace SubastasAPI.Data
+namespace RestAPI.Data
 {
     public class ApplicationDbContext : IdentityDbContext<AppUser>
     {

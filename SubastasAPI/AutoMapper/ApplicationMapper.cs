@@ -13,9 +13,10 @@ namespace SubastasAPI.AutoMapper
         public ApplicationMapper()
         {
             CreateMap<ProductEntity, ProductDTO>().ReverseMap();
-            CreateMap<ProductEntity, CreateProductDTO>().ReverseMap();
+            CreateMap<CreateProductDTO,ProductEntity>().ReverseMap();
             CreateMap<PujaEntity, PujaDTO>().ReverseMap();
-            CreateMap<PujaEntity, CreatePujaDTO>().ReverseMap();
+            CreateMap<CreatePujaDTO,PujaEntity>().ReverseMap();
+            
             CreateMap<AppUser, UserDto>().ReverseMap();
         }
     }

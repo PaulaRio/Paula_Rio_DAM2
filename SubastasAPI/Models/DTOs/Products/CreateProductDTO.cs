@@ -14,9 +14,7 @@ namespace SubastasAPI.Models.DTOs.Products
         public string Brand { get; set; }
 
         [Required(ErrorMessage = "ReleaseYear is required")]
-        [DataType(DataType.Date, ErrorMessage = "La fecha de emisión debe ser una fecha válida")]
-        [DisplayFormat(DataFormatString = "{0:yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime ReleaseYear { get; set; }
+        public int ReleaseYear { get; set; }
 
 
         [Required(ErrorMessage = "Description is required")]
