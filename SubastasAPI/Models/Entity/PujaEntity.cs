@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace SubastasAPI.Models.Entity
-{
+{//TODO en Angular poner que si la puja es 0.0 modificarla y asociarla a un producto
     public class PujaEntity
     {
         [Key]

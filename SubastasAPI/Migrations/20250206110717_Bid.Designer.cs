@@ -12,7 +12,7 @@ using SubastasAPI.Data;
 namespace SubastasAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250206001644_Bid")]
+    [Migration("20250206110717_Bid")]
     partial class Bid
     {
         /// <inheritdoc />
