@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HousingLocation } from 'src/app/models/housinglocation';
+import { Product } from 'src/app/models/product';
 import { HousingService } from 'src/app/services/housing.service';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
@@ -19,13 +19,13 @@ export class DetailsComponent {
     email: new FormControl(''),
   });
   
-  housingLocation: HousingLocation | undefined;
+  product: Product | undefined;
   housingService: HousingService;
 
   constructor(housingService: HousingService) {
-      const housingLocationId = parseInt(this.route.snapshot.params['id'], 1);
-      housingService.getHousingLocationById(housingLocationId).then((housingLocation) => {
-        this.housingLocation = housingLocation;
+      const productId = parseInt(this.route.snapshot.params['id'], 1);
+      housingService.getproductById(productId).then((product) => {
+        this.product = product;
       });
       this.housingService=housingService;
   }

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {HomeComponent} from './pages/home/home.component';
+import {SubastaComponent} from './pages/subasta/subasta.component';
 import {RouterModule} from '@angular/router';
 
 @Component({

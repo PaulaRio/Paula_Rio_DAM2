@@ -3761,7 +3761,7 @@ function isModifiedClickEvent(e) {
 }
 var isWebKit = typeof navigator !== "undefined" && !/Opera/.test(navigator.userAgent) && /WebKit/.test(navigator.userAgent);
 var isIe = typeof navigator !== "undefined" && (/MSIE/.test(navigator.userAgent) || /Trident/.test(navigator.userAgent));
-var isGecko = typeof navigator !== "undefined" && !/Opera|WebKit/.test(navigator.userAgent) && /Gecko/.test(navigator.product);
+var isGecko = typeof navigator !== "undefined" && !/Opera|WebKit/.test(navigator.userAgent) && /Gecko/.test(navigator.subasta);
 function isMouseSpecialEvent(e, type, element) {
   const related = e.relatedTarget;
   return (e.type === EventType.MOUSEOVER && type === EventType.MOUSEENTER || e.type === EventType.MOUSEOUT && type === EventType.MOUSELEAVE || e.type === EventType.POINTEROVER && type === EventType.POINTERENTER || e.type === EventType.POINTEROUT && type === EventType.POINTERLEAVE) && (!related || related !== element && !element.contains(related));

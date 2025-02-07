@@ -6,6 +6,11 @@
   margin-top: 50px;
   justify-content: space-around;
 }
+.senioraMaja{
+  display: block;
+  width: 60%;
+  margin: auto;
+}
 input[type="text"] {
   border: solid 1px var(--primary-color);
   padding: 10px;
