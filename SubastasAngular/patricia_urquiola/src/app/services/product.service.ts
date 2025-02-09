@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../../app/models/product';
+import { Product } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HousingService {
+export class ProductService {
   productList: Product[];
-  readonly baseUrl = 'http://localhost:5072/api/House';
+  readonly baseUrl = 'https://localhost:7777/api/Product';
   constructor() {
     this.productList= [];
 
@@ -26,9 +26,9 @@ export class HousingService {
     return (await data.json()) ?? {};
   }
 
-  submitApplication(firstName: string, lastName: string, email: string) {
+  submitApplication(valor: number) {
     console.log(
-      `Products application received: firstName: ${firstName}, lastName: ${lastName}, email: ${email}.`,
+      `Products application received: valor: ${valor}`,
     );
   }
 }

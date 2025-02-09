@@ -2,7 +2,7 @@ import { Component,inject} from '@angular/core';
 import {productComponent} from '../../components/housing-location/product.component';
 import {Product} from '../../models/product'
 import { CommonModule } from '@angular/common';
-import {HousingService} from '../../services/housing.service';
+import {ProductService} from '../../services/product.service';
 
 @Component({
   selector: 'app-subasta',
@@ -14,8 +14,8 @@ export class SubastaComponent {
   productList: Product[]=[];
   filteredLocationList: Product[]=[];
 
-  constructor(private housingService: HousingService) {
-    this.housingService.getAllproducts().then((productList: Product[]) => {
+  constructor(private productService: ProductService) {
+    this.productService.getAllproducts().then((productList: Product[]) => {
       this.productList = productList;
       this.filteredLocationList = productList;
     });
