@@ -32,7 +32,7 @@ export class DetailsComponent {
       productService.getproductById(productId).then((product) => {
         this.product = product;  
       });
-     this.load(productId);
+      this.load(productId);
       this.productService=productService;
   }
   load(idProduct: number) {
