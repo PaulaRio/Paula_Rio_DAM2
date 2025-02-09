@@ -7,7 +7,7 @@
     />
     <section class="listing-description">
       <h2 class="listing-heading">{{ product?.name }}</h2>
-      <!--<p class="listing-location">{{ product?.city }}, {{ product?.state }}</p>-->
+     
     </section>
     <section class="listing-features">
       <h2 class="section-heading">Sobre esta pieza</h2>
@@ -24,6 +24,7 @@
         <label for="valor">Valor</label>
         <input id="valor" type="number" formControlName="valor" />
         <button type="submit" class="primary">Apply now</button>
+        <h3>La puja mas alta es: {{puja?.bid}}</h3>
       </form>
     </section>
   </article>

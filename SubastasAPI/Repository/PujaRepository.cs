@@ -10,7 +10,7 @@ namespace SubastasAPI.Repository
     {
         private readonly ApplicationDbContext _context;
         private readonly IMemoryCache _cache;
-        private readonly string PujaEntityCacheKey = "LibroEntityCacheKey"; //cambiadmelo lokos
+        private readonly string PujaEntityCacheKey = "PujaEntityCacheKey"; //cambiadmelo lokos
         private readonly int CacheExpirationTime = 3600;
         public PujaRepository(ApplicationDbContext context, IMemoryCache cache)
         {
@@ -71,7 +71,7 @@ namespace SubastasAPI.Repository
 
         public async Task<bool> UpdateAsync(PujaEntity PujaEntity)
         {
-            //PujaEntity.ReleaseDate = DateTime.Now;
+            
             _context.Update(PujaEntity);
             return await Save();
         }
@@ -86,7 +86,23 @@ namespace SubastasAPI.Repository
             return await Save();
         }
 
-        
-       
+        public async Task<bool> AddPujaToProduct(int productId, PujaEntity PujaEntity)
+        {
+            var product = await _context.Product.Include(p => p.Pujas)
+                                                 .FirstOrDefaultAsync(p => p.Id == productId);
+
+            product.Pujas.Add(PujaEntity); 
+            return await Save();
+        }
+        public async Task<PujaEntity?> GetTopPuja(int productId)
+        {
+            return await _context.Puja
+                .Where(p => p.IdProduct == productId)
+                .OrderByDescending(p => p.Bid)
+                .FirstOrDefaultAsync();
+        }
+
+
+
     }
 }

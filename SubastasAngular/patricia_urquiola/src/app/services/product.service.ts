@@ -6,7 +6,7 @@ import { Product } from '../models/product';
 })
 export class ProductService {
   productList: Product[];
-  readonly baseUrl = 'https://localhost:7777/api/Product';
+  readonly baseUrl = 'http://localhost:7777/api/Product';
   constructor() {
     this.productList= [];
 
@@ -25,10 +25,6 @@ export class ProductService {
     const data = await fetch(`${this.baseUrl}/${id}`);
     return (await data.json()) ?? {};
   }
-
-  submitApplication(valor: number) {
-    console.log(
-      `Products application received: valor: ${valor}`,
-    );
-  }
+  
+  
 }
