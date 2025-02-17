@@ -20,13 +20,13 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-       
-            <Label Grid.Row="0" Grid.ColumnSpan="2"  Content="Alumno" Foreground="Black" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="30"/>
+
+        <Label Grid.Row="0" Grid.ColumnSpan="2"  Content="{Binding Titulo}" Foreground="Black" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="30"/>
             
         
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
         <Label  Content="Título" Foreground="Black" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="24"/>
-        <ui:TextBlock Text="{Binding Titulo}" />
+        <ui:TextBlock Text="{Binding NomAlumno}" />
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2">
         <Label  Content="Tipo" Foreground="Black" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="24"/>
@@ -37,7 +37,7 @@
         <ui:TextBlock Text="{Binding Descripcion}"/>
         </StackPanel>
         <ui:Button Grid.Row="4" Grid.Column="0" Content="Aprobar" Foreground="Black" FontWeight="Bold" Background="Peru" HorizontalAlignment="Center" Command="{Binding AprobarCommand}"/>
-        <ui:Button Grid.Row="4" Grid.Column="1" Content="Rechazar" Foreground="Black" FontWeight="Bold" Background="Peru" HorizontalAlignment="Center" Command="{Binding SuspenderCommand}"/>
+        <ui:Button Grid.Row="4" Grid.Column="1" Content="Rechazar" Foreground="Black" FontWeight="Bold" Background="Peru" HorizontalAlignment="Center" Command="{Binding RechazarCommand}"/>
 
 
 
