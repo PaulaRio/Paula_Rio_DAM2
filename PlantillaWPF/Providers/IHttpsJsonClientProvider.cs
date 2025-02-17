@@ -9,7 +9,7 @@ using PlantillaWPF.DTO;
 
 namespace PlantillaWPF.Providers
 {
-    internal interface IHttpsJsonClientProvider<T>
+    public interface IHttpsJsonClientProvider<T>
     {
         Task<IEnumerable<T>> GetAsync(string api_url);
         Task<T?> PostAsync(string path, T data);

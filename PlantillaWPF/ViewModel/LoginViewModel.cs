@@ -10,6 +10,7 @@ using PlantillaWPF.View;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
+using PlantillaWPF.Providers;
 
 namespace PlantillaWPF.ViewModel
 {
@@ -23,10 +24,10 @@ namespace PlantillaWPF.ViewModel
         [ObservableProperty]
         public string _Password;
 
-
-        public LoginViewModel()
+        IHttpsJsonClientProvider<UserDTO> _httpsJsonClientProvider;
+        public LoginViewModel(IHttpsJsonClientProvider<UserDTO> httpsJsonClientProvider)
         {
-           
+            _httpsJsonClientProvider = httpsJsonClientProvider;
         }
 
   
@@ -37,15 +38,15 @@ namespace PlantillaWPF.ViewModel
            
         }
 
-        [RelayCommand]
-        private async void Data_Click()
-        {
-            if (await LoginAsync()) { 
-            _mainViewModel.SelectViewModel(_mainViewModel.DataViewModel);
-            }
+        //[RelayCommand]
+        //private async void Data_Click()
+        //{
+        //    if (await LoginAsync()) { 
+        //    _mainViewModel.SelectViewModel(_mainViewModel.DataViewModel);
+        //    }
 
 
-        }
+        //}
 
         public override Task LoadAsync()
         {
@@ -64,7 +65,7 @@ namespace PlantillaWPF.ViewModel
                 Password = _Password
                
             };
-            var resultado = await HttpJsonClient<LoginDTO>.LoginPost($"{Constants.LOGIN_PATH}/login", user);
+            var resultado = await _httpsJsonClientProvider.LoginPostAsync($"{Constantes.LOGIN_PATH}/login", user);
                 return resultado.IsSuccess;
             }
             catch (Exception ex)

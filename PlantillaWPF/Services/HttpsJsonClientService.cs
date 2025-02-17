@@ -107,6 +107,35 @@ namespace PlantillaWPF.Services
         }
 
 
+        //public async Task<T?> LoginPostAsync(string path, LoginDTO data)
+        //{
+        //    try
+        //    {
+        //        using (HttpClient httpClient = new HttpClient())
+        //        {
+
+        //            httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {loginDTO.Token}");
+
+        //            // Serializar el objeto 'data' () a JSON
+        //            string jsonContent = JsonSerializer.Serialize(data);
+
+        //            // Crear el contenido HTTP con el tipo adecuado para enviar JSON
+        //            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+        //            HttpResponseMessage response = await httpClient.PostAsync($"{Constantes.BASE_URL}{path}", content);
+
+        //            // Leer el contenido de la respuesta y deserializarlo
+        //            string responseBody = await response.Content.ReadAsStringAsync();
+        //            return JsonSerializer.Deserialize<T>(responseBody, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"Error en la solicitud POST: {ex.Message}");
+        //    }
+        //    return default;
+        //}
+
         public async Task<T?> LoginPostAsync(string path, LoginDTO data)
         {
             try

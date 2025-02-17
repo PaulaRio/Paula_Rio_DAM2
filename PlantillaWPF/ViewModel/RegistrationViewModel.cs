@@ -11,6 +11,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using BasicApp.DTO;
+using PlantillaWPF.Providers;
 
 namespace PlantillaWPF.ViewModel
 {
@@ -26,11 +27,15 @@ namespace PlantillaWPF.ViewModel
         [ObservableProperty]
         public string _ConfirmPassword;
 
-       
-        
+        IHttpsJsonClientProvider<RegisterDTO> _httpsJsonClientProvider;
+        public RegistrationViewModel(IHttpsJsonClientProvider<RegisterDTO> httpsJsonClientProvider)
+        {
+            _httpsJsonClientProvider = httpsJsonClientProvider;
+        }
 
 
-            [RelayCommand]
+
+        [RelayCommand]
         private void Login_Click()
         {
             _mainViewModel.SelectedViewModel = _mainViewModel.LoginViewModel;
@@ -87,7 +92,7 @@ namespace PlantillaWPF.ViewModel
                 
 
 
-                var resultado = await HttpJsonClient<RegisterDTO>.Post(Constantes.REGISTER_PATH, user);
+                var resultado = await _httpsJsonClientProvider.RegisterPostAsync(Constantes.REGISTER_PATH, user);
 
                 return resultado != null;
             }
