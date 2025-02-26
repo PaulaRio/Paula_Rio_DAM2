@@ -9,13 +9,13 @@
              d:DataContext="{d:DesignInstance Type=viewModel:LoginViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="DodgerBlue">
+             Background="DarkSeaGreen">
 
     <Grid>
-        <Border CornerRadius="10" Background="White" Width="300" Height="400" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20">
+        <Border CornerRadius="10"  Width="300" Height="400" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" Background="Ivory">
             <StackPanel>
 
-                <!--<TextBox Text="Login" FontWeight="Bold" FontSize="24" Foreground="#333" Margin="0,0,0,20" HorizontalAlignment="Center"/>-->
+                
                 <Label Content="Login" FontWeight="Bold" FontSize="24" Foreground="#333" Margin="0,0,0,20" HorizontalAlignment="Center" Height="35" Width="90" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
 
@@ -33,12 +33,12 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <CheckBox Content="Remember me" VerticalAlignment="Center" Foreground="Gray" />
-                    <Button Content="Forgot password?" Foreground="#4263EB" Background="Transparent" BorderThickness="0" Cursor="Hand" Command="{Binding ForgotPasswordCommand}" Grid.Column="1"/>
+                    <Button Content="Forgot password?" Foreground="DarkSlateGray" Background="Transparent" BorderThickness="0" Cursor="Hand" Command="{Binding ForgotPasswordCommand}" Grid.Column="1"/>
                 </Grid>
 
-                <ui:Button Content="Login Now" Width="200" Height="40" HorizontalAlignment="Center" Background="#4263EB" Foreground="White"  Command="{Binding Data_ClickCommand}"/>
+                <ui:Button Content="Login Now" Width="200" Height="40" HorizontalAlignment="Center" Background="DarkSlateGray" Foreground="White"  Command="{Binding Data_ClickCommand}"/>
 
-                <ui:Button Content="Don't have an account? Signup now" FontSize="12" Foreground="#4263EB" HorizontalAlignment="Center" Margin="0,20,0,0" Cursor="Hand" Command="{Binding Register_ClickCommand}" />
+                <ui:Button Content="Don't have an account? Signup now" FontSize="12" Foreground="DarkSlateGray" HorizontalAlignment="Center" Margin="0,20,0,0" Cursor="Hand" Command="{Binding Register_ClickCommand}" />
             </StackPanel>
         </Border>
     </Grid>

@@ -17,7 +17,11 @@
         </DataTemplate>
     </Window.Resources>
     <Grid>
-        <Controls:SidebarControl DataType="{x:Type viewModel:SidebarViewModel}">
-        <ContentControl Grid.Row="1" Content="{Binding SelectedViewModel}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <controls:SidebarControl Grid.Column="0" DataContext="{Binding SidebarViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding SelectedViewModel}"/>
     </Grid>
 </Window>

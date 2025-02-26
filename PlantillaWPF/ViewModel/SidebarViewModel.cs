@@ -4,23 +4,30 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.Input;
 
 namespace PlantillaWPF.ViewModel
 {
     public partial class SidebarViewModel : ViewModelBase
     {
-        public ObservableCollection<MenuItemModel> MenuItems { get; set; }
-        public ViewModelBase SelectedViewModel { get; set; }
-        public SidebarViewModel()
-        {
-            MenuItems = new ObservableCollection<MenuItemModel>
-        {
-            new MenuItemModel { Title = "Login", ViewModel = new LoginViewModel() },
-            new MenuItemModel { Title = "Register", ViewModel = new RegisterViewModel() },
-            new MenuItemModel { Title = "StackPanel View", ViewModel = new StackPanelViewModel() }
-        };
+        private readonly MainViewModel _mainViewModel;
 
-            SelectedViewModel = MenuItems[0].ViewModel; // Selección inicial
+        public SidebarViewModel(MainViewModel mainViewModel)
+        {
+            _mainViewModel = mainViewModel;
         }
+
+        [RelayCommand]
+        public async Task SelectViewModel(ViewModelBase? viewModel)
+        {
+            if (viewModel is not null)
+            {
+                _mainViewModel.SelectedViewModel = viewModel;
+                await _mainViewModel.LoadAsync();
+            }
+        }
+
+        public LoginViewModel LoginViewModel => _mainViewModel.LoginViewModel;
+        public RegistrationViewModel RegistrationViewModel => _mainViewModel.RegistrationViewModel;
     }
 }
