@@ -41,7 +41,7 @@ namespace PlantillaWPF
             services.AddTransient<LoginViewModel>();
             services.AddTransient<RegistrationViewModel>();
             //services.AddTransient<CalculadoraViewModel>();
-            //services.AddTransient<StackExampleViewModel>();
+            services.AddTransient<StackPanelViewModel>();
             //services.AddTransient<ContactManagerViewModel>();
 
             //Services

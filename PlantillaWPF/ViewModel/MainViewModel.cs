@@ -12,13 +12,15 @@ namespace PlantillaWPF.ViewModel
         private ViewModelBase? _selectedViewModel;
         public LoginViewModel LoginViewModel { get; set; }
         public RegistrationViewModel RegistrationViewModel { get; set; }
+        public StackPanelViewModel StackPanelViewModel { get; set; }
         public SidebarViewModel SidebarViewModel { get; }
 
-        public MainViewModel(LoginViewModel loginViewModel, RegistrationViewModel registrationViewModel)
+        public MainViewModel(LoginViewModel loginViewModel, RegistrationViewModel registrationViewModel,StackPanelViewModel stackPanelViewModel)
         {
             _selectedViewModel = loginViewModel;
             LoginViewModel = loginViewModel;
             RegistrationViewModel =registrationViewModel;
+            StackPanelViewModel=stackPanelViewModel;
             SidebarViewModel = new SidebarViewModel(this);
 
         }

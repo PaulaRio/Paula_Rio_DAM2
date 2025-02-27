@@ -80,7 +80,7 @@
             <Border BorderBrush="DarkSeaGreen" BorderThickness="0,0,0,1" Margin="10">
             <ui:Button Content="DataGrid"
                     Command="{Binding SelectViewModelCommand}"
-                    CommandParameter="{Binding RegistrationViewModel}"
+                    CommandParameter="{Binding StackPanelViewModel}"
                     Margin="10"
                     Foreground="Ivory"
                     VerticalAlignment="Top"

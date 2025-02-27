@@ -38,15 +38,16 @@ namespace PlantillaWPF.ViewModel
            
         }
 
-        //[RelayCommand]
-        //private async void Data_Click()
-        //{
-        //    if (await LoginAsync()) { 
-        //    _mainViewModel.SelectViewModel(_mainViewModel.DataViewModel);
-        //    }
+        [RelayCommand]
+        private async void Data_Click()
+        {
+            if (await LoginAsync())
+            {
+                //_mainViewModel.SelectViewModel(_mainViewModel.DataViewModel);
+            }
 
 
-        //}
+        }
 
         public override Task LoadAsync()
         {

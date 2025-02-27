@@ -29,5 +29,7 @@ namespace PlantillaWPF.ViewModel
 
         public LoginViewModel LoginViewModel => _mainViewModel.LoginViewModel;
         public RegistrationViewModel RegistrationViewModel => _mainViewModel.RegistrationViewModel;
+
+        public StackPanelViewModel StackPanelViewModel => _mainViewModel.StackPanelViewModel;
     }
 }
