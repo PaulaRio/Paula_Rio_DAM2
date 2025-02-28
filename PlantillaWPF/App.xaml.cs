@@ -40,12 +40,13 @@ namespace PlantillaWPF
             services.AddTransient<MainViewModel>();
             services.AddTransient<LoginViewModel>();
             services.AddTransient<RegistrationViewModel>();
-            //services.AddTransient<CalculadoraViewModel>();
+            services.AddTransient<DataGridViewModel>();
             services.AddTransient<StackPanelViewModel>();
-            //services.AddTransient<ContactManagerViewModel>();
+            
 
             //Services
             services.AddSingleton<LoginDTO>();
+            services.AddSingleton<MainViewModel>();
             services.AddSingleton(typeof(IHttpsJsonClientProvider<>), typeof(HttpsJsonClientService<>));
             return services.BuildServiceProvider();
         }

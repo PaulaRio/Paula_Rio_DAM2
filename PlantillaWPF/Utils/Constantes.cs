@@ -25,10 +25,10 @@ namespace PlantillaWPF.Utils
         #endregion
 
         #region API Url
-        public const string BASE_URL = "https://localhost:7042/api/";
+        public const string BASE_URL = "https://localhost:7179/api/";
         public const string LOGIN_PATH = "users";
         public const string REGISTER_PATH = "users/register";
-        public const string GHIBLI_PATH = "Ghibli";
+       
         #endregion
     }
 }

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PlantillaWPF.Controls
+namespace PlantillaWPF.View
 {
     /// <summary>
-    /// Lógica de interacción para SideBarControl.xaml
+    /// Lógica de interacción para DataGridView.xaml
     /// </summary>
-    public partial class SidebarControl : UserControl
+    public partial class DataGridView : UserControl
     {
-        public SidebarControl()
+        public DataGridView()
         {
             InitializeComponent();
         }

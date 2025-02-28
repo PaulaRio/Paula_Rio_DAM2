@@ -10,7 +10,7 @@ using PlantillaWPF.Utils;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
-using BasicApp.DTO;
+using PlantillaWPF.DTO;
 using PlantillaWPF.Providers;
 
 namespace PlantillaWPF.ViewModel
@@ -26,6 +26,7 @@ namespace PlantillaWPF.ViewModel
         public string _Password;
         [ObservableProperty]
         public string _ConfirmPassword;
+
 
         IHttpsJsonClientProvider<RegisterDTO> _httpsJsonClientProvider;
         public RegistrationViewModel(IHttpsJsonClientProvider<RegisterDTO> httpsJsonClientProvider)
@@ -50,11 +51,14 @@ namespace PlantillaWPF.ViewModel
                 ConfirmPassword = string.Empty;
             }
             else { 
-            await GuardarRegistroAsync();
+            if(await GuardarRegistroAsync() != null)
+                {
+                    _mainViewModel.SelectedViewModel = _mainViewModel.LoginViewModel;
+                }
             }
         }
 
-        private  Boolean ComprobacionPassword(string firstPass, string secondPass)
+        private  bool ComprobacionPassword(string firstPass, string secondPass)
         {
             if (!firstPass.Equals(secondPass))
             {
@@ -63,8 +67,34 @@ namespace PlantillaWPF.ViewModel
                 return false;
 
             }
-            return true;
+            if(firstPass.Length<8|| firstPass.Length > 20)
+            {
+                MessageBox.Show("La contraseña debe tener entre 8 y 20 caracteres.");
+                return false;
 
+            }
+            if (!firstPass.Any(char.IsDigit))
+            {
+                MessageBox.Show("La contraseña debe contener al menos un número.");
+                return false;
+            }
+            if (!firstPass.Any(char.IsLower))
+            {
+                MessageBox.Show("La contraseña debe contener al menos una letra minúscula.");
+                return false;
+            }
+            if (!firstPass.Any(char.IsUpper))
+            {
+                MessageBox.Show("La contraseña debe contener al menos una letra mayúscula.");
+                return false;
+            }
+            var symbols = @"!"";#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+            if (!firstPass.Any(c => symbols.Contains(c)))
+            {
+                MessageBox.Show("La contraseña debe contener al menos un símbolo.");
+                return false;
+            }
+            return true;
 
 
 

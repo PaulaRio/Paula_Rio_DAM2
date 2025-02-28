@@ -9,7 +9,7 @@ namespace PlantillaWPF.DTO
 {
     public class LoginDTO
     {
-        public string UserName { get; set; }
+        //public string UserName { get; set; }
         public string Password { get; set; }
 
         public string Email { get; set; }
@@ -17,9 +17,9 @@ namespace PlantillaWPF.DTO
         public string Token { get; set; }
 
         public LoginDTO() { }
-        public LoginDTO(string userName, string password)
+        public LoginDTO(string email, string password)
         {
-            UserName = userName;
+            Email = email;
             Password = password;
         }
 

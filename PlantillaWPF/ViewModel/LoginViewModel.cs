@@ -28,14 +28,18 @@ namespace PlantillaWPF.ViewModel
         public LoginViewModel(IHttpsJsonClientProvider<UserDTO> httpsJsonClientProvider)
         {
             _httpsJsonClientProvider = httpsJsonClientProvider;
-        }
 
-  
+        }
+     
+
         [RelayCommand]
-        private void Register_Click()
+        private void Register()
         {
-            _mainViewModel.SelectViewModel(_mainViewModel.RegistrationViewModel) ;
-           
+            _mainViewModel.SelectViewModel(_mainViewModel.RegistrationViewModel);
+            //var mainViewModel = App.Current.Services.GetService<MainViewModel>();
+            //var RegistroViewModel = App.Current.Services.GetService<RegistrationViewModel>();
+            //mainViewModel.SelectViewModelCommand.Execute(RegistroViewModel);
+
         }
 
         [RelayCommand]
@@ -43,9 +47,10 @@ namespace PlantillaWPF.ViewModel
         {
             if (await LoginAsync())
             {
-                //_mainViewModel.SelectViewModel(_mainViewModel.DataViewModel);
+                _mainViewModel.SetLoginStatus(true);
+                _mainViewModel.SelectViewModel(_mainViewModel.StackPanelViewModel);
             }
-
+            // await Login();
 
         }
 
@@ -54,26 +59,58 @@ namespace PlantillaWPF.ViewModel
             _mainViewModel = App.Current.Services.GetService<MainViewModel>();
             return Task.CompletedTask;
         }
+
+        
         private async Task<bool> LoginAsync()
         {
+            App.Current.Services.GetService<LoginDTO>().Email = Email;
+            App.Current.Services.GetService<LoginDTO>().Password = Password;
+
             try
             {
+                UserDTO user = await _httpsJsonClientProvider.LoginPostAsync($"{Constantes.LOGIN_PATH}/login", App.Current.Services.GetService<LoginDTO>());
 
-                LoginDTO user = new LoginDTO
-            {
-            
-                Email = _Email,
-                Password = _Password
-               
-            };
-            var resultado = await _httpsJsonClientProvider.LoginPostAsync($"{Constantes.LOGIN_PATH}/login", user);
-                return resultado.IsSuccess;
+                if (user != null && user.Result != null && !string.IsNullOrEmpty(user.Result.Token))
+                {
+                    App.Current.Services.GetService<LoginDTO>().Token = user.Result.Token;
+                    return user.IsSuccess;
+                }
+                else
+                {
+                    MessageBox.Show("Error: Usuario o contraseña incorrectos.");
+                    return false;
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al guardar los datos del registro: {ex.Message}");
+                MessageBox.Show(ex.Message);
                 return false;
             }
+
         }
+
+        //private async Task<bool> LoginAsync()
+        //{
+        //    try
+        //    {
+
+        //        LoginDTO user = new LoginDTO
+        //        {
+
+        //            Email = _Email,
+        //            Password = _Password
+
+        //        };
+        //        var resultado = await _httpsJsonClientProvider.LoginPostAsync($"{Constantes.LOGIN_PATH}/login", user);
+        //        //var resultado = await HttpJsonClient<LoginDTO>.LoginPost($"{Constantes.LOGIN_PATH}/login", user);
+        //        return resultado.IsSuccess;
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"Error al guardar los datos del registro: {ex.Message}");
+        //        return false;
+        //    }
+        //}
     }
 }

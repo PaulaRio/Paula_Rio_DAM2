@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using BasicApp.DTO;
+using PlantillaWPF.DTO;
 using PlantillaWPF.DTO;
 
 namespace PlantillaWPF.Providers

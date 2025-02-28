@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 namespace PlantillaWPF.ViewModel
@@ -10,18 +11,26 @@ namespace PlantillaWPF.ViewModel
     public partial class MainViewModel : ViewModelBase
     {
         private ViewModelBase? _selectedViewModel;
-        public LoginViewModel LoginViewModel { get; set; }
-        public RegistrationViewModel RegistrationViewModel { get; set; }
-        public StackPanelViewModel StackPanelViewModel { get; set; }
-        public SidebarViewModel SidebarViewModel { get; }
+        public LoginViewModel LoginViewModel { get; }
+        public RegistrationViewModel RegistrationViewModel { get; }
+        public StackPanelViewModel StackPanelViewModel { get; }
 
-        public MainViewModel(LoginViewModel loginViewModel, RegistrationViewModel registrationViewModel,StackPanelViewModel stackPanelViewModel)
+        public DataGridViewModel DataGridViewModel { get; }
+
+       
+
+        [ObservableProperty]
+        private bool _isLoggedIn = false;
+       
+
+        public MainViewModel(LoginViewModel loginViewModel, RegistrationViewModel registrationViewModel,StackPanelViewModel stackPanelViewModel, DataGridViewModel dataGridViewModel)
         {
             _selectedViewModel = loginViewModel;
             LoginViewModel = loginViewModel;
             RegistrationViewModel =registrationViewModel;
             StackPanelViewModel=stackPanelViewModel;
-            SidebarViewModel = new SidebarViewModel(this);
+            DataGridViewModel=dataGridViewModel;
+          
 
         }
          
@@ -47,6 +56,17 @@ namespace PlantillaWPF.ViewModel
         {
             SelectedViewModel = parameter as ViewModelBase;
             await LoadAsync();
+        }
+        public void SetLoginStatus(bool status)
+        {
+            IsLoggedIn = status;
+        }
+        [RelayCommand]
+        private void Logout_Click()
+        {
+            SetLoginStatus(false);
+            SelectViewModel(LoginViewModel);
+
         }
 
 
