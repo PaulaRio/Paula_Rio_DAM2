@@ -251,6 +251,19 @@ namespace PlantillaWPF.Services
             return default;
         }
 
-        
+        public Task<T?> GetByIdAsync(string path, string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<T?> PatchAsync(string path, T data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> DeleteAsync(string path, string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -24,6 +24,9 @@
         <DataTemplate DataType="{x:Type viewModel:DataGridViewModel}">
             <view:DataGridView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:OverviewViewModel}">
+            <view:Overview/>
+        </DataTemplate>
 
     </Window.Resources>
     <Grid>
