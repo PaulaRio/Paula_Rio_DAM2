@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BasicApp.View
+namespace PlantillaWPF.View
 {
     /// <summary>
-    /// Lógica de interacción para ValorarPropuestaView.xaml
+    /// Lógica de interacción para GalaxyOverview.xaml
     /// </summary>
-    public partial class ValorarPropuestaView : UserControl
+    public partial class OverviewView : UserControl
     {
-        public ValorarPropuestaView()
+        public OverviewView()
         {
             InitializeComponent();
         }

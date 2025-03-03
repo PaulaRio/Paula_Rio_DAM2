@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PlantillaWPF.DTOs;
 
-namespace PlantillaWPF.Providers
+namespace PlantillaWPF.Interfaces
 {
     public interface IObjectProvider
     {

@@ -21,7 +21,7 @@ namespace PlantillaAPI.Data
         public DbSet<User> Users { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
 
-       // public DbSet<GhibliEntity> Ghibli { get; set; }
+        public DbSet<ObjectEntity> Object { get; set; }
 
     }
 }

@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 using PlantillaWPF.DTO;
 using Microsoft.Extensions.DependencyInjection;
 using PlantillaWPF.DTO;
-using PlantillaWPF.Providers;
 using PlantillaWPF.Utils;
+using PlantillaWPF.Interfaces;
 
 namespace PlantillaWPF.Services
 {

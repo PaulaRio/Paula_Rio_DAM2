@@ -18,14 +18,12 @@
         <DataTemplate DataType="{x:Type viewModel:RegistrationViewModel}">
             <view:RegistrationView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModel:StackPanelViewModel}">
-            <view:StackPanelView/>
-        </DataTemplate>
+        
         <DataTemplate DataType="{x:Type viewModel:DataGridViewModel}">
             <view:DataGridView/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewModel:OverviewViewModel}">
-            <view:Overview/>
+            <view:OverviewView/>
         </DataTemplate>
 
     </Window.Resources>
@@ -45,7 +43,7 @@
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <MenuItem Header="StackPanel" Width="auto" BorderBrush="Gray" Background="AliceBlue" Command="{Binding SelectViewModelCommand}"
-              CommandParameter="{Binding StackPanelViewModel}"/>
+              CommandParameter="{Binding OverviewViewModel}"/>
             <MenuItem Header="GridView" Width="auto" BorderBrush="Gray" Background="AliceBlue" Command="{Binding SelectViewModelCommand}"
               CommandParameter="{Binding DataGridViewModel}"/>
             <MenuItem Header="Log Out" Width="auto" BorderBrush="Gray" Background="AliceBlue" Command="{Binding Logout_ClickCommand}"/>

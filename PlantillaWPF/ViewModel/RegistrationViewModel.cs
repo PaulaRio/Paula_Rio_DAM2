@@ -11,7 +11,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using PlantillaWPF.DTO;
-using PlantillaWPF.Providers;
+using PlantillaWPF.Interfaces;
 
 namespace PlantillaWPF.ViewModel
 {
@@ -51,9 +51,12 @@ namespace PlantillaWPF.ViewModel
                 ConfirmPassword = string.Empty;
             }
             else { 
-            if(await GuardarRegistroAsync() != null)
+            if(await GuardarRegistroAsync())
                 {
-                    _mainViewModel.SelectedViewModel = _mainViewModel.LoginViewModel;
+                    var mainViewModel = App.Current.Services.GetService<MainViewModel>();
+                    var LoginViewModel = App.Current.Services.GetService<LoginViewModel>();
+                    mainViewModel.SelectViewModelCommand.Execute(LoginViewModel);
+                    //_mainViewModel.SelectedViewModel = _mainViewModel.LoginViewModel;
                 }
             }
         }

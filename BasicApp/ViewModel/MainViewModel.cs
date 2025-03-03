@@ -15,8 +15,8 @@ namespace BasicApp.ViewModel
 
         public DataViewModel DataViewModel { get; set; }
         public MainViewModel(LoginViewModel loginViewModel, RegistrationViewModel registrationViewModel, DataViewModel dataViewModel )
-        {
-            _selectedViewModel = loginViewModel;
+        {//Cambiar a login el selected
+            _selectedViewModel = dataViewModel;
             LoginViewModel = loginViewModel;
             RegistrationViewModel =registrationViewModel;
             DataViewModel = dataViewModel;

@@ -36,7 +36,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <CheckBox Content="Remember me" VerticalAlignment="Center" Foreground="Gray" />
-                    <Button Content="Forgot password?" Foreground="DarkSlateGray" Background="Transparent" BorderThickness="0" Cursor="Hand" Command="{Binding ForgotPasswordCommand}" Grid.Column="1"/>
+                   
                 </Grid>
                 
                 <ui:Button Content="Login Now" Width="200" Height="40" HorizontalAlignment="Center" Background="DarkSlateGray" Foreground="White" FontSize="15" FontWeight="Bold"  Command="{Binding Data_ClickCommand}" Cursor=""/>

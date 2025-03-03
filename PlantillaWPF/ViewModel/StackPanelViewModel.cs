@@ -4,49 +4,66 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using PlantillaWPF.DTOs;
+using PlantillaWPF.Interfaces;
 using PlantillaWPF.Models;
+using PlantillaWPF.Utils;
 
 namespace PlantillaWPF.ViewModel
 {
     public partial class StackPanelViewModel : ViewModelBase
     {
-        //private readonly ILibrosProvider _librosProvider;
 
+        [ObservableProperty]
+        private ObservableCollection<ObjectModel> _items;
+        private int _objetoId;
+        private  OverviewViewModel _overviewViewModel;
+        private readonly IHttpsJsonClientProvider<ObjectDTO> _httpsJsonClientProvider;
+        [ObservableProperty]
+        private StackPanelItemModel _Item;
 
-        private ObservableCollection<StackPanelItemModel> _items;
-
-        public ObservableCollection<StackPanelItemModel> Items
+       public StackPanelViewModel(IHttpsJsonClientProvider<ObjectDTO> httpsJsonClientProvider)
         {
-            get { return _items; }
-            set
-            {
-                _items = value;
-                OnPropertyChanged(nameof(Items));
-            }
+            _httpsJsonClientProvider=httpsJsonClientProvider ?? throw new ArgumentNullException(nameof(httpsJsonClientProvider));
+            _items= new ObservableCollection<ObjectModel>();
+
         }
-
-        //public StackPanelViewModel(ILibrosProvider librosProvider)
-        //{
-        //    _librosProvider = librosProvider;
-        //}
-
-
-        private async Task GenerateRandomItemsAsync()
+        public void SetIdObject(int id)
         {
-            Items = new ObservableCollection<StackPanelItemModel>();
-
-            //List<LibroDTO> listaLibros = await _librosProvider.GetAsync();
-
-            //foreach (var libro in listaLibros)
-            //{
-            //    Items.Add(StackPanelItemModel.CreateModelFromDTO(libro));
-            //}
+            _objetoId= id;
         }
 
         public override async Task LoadAsync()
         {
-            await GenerateRandomItemsAsync();
-            base.LoadAsync();
+            IEnumerable<ObjectDTO> objetos = await _httpsJsonClientProvider.GetAsync(Constantes.OBJECT_URL);
+            Items = new ObservableCollection<ObjectModel>();
+            foreach (var objeto in objetos)
+            {
+                Items.Add(ObjectModel.CreateModelFromDTO(objeto));
+            }
+            Item = StackPanelItemModel.CreateModelFromDTO(objetos.FirstOrDefault(x => x.Id == _objetoId) ?? new ObjectDTO());
         }
+        internal void SetParentViewModel(ViewModelBase overviewViewModel)
+        {
+            if (overviewViewModel is OverviewViewModel overview)
+            {
+                _overviewViewModel = overview;
+            }
+
+        }
+
+        [RelayCommand]
+        private async Task Close(object? parameter)
+        {
+            if (_overviewViewModel != null)
+            {
+                _overviewViewModel.SelectedViewModel = null;
+            }
+        }
+
+
+
     }
 }

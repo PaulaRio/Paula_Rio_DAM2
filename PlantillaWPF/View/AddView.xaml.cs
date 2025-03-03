@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Examen_Galaxy.View
+namespace PlantillaWPF.View
 {
     /// <summary>
-    /// Lógica de interacción para GalaxyOverview.xaml
+    /// Lógica de interacción para AddView.xaml
     /// </summary>
-    public partial class Overview : UserControl
+    public partial class AddView : Window
     {
-        public Overview()
+        public AddView()
         {
             InitializeComponent();
         }

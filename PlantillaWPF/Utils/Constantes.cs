@@ -25,11 +25,21 @@ namespace PlantillaWPF.Utils
         #endregion
 
         #region API Url
-        public const string BASE_URL = "https://localhost:7000/api/";
-        public const string LOGIN_PATH = "users";
-        public const string REGISTER_PATH = "users/register";
-        public const string OBJECT_URL = "Object";
-
+        internal const string BASE_URL = "https://localhost:7000/api/";
+        internal const string LOGIN_PATH = "users";
+        internal const string REGISTER_PATH = "users/register";
+        internal const string IMAGES_EXTENSION = ".png";
+        internal const string PATH_IMAGE_NOT_FOUND = "Not_found.png";
+        internal const string OBJECT_URL = "Object";
+        internal static List<string> OBJETOS_POSIBLES = new List<string>()
+        {
+            "Altay.png",
+            "Cenote.png",
+            "HuskChair.png",
+            "MoncloudSofa.png",
+            "Plumon.png",
+            "Silloncito.png"
+        };
         #endregion
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using PlantillaWPF.DTO;
 using PlantillaWPF.DTO;
 
-namespace PlantillaWPF.Providers
+namespace PlantillaWPF.Interfaces
 {
     public interface IHttpsJsonClientProvider<T>
     {

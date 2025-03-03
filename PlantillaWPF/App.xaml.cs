@@ -3,8 +3,10 @@ using System.Data;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using PlantillaWPF.DTO;
-using PlantillaWPF.Providers;
+using PlantillaWPF.Interfaces;
+using PlantillaWPF.Service;
 using PlantillaWPF.Services;
+using PlantillaWPF.View;
 using PlantillaWPF.ViewModel;
 
 namespace PlantillaWPF
@@ -35,6 +37,7 @@ namespace PlantillaWPF
 
             //view principal
             services.AddTransient<MainWindow>();
+          
 
             //view viewModels
             services.AddTransient<MainViewModel>();
@@ -42,12 +45,18 @@ namespace PlantillaWPF
             services.AddTransient<RegistrationViewModel>();
             services.AddTransient<DataGridViewModel>();
             services.AddTransient<StackPanelViewModel>();
-            
+            services.AddTransient<OverviewViewModel>();
+            services.AddTransient<AddViewModel>();
+
+
+
 
             //Services
             services.AddSingleton<LoginDTO>();
             services.AddSingleton<MainViewModel>();
             services.AddSingleton(typeof(IHttpsJsonClientProvider<>), typeof(HttpsJsonClientService<>));
+            services.AddSingleton<IObjectProvider, ObjectService>();
+            services.AddSingleton<IStringUtils, StringUtils>();
             return services.BuildServiceProvider();
         }
     }

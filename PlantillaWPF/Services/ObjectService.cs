@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using
+
+
 
 using PlantillaWPF.DTOs;
-using PlantillaWPF.Providers;
+
 using PlantillaWPF.Utils;
+using System.Windows;
+using PlantillaWPF.Interfaces;
 
 namespace PlantillaWPF.Services
 {
@@ -32,16 +35,38 @@ namespace PlantillaWPF.Services
 
         public async Task PatchObjeto(ObjectDTO Objeto)
         {
-            throw new NotImplementedException();
+            if (Objeto != null)
+            {
+                await _httpsJsonClientProvider.PatchAsync(Constantes.OBJECT_URL, Objeto);
+            }
+            else
+            {
+                MessageBox.Show("No se ha podido cargar el objeto, no se ha realizado el cambio");
+            }
         }
 
         public async Task PostObjeto(ObjectDTO Objeto)
         {
-            throw new NotImplementedException();
+            if (Objeto != null)
+            {
+                await _httpsJsonClientProvider.PostAsync(Constantes.OBJECT_URL, Objeto);
+            }
+            else
+            {
+                MessageBox.Show("No se ha podido cargar el objeto, no se ha realizado el cambio");
+            }
         }
         public async Task<bool> DeleteObjeto(string id)
         {
-            throw new NotImplementedException();
+            if (await _httpsJsonClientProvider.DeleteAsync(Constantes.OBJECT_URL, id))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("No se ha podido eliminar el objeto");
+                return false;
+            }
         }
     }
 }

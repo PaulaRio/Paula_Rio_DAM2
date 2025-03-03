@@ -2,6 +2,7 @@
 using AutoMapper;
 using PlantillaAPI.Models.DTOs;
 using PlantillaAPI.Models.Entity;
+using PlantillaAPI.Models.DTOs.Object;
 
 
 namespace PlantillaAPI.AutoMapper
@@ -11,8 +12,8 @@ namespace PlantillaAPI.AutoMapper
         public ApplicationMapper()
         {
            
-            //CreateMap<GhibliEntity, GhibliDTO>().ReverseMap();
-            //CreateMap<GhibliEntity, CreateGhibliDTO>().ReverseMap();
+            CreateMap<ObjectEntity, ObjectDTO>().ReverseMap();
+            CreateMap<ObjectEntity, CreateObjectDTO>().ReverseMap();
             CreateMap<AppUser, UserDto>().ReverseMap();
         }
     }

@@ -10,7 +10,7 @@ using PlantillaWPF.View;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
-using PlantillaWPF.Providers;
+using PlantillaWPF.Interfaces;
 
 namespace PlantillaWPF.ViewModel
 {
@@ -35,10 +35,11 @@ namespace PlantillaWPF.ViewModel
         [RelayCommand]
         private void Register()
         {
-            _mainViewModel.SelectViewModel(_mainViewModel.RegistrationViewModel);
-            //var mainViewModel = App.Current.Services.GetService<MainViewModel>();
-            //var RegistroViewModel = App.Current.Services.GetService<RegistrationViewModel>();
-            //mainViewModel.SelectViewModelCommand.Execute(RegistroViewModel);
+            //_mainViewModel.SelectViewModel(_mainViewModel.RegistrationViewModel);
+            var mainViewModel = App.Current.Services.GetService<MainViewModel>();
+            var RegistroViewModel = App.Current.Services.GetService<RegistrationViewModel>();
+            mainViewModel.SelectViewModelCommand.Execute(RegistroViewModel);
+            //mainViewModel.SelectViewModel(mainViewModel.LoginViewModel);
 
         }
 
@@ -48,7 +49,9 @@ namespace PlantillaWPF.ViewModel
             if (await LoginAsync())
             {
                 _mainViewModel.SetLoginStatus(true);
-                _mainViewModel.SelectViewModel(_mainViewModel.StackPanelViewModel);
+                var mainViewModel = App.Current.Services.GetService<MainViewModel>();
+                var OverviewViewModel = App.Current.Services.GetService<OverviewViewModel>();
+                mainViewModel.SelectViewModelCommand.Execute(OverviewViewModel);
             }
             // await Login();
 

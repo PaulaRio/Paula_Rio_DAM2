@@ -19,13 +19,12 @@
             <ColumnDefinition Width="6*"/>
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="0" Grid.Row="0" Stretch="Uniform" Source="{Binding Planet.ImagePath}"/>
+        <Image Grid.Column="0" Grid.Row="0" Stretch="Uniform" Source="{Binding Item.ImagePath}"/>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" Margin="10">
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Planet.Name, StringFormat='Name: {0}'}"/>
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Planet.Type, StringFormat='Type: {0}'}"/>
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Planet.Distance, StringFormat='Distance: {0}'}"/>
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Planet.Atmosphere, StringFormat='Atmosphere: {0}'}"/>
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Planet.Temperature, StringFormat='Temperature: {0}'}"/>
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Item.Name, StringFormat='Name: {0}'}"/>
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Item.Description, StringFormat='Descricion: {0}'}"/>
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Item.CreatedDate, StringFormat='Fecha creacion: {0}'}"/>
+           
             <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" Margin="10,0,10,10">
                 <Button Grid.Column="0" Grid.Row="1" Content="Save Data" Margin="10,0,30,0" />
                 <Button Grid.Column="0" Grid.Row="1" Content="Close" Command="{Binding DataContext.CloseCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
@@ -47,7 +46,7 @@
                                         <Image Source="{Binding ImagePath}" Stretch="Uniform"/>
                                     </Button>
                                     <Border Background="White" Height="50">
-                                        <TextBlock Text="{Binding PlanetName}" 
+                                        <TextBlock Text="{Binding Name}" 
                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
                                 </StackPanel>

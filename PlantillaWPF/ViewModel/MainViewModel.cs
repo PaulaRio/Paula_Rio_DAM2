@@ -13,9 +13,12 @@ namespace PlantillaWPF.ViewModel
         private ViewModelBase? _selectedViewModel;
         public LoginViewModel LoginViewModel { get; }
         public RegistrationViewModel RegistrationViewModel { get; }
+
         public StackPanelViewModel StackPanelViewModel { get; }
 
         public DataGridViewModel DataGridViewModel { get; }
+
+        public OverviewViewModel OverviewViewModel { get; }
 
        
 
@@ -23,14 +26,16 @@ namespace PlantillaWPF.ViewModel
         private bool _isLoggedIn = false;
        
 
-        public MainViewModel(LoginViewModel loginViewModel, RegistrationViewModel registrationViewModel,StackPanelViewModel stackPanelViewModel, DataGridViewModel dataGridViewModel)
+        public MainViewModel(LoginViewModel loginViewModel, RegistrationViewModel registrationViewModel, StackPanelViewModel stackPanelViewModel,DataGridViewModel dataGridViewModel, OverviewViewModel overviewViewModel)
         {
             _selectedViewModel = loginViewModel;
             LoginViewModel = loginViewModel;
             RegistrationViewModel =registrationViewModel;
             StackPanelViewModel=stackPanelViewModel;
             DataGridViewModel=dataGridViewModel;
-          
+            OverviewViewModel = overviewViewModel;
+
+
 
         }
          

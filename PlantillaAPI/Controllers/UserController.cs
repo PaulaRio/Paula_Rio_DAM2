@@ -81,5 +81,23 @@ namespace PlantillaAPI.Controllers
             _reponseApi.Result = responseLogin;
             return Ok(_reponseApi);
         }
+        [HttpGet("validar")]
+        [Authorize] // Requiere un token válido
+        public IActionResult ValidarToken()
+        {
+            var identity = HttpContext.User.Identity;
+
+            if (identity != null && identity.IsAuthenticated)
+            {
+                var username = User.Identity?.Name;
+                return Ok(new
+                {
+                    mensaje = "Token válido",
+                    usuario = username
+                });
+            }
+
+            return Unauthorized(new { mensaje = "Token inválido o expirado" });
+        }
     }
 }
