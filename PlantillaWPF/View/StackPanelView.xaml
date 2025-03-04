@@ -7,26 +7,37 @@
              xmlns:viewModel="clr-namespace:PlantillaWPF.ViewModel" 
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="700" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance Type=viewModel:StackPanelViewModel}"
              Background="DarkSeaGreen">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="6*"/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="0" Grid.Row="0" Stretch="Uniform" Source="{Binding Item.Photo}"/>
+        <Image Grid.Column="1" Grid.RowSpan="2" Stretch="Uniform" Source="{Binding Item.Photo}"/>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" Margin="10">
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Item.Name, StringFormat='Name: {0}'}"/>
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Item.Description, StringFormat='Descricion: {0}'}"/>
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Item.CreatedDate, StringFormat='Fecha creacion: {0}'}"/>
+            <Label Content="Nombre" Foreground="Ivory" Margin="0,0,0,5" FontWeight="Bold" />
+            <ui:TextBox Grid.Column="0" Height="25" Grid.Row="1" Text="{Binding Item.Name, StringFormat=' {0}'}" Background="Ivory"/>
+            <Label Content="Descripcion" Foreground="Ivory" Margin="0,0,0,5" FontWeight="Bold" />
+            <ui:TextBox Grid.Column="0"  Height="25" Grid.Row="1" Text="{Binding Item.Description, StringFormat=' {0}'}" Background="Ivory"/>
+            <!-- Botón para cambiar la visibilidad del TextBox -->
+
+
+            <Expander Grid.Row="1" Foreground="Ivory" HorizontalAlignment="Left" Header="Cambiar imagen " Width="382"  >
+                <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" >
+                    <ui:TextBox Grid.Row="1" Height="25" Margin="0,5,0,0" PlaceholderText="Escribe aquí..." Background="Ivory" Text="{Binding Item.Photo, StringFormat=' {0}'}"/>
+                </StackPanel>
+            </Expander>
+            <Label Content="Fecha creacion" Foreground="Ivory" Margin="0,0,0,5" FontWeight="Bold" />
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Item.CreatedDate}"/>
            
             <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" Margin="10,0,10,10">
-                <Button Grid.Column="0" Grid.Row="1" Content="Save Data" Margin="10,0,30,0" />
+                <Button Grid.Column="0" Grid.Row="1" Content="Save Data" Margin="10,0,30,0" Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
                 <Button Grid.Column="0" Grid.Row="1" Content="Close" Command="{Binding DataContext.CloseCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
             </StackPanel>
         </StackPanel>

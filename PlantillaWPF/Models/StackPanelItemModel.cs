@@ -23,11 +23,14 @@ namespace PlantillaWPF.Models
         {
             return new StackPanelItemModel
             {
-                Photo = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources",
-                Constantes.OBJETOS_POSIBLES.Find(x => (objeto.Name + Constantes.IMAGES_EXTENSION) == x) ?? Constantes.PATH_IMAGE_NOT_FOUND),
+                
                 Name = objeto.Name,
                 Description = objeto.Description,
                 CreatedDate = objeto.CreatedDate,
+                Photo = objeto.Photo,
+                //Photo = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources",
+                //Constantes.OBJETOS_POSIBLES.Find(x => (objeto.Name + Constantes.IMAGES_EXTENSION) == x) ?? Constantes.PATH_IMAGE_NOT_FOUND
+                //),
                 //Distance = $"{objeto.Distancia} light years",
                 //Atmosphere = objeto.Atmosfera,
                 //Temperature = $"{objeto.Temperatura}ºC"

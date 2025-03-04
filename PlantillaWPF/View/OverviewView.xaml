@@ -34,7 +34,7 @@
                             <Border Margin="5">
                                 <StackPanel>
                                     <Button Height="100" Padding="5" Command="{Binding DataContext.SelectViewModelCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding Id}">
-                                        <Image Source="{Binding ImagePath}" Stretch="Uniform"/>
+                                        <Image Source="{Binding Photo}" Stretch="Uniform"/>
                                     </Button>
                                     <Border Background="White" Height="50">
                                         <TextBlock Text="{Binding Name}" 

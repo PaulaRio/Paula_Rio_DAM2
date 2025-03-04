@@ -256,9 +256,45 @@ namespace PlantillaWPF.Services
             throw new NotImplementedException();
         }
 
-        public Task<T?> PatchAsync(string path, T data)
+        public async Task<T?> PatchAsync(string path, T data)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {loginDTO.Token}");
+                    string jsonContent = JsonSerializer.Serialize(data,
+                     new JsonSerializerOptions
+                     {
+                         DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+                         WriteIndented = true  // Hace que el JSON sea más legible (con saltos de línea y espacios)
+                     });
+                    var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+                    HttpResponseMessage request = await httpClient.PatchAsync($"{Constantes.BASE_URL}{path}", content);
+
+                    if (request.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                    {
+                        await Authenticate(path, httpClient, request);
+                        request = await httpClient.PatchAsync($"{Constantes.BASE_URL}{path}", content);
+                        if (request.IsSuccessStatusCode)
+                        {
+                            string responseBody = await request.Content.ReadAsStringAsync();
+                            return JsonSerializer.Deserialize<T>(responseBody, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error en la respuesta: " + request.StatusCode);
+                        }
+                    }
+                    string dataRequest = await request.Content.ReadAsStringAsync();
+                    return JsonSerializer.Deserialize<T>(dataRequest);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error en la solicitud PATCH: {ex.Message}");
+            }
+            return default;
         }
 
         public Task<bool> DeleteAsync(string path, string id)

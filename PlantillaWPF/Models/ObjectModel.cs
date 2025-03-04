@@ -20,9 +20,11 @@ namespace PlantillaWPF.Models
             {
                 Id = objeto.Id,
                 Name = objeto.Name,
-                Photo = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources",
-                Constantes.OBJETOS_POSIBLES.Find(x => (objeto.Name + Constantes.IMAGES_EXTENSION) == x) ?? Constantes.PATH_IMAGE_NOT_FOUND
-               ),
+                Photo =objeto.Photo,
+                //Photo = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources",
+                //Constantes.OBJETOS_POSIBLES.Find(x => (objeto.Name + Constantes.IMAGES_EXTENSION) == x) ?? Constantes.PATH_IMAGE_NOT_FOUND
+               //),
+                
             };
         }
     }

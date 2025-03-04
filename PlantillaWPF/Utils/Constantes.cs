@@ -30,7 +30,7 @@ namespace PlantillaWPF.Utils
         internal const string REGISTER_PATH = "users/register";
         internal const string IMAGES_EXTENSION = ".png";
         internal const string PATH_IMAGE_NOT_FOUND = "Not_found.png";
-        internal const string OBJECT_URL = "Object";
+        internal const string OBJECT_URL = "Object/";
         internal static List<string> OBJETOS_POSIBLES = new List<string>()
         {
             "Altay.png",

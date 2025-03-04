@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PlantillaWPF.DTOs;
@@ -15,10 +16,11 @@ namespace PlantillaWPF.ViewModel
 {
     public partial class StackPanelViewModel : ViewModelBase
     {
-
+        
         [ObservableProperty]
         private ObservableCollection<ObjectModel> _items;
         private int _objetoId;
+        private ObjectDTO _obj;
         private  OverviewViewModel _overviewViewModel;
         private readonly IHttpsJsonClientProvider<ObjectDTO> _httpsJsonClientProvider;
         [ObservableProperty]
@@ -43,7 +45,9 @@ namespace PlantillaWPF.ViewModel
             {
                 Items.Add(ObjectModel.CreateModelFromDTO(objeto));
             }
-            Item = StackPanelItemModel.CreateModelFromDTO(objetos.FirstOrDefault(x => x.Id == _objetoId) ?? new ObjectDTO());
+            _obj = objetos.FirstOrDefault(x => x.Id == _objetoId);
+            Item = StackPanelItemModel.CreateModelFromDTO(_obj) ;
+        
         }
         internal void SetParentViewModel(ViewModelBase overviewViewModel)
         {
@@ -55,7 +59,28 @@ namespace PlantillaWPF.ViewModel
         }
 
         [RelayCommand]
-        private async Task Close(object? parameter)
+        private async Task Save()
+        {
+            _obj.Name=Item.Name;
+            _obj.Description = Item.Description;
+            _obj.Photo = Item.Photo;
+
+            if ( await _httpsJsonClientProvider.PatchAsync($"{Constantes.OBJECT_URL}{_obj.Id}", _obj) != null)
+            {
+                _overviewViewModel.LoadAsync();
+                MessageBox.Show("Datos modificados");
+
+
+            }
+            else
+            {
+                MessageBox.Show("Error al actualizar");
+            }
+        }
+
+
+        [RelayCommand]
+        private async Task Close()
         {
             if (_overviewViewModel != null)
             {

@@ -8,7 +8,7 @@
         xmlns:viewModel="clr-namespace:PlantillaWPF.ViewModel" 
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=viewModel:MainViewModel}"
-        Title="MainWindow" Height="600" Width="800"
+        Title="MainWindow" Height="700" Width="800"
         Background="DarkSeaGreen">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
