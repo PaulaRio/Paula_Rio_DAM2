@@ -11,7 +11,7 @@ namespace PlantillaWPF.Models
     public  class ObjectModel
     {
         public int Id { get; set; }
-        public string ImagePath { get; set; }
+        public string Photo { get; set; }
         public string Name { get; set; }
 
         internal static ObjectModel CreateModelFromDTO(ObjectDTO objeto)
@@ -20,7 +20,7 @@ namespace PlantillaWPF.Models
             {
                 Id = objeto.Id,
                 Name = objeto.Name,
-                ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources",
+                Photo = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources",
                 Constantes.OBJETOS_POSIBLES.Find(x => (objeto.Name + Constantes.IMAGES_EXTENSION) == x) ?? Constantes.PATH_IMAGE_NOT_FOUND
                ),
             };

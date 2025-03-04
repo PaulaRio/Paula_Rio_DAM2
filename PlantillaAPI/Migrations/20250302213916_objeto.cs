@@ -20,6 +20,7 @@ namespace PlantillaAPI.Migrations
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false)
+                    
                 },
                 constraints: table =>
                 {

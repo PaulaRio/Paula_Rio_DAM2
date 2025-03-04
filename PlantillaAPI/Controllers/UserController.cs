@@ -22,6 +22,36 @@ namespace PlantillaAPI.Controllers
             _reponseApi = new ResponseApi();
             _mapper = mapper;
         }
+        [Authorize(Roles = "admin")]
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public IActionResult GetUsers()
+        {
+            var userList = _userRepository.GetUsers();
+            var userListDto = new List<UserDto>();
+
+            foreach (var user in userList)
+            {
+                userListDto.Add(_mapper.Map<UserDto>(user));
+            }
+
+            return Ok(userListDto);
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpGet("{userId:int}", Name = "GetUser")]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult GetUser(string userId)
+        {
+            var user = _userRepository.GetUser(userId);
+            if (user == null) { return NotFound(); }
+
+            return Ok(user);
+        }
 
         [AllowAnonymous]
         [HttpPost("register")]
@@ -81,6 +111,7 @@ namespace PlantillaAPI.Controllers
             _reponseApi.Result = responseLogin;
             return Ok(_reponseApi);
         }
+        
         [HttpGet("validar")]
         [Authorize] // Requiere un token válido
         public IActionResult ValidarToken()
@@ -89,12 +120,10 @@ namespace PlantillaAPI.Controllers
 
             if (identity != null && identity.IsAuthenticated)
             {
-                var username = User.Identity?.Name;
-                return Ok(new
-                {
-                    mensaje = "Token válido",
-                    usuario = username
-                });
+                _reponseApi.StatusCode = HttpStatusCode.OK;
+                _reponseApi.IsSuccess = true;
+                //_reponseApi.Result = responseLogin;
+                return Ok(_reponseApi);
             }
 
             return Unauthorized(new { mensaje = "Token inválido o expirado" });

@@ -18,8 +18,8 @@ namespace PlantillaWPF.DTOs
         public DateTime CreatedDate { get; set; }
         [JsonPropertyName("description")]
         public string Description { get; set; }
-        [JsonPropertyName("imageName")]
-        public string ImageName { get; set; }
+        [JsonPropertyName("photo")]
+        public string Photo { get; set; }
 
     }
 }

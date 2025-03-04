@@ -19,7 +19,7 @@
             <ColumnDefinition Width="6*"/>
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="0" Grid.Row="0" Stretch="Uniform" Source="{Binding Item.ImagePath}"/>
+        <Image Grid.Column="0" Grid.Row="0" Stretch="Uniform" Source="{Binding Item.Photo}"/>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" Margin="10">
             <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Item.Name, StringFormat='Name: {0}'}"/>
             <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Item.Description, StringFormat='Descricion: {0}'}"/>

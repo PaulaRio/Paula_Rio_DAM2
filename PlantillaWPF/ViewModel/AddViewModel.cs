@@ -19,7 +19,9 @@ namespace PlantillaWPF.ViewModel
         public string _Nombre;
         [ObservableProperty]
         public string _Descripcion;
-        
+        [ObservableProperty]
+        public string _Photo;
+
 
         IObjectProvider _objectProvider;
         public AddViewModel(IObjectProvider objectProvider)
@@ -67,7 +69,9 @@ namespace PlantillaWPF.ViewModel
                 ObjectDTO nuevoObjeto = new ObjectDTO
                 {
                     Name=_Nombre,
-                    Description=_Descripcion
+                    Description=_Descripcion,
+                    Photo=_Photo,
+
 
                 };
                 await _objectProvider.PostObjeto(nuevoObjeto);

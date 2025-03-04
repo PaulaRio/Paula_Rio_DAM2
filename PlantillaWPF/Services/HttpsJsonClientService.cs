@@ -15,7 +15,7 @@ namespace PlantillaWPF.Services
 {
     internal class HttpsJsonClientService<T> : IHttpsJsonClientProvider<T> where T : class
     {
-        public static string Token = string.Empty;
+        //public static string Token = string.Empty;
 
 
         LoginDTO loginDTO = App.Current.Services.GetService<LoginDTO>();
@@ -53,7 +53,7 @@ namespace PlantillaWPF.Services
             string dataTokenRequest = await requestToken.Content.ReadAsStringAsync();
             UserDTO tokenUser = JsonSerializer.Deserialize<UserDTO>(dataTokenRequest);
 
-            Token = tokenUser?.Result?.Token ?? string.Empty;
+            loginDTO.Token = tokenUser?.Result?.Token ?? string.Empty;
             httpClient.DefaultRequestHeaders.Remove("Authorization");
             httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {loginDTO.Token}");
         }

@@ -10,11 +10,11 @@ namespace PlantillaWPF.Models
 {
     public class StackPanelItemModel
     {
-        public string ImagePath { get; set; }
         public string Name { get; set; }
 
         public DateTime CreatedDate { get; set; }
         public string Description { get; set; }
+        public string Photo { get; set; }
         //public string Distance { get; set; }
         //public string Atmosphere { get; set; }
         //public string Temperature { get; set; }
@@ -23,7 +23,7 @@ namespace PlantillaWPF.Models
         {
             return new StackPanelItemModel
             {
-                ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources",
+                Photo = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources",
                 Constantes.OBJETOS_POSIBLES.Find(x => (objeto.Name + Constantes.IMAGES_EXTENSION) == x) ?? Constantes.PATH_IMAGE_NOT_FOUND),
                 Name = objeto.Name,
                 Description = objeto.Description,

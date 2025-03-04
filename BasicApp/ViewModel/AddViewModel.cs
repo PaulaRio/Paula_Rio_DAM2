@@ -12,12 +12,12 @@ namespace BasicApp.ViewModel
 {
    public partial class AddViewModel : ViewModelBase
     {
-        private ObjectService objectService;
+        //private ObjectService objectService;
 
-        public AddViewModel(ObjectService objectService)
-        {
-            this.objectService = objectService;
-        }
+        //public AddViewModel(ObjectService objectService)
+        //{
+        //    this.objectService = objectService;
+        //}
 
         public Window? CurrentWindow { get; set; }
 
