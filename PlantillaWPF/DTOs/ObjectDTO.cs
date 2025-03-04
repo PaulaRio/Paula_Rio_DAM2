@@ -15,7 +15,7 @@ namespace PlantillaWPF.DTOs
         public string Name { get; set; }
 
         [JsonPropertyName("createdDate")]
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; } 
         [JsonPropertyName("description")]
         public string Description { get; set; }
 

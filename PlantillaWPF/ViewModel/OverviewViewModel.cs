@@ -14,6 +14,8 @@ using System.Text;
 using System.Threading.Tasks;
 using PlantillaWPF.Interfaces;
 using PlantillaWPF.Utils;
+using PlantillaWPF.Services;
+using PlantillaWPF.View;
 
 namespace PlantillaWPF.ViewModel
 {
@@ -55,6 +57,17 @@ namespace PlantillaWPF.ViewModel
             _stackPanelViewModel.SetParentViewModel(this);
             SelectedViewModel = _stackPanelViewModel;
             await _stackPanelViewModel.LoadAsync();
+        }
+        [RelayCommand]
+        private void Add_Click()
+        {
+
+            var viewModel = new AddViewModel(new ObjectService(new HttpsJsonClientService<ObjectDTO>()));
+            var view = new AddView { DataContext = viewModel };
+            view.ShowDialog();
+            LoadAsync();
+
+
         }
 
     }

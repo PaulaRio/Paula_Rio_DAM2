@@ -22,6 +22,7 @@ namespace PlantillaWPF.Utils
         public const int MIN_NUMBER_ITEMS_STACK_PANEL = 5;
         public const string HALLOWEEN_URL_PATH = "/Resources/Halloween.png";
         public const string JSON_FILTER = "JSON Files (*.json)|*.json|All Files (*.*)|*.*";
+
         #endregion
 
         #region API Url

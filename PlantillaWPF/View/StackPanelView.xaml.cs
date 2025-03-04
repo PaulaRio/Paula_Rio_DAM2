@@ -24,5 +24,7 @@ namespace PlantillaWPF.View
         {
             InitializeComponent();
         }
+
+        
     }
 }

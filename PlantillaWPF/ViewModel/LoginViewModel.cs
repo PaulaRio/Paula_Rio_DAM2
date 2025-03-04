@@ -20,9 +20,9 @@ namespace PlantillaWPF.ViewModel
 
         private  MainViewModel _mainViewModel;
         [ObservableProperty]
-        public string _Email;
+        public string _Email="pau";
         [ObservableProperty]
-        public string _Password;
+        public string _Password="Contrasena1.";
 
         IHttpsJsonClientProvider<UserDTO> _httpsJsonClientProvider;
         public LoginViewModel(IHttpsJsonClientProvider<UserDTO> httpsJsonClientProvider)

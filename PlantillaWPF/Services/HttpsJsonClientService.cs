@@ -297,9 +297,63 @@ namespace PlantillaWPF.Services
             return default;
         }
 
-        public Task<bool> DeleteAsync(string path, string id)
+        public async Task<bool> DeleteAsync(string path, string id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {loginDTO.Token}");
+
+                    HttpResponseMessage response = await httpClient.DeleteAsync($"{Constantes.BASE_URL}{path}{id}");
+                    Console.WriteLine($"Intentando eliminar: {Constantes.BASE_URL}{path}/{id}");
+
+
+                    if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                    {
+                        await Authenticate(path, httpClient, response);
+                        response = await httpClient.DeleteAsync($"{Constantes.BASE_URL}{path}/{id}");
+                    }
+
+                    return response.IsSuccessStatusCode;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error en la solicitud DELETE: {ex.Message}");
+            }
+            return false;
         }
+
+        //public async Task<bool> DeleteAllAsync(string path)
+        //{
+        //    try
+        //    {
+        //        IEnumerable <T?> lista= await GetAsync(path);
+        //        using (HttpClient httpClient = new HttpClient())
+        //        {
+        //            httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {loginDTO.Token}");
+
+        //            HttpResponseMessage response = await httpClient.DeleteAsync($"{Constantes.BASE_URL}{path}");
+
+        //            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+        //            {
+        //                await Authenticate(path, httpClient, response);
+        //                foreach (T t in lista)
+        //                {
+        //                    response = await httpClient.DeleteAsync($"{Constantes.BASE_URL}{path}");
+        //                }          
+        //            }
+
+        //            return response.IsSuccessStatusCode;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"Error en la solicitud DELETE: {ex.Message}");
+        //    }
+        //    return false;
+        //}
+        
     }
 }

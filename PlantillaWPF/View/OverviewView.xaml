@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlantillaWPF.View" 
              xmlns:viewModel="clr-namespace:PlantillaWPF.ViewModel"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:view="clr-namespace:PlantillaWPF.View" 
              d:DataContext="{d:DesignInstance Type=viewModel:OverviewViewModel}"
              mc:Ignorable="d" 
@@ -17,12 +18,13 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
             <RowDefinition Height="200"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <ScrollViewer Grid.Row="0">
-            <StackPanel >
+        <Button  Grid.Row="0" Content="Add" Margin="700,0,0,0"  Command="{Binding Add_ClickCommand}" RenderTransformOrigin="13.16,-6.32"/>
+        <ScrollViewer Grid.Row="1">
+            <StackPanel>
                 <ItemsControl ItemsSource="{Binding Items, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -48,6 +50,6 @@
             </StackPanel>
         </ScrollViewer>
 
-        <ContentControl Grid.Row="1" Content="{Binding SelectedViewModel}"/>
+        <ContentControl Grid.Row="2" Content="{Binding SelectedViewModel}"/>
     </Grid>
 </UserControl>

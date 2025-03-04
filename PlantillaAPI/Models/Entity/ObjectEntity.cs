@@ -5,11 +5,12 @@ namespace PlantillaAPI.Models.Entity
 {
     public class ObjectEntity
     {
+        
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; } 
 
         [Required(ErrorMessage = "Name is required")]
         [MaxLength(200, ErrorMessage = "Max char is 200")]
@@ -20,7 +21,10 @@ namespace PlantillaAPI.Models.Entity
         public string Description { get; set; }
 
         public string Photo { get; set; }
-
+        public ObjectEntity()
+        {
+            CreatedDate = DateTime.UtcNow;
+        }
 
 
     }

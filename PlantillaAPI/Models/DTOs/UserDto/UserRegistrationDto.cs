@@ -8,6 +8,7 @@ namespace PlantillaAPI.Models.DTOs.UserDto
         [Required(ErrorMessage = "Field required: Name")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Field required: Email")]
+        [EmailValidation]
         public string Email { get; set; }
         [Required(ErrorMessage = "Field required: Password")]
         [PasswordValidation]

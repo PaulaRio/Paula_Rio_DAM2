@@ -54,6 +54,7 @@ namespace PlantillaWPF
             //Services
             services.AddSingleton<LoginDTO>();
             services.AddSingleton<MainViewModel>();
+            services.AddSingleton(typeof(IFileService<>), typeof(FileService<>));
             services.AddSingleton(typeof(IHttpsJsonClientProvider<>), typeof(HttpsJsonClientService<>));
             services.AddSingleton<IObjectProvider, ObjectService>();
             services.AddSingleton<IStringUtils, StringUtils>();

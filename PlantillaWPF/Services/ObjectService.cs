@@ -23,7 +23,7 @@ namespace PlantillaWPF.Services
         }
 
        
-        public async Task<IEnumerable<ObjectDTO>> GetObjeto()
+        public async Task<IEnumerable<ObjectDTO>> GetObjetos()
         {
             return await _httpsJsonClientProvider.GetAsync(Constantes.OBJECT_URL);
         }
@@ -56,9 +56,9 @@ namespace PlantillaWPF.Services
                 MessageBox.Show("No se ha podido cargar el objeto, no se ha realizado el cambio");
             }
         }
-        public async Task<bool> DeleteObjeto(string id)
+        public async Task<bool> DeleteObjeto(string id)//await _httpsJsonClientProvider.PatchAsync($"{Constantes.OBJECT_URL}{_obj.Id}", _obj) != null
         {
-            if (await _httpsJsonClientProvider.DeleteAsync(Constantes.OBJECT_URL, id))
+            if (await _httpsJsonClientProvider.DeleteAsync($"{Constantes.OBJECT_URL}", id))
             {
                 return true;
             }
@@ -67,6 +67,39 @@ namespace PlantillaWPF.Services
                 MessageBox.Show("No se ha podido eliminar el objeto");
                 return false;
             }
+        }
+
+        public async Task<bool> DeleteAllObjetos()
+        {
+            bool exito = true;
+            IEnumerable<ObjectDTO> lista = await GetObjetos();
+            foreach (ObjectDTO obj in lista)
+            {
+                if (!await DeleteObjeto( obj.Id.ToString()))
+                {
+                    MessageBox.Show("No se ha podido eliminar el objeto");
+                    exito = false;
+                }
+                
+            }
+            return exito;
+        }
+
+        public async Task PostObjetos(IEnumerable<ObjectDTO> lista)
+        {   if(lista != null) 
+            {
+                foreach (ObjectDTO obj in lista)
+                {
+
+                    await PostObjeto(obj);
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se ha podido cargar la lista, no se ha realizado el cambio");
+            }
+            
         }
     }
 }

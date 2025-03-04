@@ -13,6 +13,9 @@ using PlantillaWPF.View;
 using PlantillaWPF.Interfaces;
 using PlantillaWPF.DTOs;
 using PlantillaWPF.Services;
+using Microsoft.Win32;
+using PlantillaWPF.Utils;
+using System.Windows;
 
 namespace PlantillaWPF.ViewModel
 {
@@ -20,12 +23,13 @@ namespace PlantillaWPF.ViewModel
     {
         [ObservableProperty]
         private DateTime? _releaseDate;
-
+        private readonly IFileService<ObjectDTO> _fileService;
 
         private readonly IObjectProvider _objectProvider;
-        public DataGridViewModel(IObjectProvider objectProvider)
+        public DataGridViewModel(IObjectProvider objectProvider, IFileService<ObjectDTO> fileService)
         {
             _objectProvider = objectProvider;
+            _fileService = fileService;
             Objects = new ObservableCollection<ObjectDTO>();
 
         }
@@ -51,9 +55,7 @@ namespace PlantillaWPF.ViewModel
         [RelayCommand]
         private void Add_Click()
         {
-            // var popUpWindow = App.Current.Services.GetService<AddView>();
-
-            //popUpWindow?.Show();
+            
             var viewModel = new AddViewModel(new ObjectService(new HttpsJsonClientService<ObjectDTO>()));
             var view = new AddView { DataContext = viewModel };
             view.ShowDialog();
@@ -61,10 +63,54 @@ namespace PlantillaWPF.ViewModel
 
 
         }
+        
+        [RelayCommand]
+        public void Export()
+        {
+            var saveFileDialog = new SaveFileDialog
+            {
+                Filter = Constantes.JSON_FILTER
+            };
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                _fileService.Save(saveFileDialog.FileName, Objects);
+            }
+        }
+        [RelayCommand]
+        public async void Import()
+        {
+             
+            var openFileDialog = new OpenFileDialog
+            {
+                Filter = Constantes.JSON_FILTER
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+
+                var loadedObjects = _fileService.Load(openFileDialog.FileName);
+                if (loadedObjects == null || !loadedObjects.Any())
+                {
+                    MessageBox.Show("El archivo seleccionado está vacío o no es válido.");
+                    
+                }
+                await _objectProvider.DeleteAllObjetos();
+                await _objectProvider.PostObjetos(loadedObjects);
+                //foreach (var obj in loadedObjects)
+                //{
+                //    await _objectProvider.PostObjeto(obj);
+                //}
+                Objects.Clear();
+                Objects = new ObservableCollection<ObjectDTO>(loadedObjects);
+            }
+            
+
+        }
         public async Task CargarTabla()
         {
 
-            IEnumerable<ObjectDTO> requestData = await _objectProvider.GetObjeto();
+            IEnumerable<ObjectDTO> requestData = await _objectProvider.GetObjetos();
             foreach (var element in requestData)
             {
                 Objects.Add(element);

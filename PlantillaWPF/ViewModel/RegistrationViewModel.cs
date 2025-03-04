@@ -45,6 +45,10 @@ namespace PlantillaWPF.ViewModel
         [RelayCommand]
         private async Task Register_Click()
         {
+            if (!ComprobacionEmail(Email))
+            {
+                Email = string.Empty;
+            }
             if (!ComprobacionPassword(Password, ConfirmPassword))
             {
                 Password = string.Empty;
@@ -102,6 +106,25 @@ namespace PlantillaWPF.ViewModel
 
 
         }
+        private bool ComprobacionEmail(string email)
+        {
+            string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                MessageBox.Show("El correo electrónico no puede estar vacío.");
+                return false;
+            }
+
+            if (!Regex.IsMatch(email, emailPattern))
+            {
+                MessageBox.Show("El correo electrónico no es válido. Asegúrese de que tiene un formato correcto (ejemplo@dominio.com).");
+                return false;
+            }
+
+            return true;
+        }
+
 
 
         public override Task LoadAsync()

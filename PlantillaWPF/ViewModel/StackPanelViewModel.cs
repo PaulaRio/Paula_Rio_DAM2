@@ -25,11 +25,13 @@ namespace PlantillaWPF.ViewModel
         private readonly IHttpsJsonClientProvider<ObjectDTO> _httpsJsonClientProvider;
         [ObservableProperty]
         private StackPanelItemModel _Item;
+        private readonly IObjectProvider _objectProvider;
 
-       public StackPanelViewModel(IHttpsJsonClientProvider<ObjectDTO> httpsJsonClientProvider)
+        public StackPanelViewModel(IHttpsJsonClientProvider<ObjectDTO> httpsJsonClientProvider, IObjectProvider objectProvider)
         {
             _httpsJsonClientProvider=httpsJsonClientProvider ?? throw new ArgumentNullException(nameof(httpsJsonClientProvider));
-            _items= new ObservableCollection<ObjectModel>();
+            _objectProvider = objectProvider;
+            _items = new ObservableCollection<ObjectModel>();
 
         }
         public void SetIdObject(int id)
@@ -69,6 +71,22 @@ namespace PlantillaWPF.ViewModel
             {
                 _overviewViewModel.LoadAsync();
                 MessageBox.Show("Datos modificados");
+
+
+            }
+            else
+            {
+                MessageBox.Show("Error al actualizar");
+            }
+        }
+
+        [RelayCommand]
+        private async Task Delete()
+        {//await _objectProvider.DeleteObjeto(_obj.Id.ToString())
+            if (await _objectProvider.DeleteObjeto(_obj.Id.ToString()))
+            {
+                _overviewViewModel.LoadAsync();
+                MessageBox.Show("Objeto eliminado");
 
 
             }

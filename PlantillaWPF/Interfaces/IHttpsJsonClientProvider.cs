@@ -18,6 +18,7 @@ namespace PlantillaWPF.Interfaces
         Task<T?> PatchAsync(string path, T data);
 
         Task<bool> DeleteAsync(string path, string id);
+
         Task Authenticate(string path, HttpClient httpClient, HttpResponseMessage request);
         Task<T?> LoginPostAsync(string path, LoginDTO data);
         Task<T?> RegisterPostAsync(string path, RegisterDTO data);
