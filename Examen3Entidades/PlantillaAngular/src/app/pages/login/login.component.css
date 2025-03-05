@@ -1,0 +1,75 @@
+.card-container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 100vh;
+     background: linear-gradient(135deg, #8FBC8F, #2F4F4F); /* Fondo degradado con DarkSeaGreen y DarkSlateGray */
+}
+
+.login-card {
+     width: 100%;
+     max-width: 400px;
+     border-radius: 10px;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+     background-color: #2F4F4F; /* Fondo oscuro DarkSlateGray para la tarjeta */
+     color: white; /* Texto blanco sobre fondo oscuro */
+}
+
+.login-header {
+     background-color: #8FBC8F; /* Color DarkSeaGreen para el encabezado */
+     color: white;
+     border-radius: 10px 10px 0 0;
+     text-align: center;
+}
+
+.login-title {
+     font-size: 24px;
+     font-weight: bold;
+}
+
+.input-custom {
+     width: 100%;
+     margin-bottom: 16px;
+}
+
+.mat-form-field {
+     width: 100%;
+}
+
+.mat-icon {
+     color: #8FBC8F; /* Color para los iconos DarkSeaGreen */
+}
+
+.button-group {
+     display: flex;
+     justify-content: space-between;
+}
+
+button {
+     width: 48%;
+     font-size: 14px;
+     padding: 10px;
+     text-transform: uppercase;
+}
+
+button:hover {
+     transition: background-color 0.3s ease;
+}
+
+button.mat-flat-button.color-primary {
+     background-color: #8FBC8F; /* Color DarkSeaGreen para los botones */
+     color: white;
+}
+
+button.mat-flat-button.color-primary:hover {
+     background-color: #6B8E23; /* Un verde más oscuro para el hover */
+}
+
+button.mat-flat-button.color-accent {
+     background-color: #2F4F4F; /* DarkSlateGray para el botón secundario */
+     color: white;
+}
+
+button.mat-flat-button.color-accent:hover {
+     background-color: #3A5F5F; /* Un tono más oscuro para el hover */
+}

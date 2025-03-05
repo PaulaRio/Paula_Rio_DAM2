@@ -1,0 +1,38 @@
+<article>
+    <img
+      class="listing-photo"
+      [src]="objeto.photo"
+      alt="Exterior photo of {{ objeto.name }}"
+      crossorigin
+    />
+    <section class="listing-description">
+      <h2 class="listing-heading">{{ objeto.name }}</h2>
+     
+    </section>
+    <section class="listing-features">
+      <h2 class="section-heading">Sobre esta pieza</h2>
+      <ul>
+        <li>Nombre: {{ objeto.name }}</li>
+        <li>Fecha: {{ objeto.createdDate }}</li>
+        <li>Descripcion: {{ objeto.description }}</li>
+        
+      </ul>
+    </section>
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input id="name" type="text" [(ngModel)]="objeto.name" />
+    </div>
+  
+    <div class="form-group">
+      <label for="description">Descripcion:</label>
+      <input id="description" type="text" [(ngModel)]="objeto.description" />
+    </div>
+
+    <div class="form-group">
+      <label for="photo">Foto:</label>
+      <input id="photo" type="text" [(ngModel)]="objeto.photo" />
+    </div>
+  
+    <button class="update-button" (click)="actualizarObjeto()">Actualizar</button>
+    <button class="delete-button" (click)="eliminarObjeto()">Eliminar</button>
+  </article>

@@ -1,0 +1,7 @@
+<section class="results">
+     <app-object *ngFor="let objeto of listaObjeto" [objeto]="objeto"></app-object>
+   </section>
+   <div style="text-align: center; margin-top: 20px;">
+    <button (click)="abrirCrear()" style="vertical-align: bottom;">Abrir Crear</button>
+  </div >
+   <app-crear *ngIf="mostrarCrear"></app-crear>

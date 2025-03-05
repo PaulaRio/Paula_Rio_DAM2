@@ -1,0 +1,25 @@
+<div class="card-container">
+     <mat-card class="login-card">
+          <mat-card-header class="login-header">
+               <mat-card-title class="login-title">Iniciar Sesión</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+               <form class="form-custom" [formGroup]="formLogin">
+                    <mat-form-field class="input-custom">
+                         <mat-label>Email</mat-label>
+                         <input matInput formControlName="email" type="email" required>
+                         <mat-icon matPrefix>email</mat-icon>
+                    </mat-form-field>
+                    <mat-form-field class="input-custom">
+                         <mat-label>Contraseña</mat-label>
+                         <input matInput formControlName="password" type="password" required>
+                         <mat-icon matPrefix>lock</mat-icon>
+                    </mat-form-field>
+                    <div class="button-group">
+                         <button mat-flat-button color="primary" (click)="iniciarSesion()">Iniciar Sesión</button>
+                         <button mat-flat-button color="accent" (click)="registrarse()">Registrarse</button>
+                    </div>
+               </form>
+          </mat-card-content>
+     </mat-card>
+</div>

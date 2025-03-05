@@ -1,0 +1,16 @@
+<div class="form-group">
+    <label for="name">Nombre:</label>
+    <input id="name" type="text" [(ngModel)]="objeto.name" />
+  </div>
+
+  <div class="form-group">
+    <label for="description">Descripcion:</label>
+    <input id="description" type="text" [(ngModel)]="objeto.description" />
+  </div>
+
+  <div class="form-group">
+    <label for="photo">Foto:</label>
+    <input id="photo" type="text" [(ngModel)]="objeto.photo" />
+  </div>
+
+  <button class="update-button" (click)="crearObjeto()">Crear</button>

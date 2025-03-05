@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
+
+namespace PlantillaWPF.DTOs
+{
+    public class GrupoDTO
+    {
+        [JsonPropertyName("id")]
+        public int Id { get; set; }
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
+
+        //[JsonPropertyName("createdDate")]
+        //public DateTime CreatedDate { get; set; }
+        [JsonPropertyName("description")]
+        public string Description { get; set; }
+
+        //[JsonPropertyName("photo")]
+        //public string Photo { get; set; }
+
+        [JsonPropertyName("objetosIds")]
+        public List<int> ObjetosIds { get; set; }
+    }
+}
