@@ -13,9 +13,9 @@ namespace PlantillaWPF.DTOs
         public int Id { get; set; }
 
         [JsonPropertyName("idObjeto")]
-        public string IdObjeto { get; set; }
+        public int IdObjeto { get; set; }
 
         [JsonPropertyName("idGrupo")]
-        public string IdGrupo { get; set; }
+        public int IdGrupo { get; set; }
     }
 }

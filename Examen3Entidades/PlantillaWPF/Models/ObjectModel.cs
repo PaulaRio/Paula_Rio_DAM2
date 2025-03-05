@@ -20,16 +20,20 @@ namespace PlantillaWPF.Models
         public string GruposIds { get; set; }
 
 
-        internal static ObjectModel CreateModelFromDTO(ObjectDTO objeto, IEnumerable<GrupoDTO> grupos)
-        {
+        internal static ObjectModel CreateModelFromDTO(ObjectDTO objeto, IEnumerable<RelacionDTO> relaciones)
+        {   List< RelacionDTO > listaFiltrada= new List< RelacionDTO >();
+            foreach (var relacion in relaciones)
+            {   if(relacion.Id == objeto.Id)
+                listaFiltrada.Add(relacion);
+            }
             string listaG = "";
-            if (grupos.Count() == 0)
+            if (listaFiltrada.Count() == 0)
             {
                 listaG += " ";
             }
-            foreach (var grupo in grupos)
+            foreach (var relacion in listaFiltrada)
             {
-                listaG += grupo.Id + ",";
+                listaG += relacion.IdGrupo + ",";
 
             }
             return new ObjectModel

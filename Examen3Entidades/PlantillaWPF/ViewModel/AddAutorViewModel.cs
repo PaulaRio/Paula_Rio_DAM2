@@ -100,7 +100,7 @@ namespace PlantillaWPF.ViewModel
                 {
                     Name = _Nombre,
                     Description = _Descripcion,
-                    IdObjeto =int.Parse(_IdObjeto),
+                    //IdObjeto =int.Parse(_IdObjeto),
                 };
 
                 await _autorProvider.PostAutor(nuevoAutor);

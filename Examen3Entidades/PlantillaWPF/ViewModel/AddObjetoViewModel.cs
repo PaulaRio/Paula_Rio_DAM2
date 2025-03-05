@@ -121,8 +121,8 @@ namespace PlantillaWPF.ViewModel
                     Name = _Nombre,
                     Description = _Descripcion,
                     Photo = string.IsNullOrEmpty(_Photo) ? "string" : _Photo,
-                    AutoresIds = listaAutores.Length > 0 ? listaAutores.ToList() : new List<int>(),
-                    GruposIds = listaGrupos.Length > 0 ? listaGrupos.ToList() : new List<int>(),
+                    //AutoresIds = listaAutores.Length > 0 ? listaAutores.ToList() : new List<int>(),
+                    //GruposIds = listaGrupos.Length > 0 ? listaGrupos.ToList() : new List<int>(),
 
 
                 };

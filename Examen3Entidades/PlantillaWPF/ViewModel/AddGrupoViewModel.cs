@@ -89,7 +89,7 @@ namespace PlantillaWPF.ViewModel
                 {
                     Name=_Nombre,
                     Description=_Descripcion,
-                    ObjetosIds = objetosIds,
+                    //ObjetosIds = objetosIds,
 
 
                 };

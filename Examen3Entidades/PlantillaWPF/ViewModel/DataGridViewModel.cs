@@ -110,7 +110,7 @@ namespace PlantillaWPF.ViewModel
                 Objects.Clear();
                
                 foreach (var obj in loadedObjects)
-                {
+                {   
                     Objects.Add(ObjectModel.CreateModelFromDTO(obj));
                     
                 }
