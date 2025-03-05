@@ -17,7 +17,7 @@ export class CrearComponent implements OnInit {
  route: ActivatedRoute = inject(ActivatedRoute);
  private router = inject(Router);
   objetoId: number | null = null;
-  objeto: Objeto = { id: 0, name: '', description:'', createdDate: new Date(),photo:'' };
+  objeto: Objeto = { id: 0, name: '', email:'', createdDate: new Date(),photo:'' };
   
 
   constructor(

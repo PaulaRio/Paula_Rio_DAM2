@@ -10,11 +10,10 @@
      
     </section>
     <section class="listing-features">
-      <h2 class="section-heading">Sobre esta pieza</h2>
+      <h2 class="section-heading">Sobre este usuario</h2>
       <ul>
         <li>Nombre: {{ objeto.name }}</li>
-        <li>Fecha: {{ objeto.createdDate }}</li>
-        <li>Descripcion: {{ objeto.description }}</li>
+        <li>Email: {{ objeto.email }}</li>
         
       </ul>
     </section>
@@ -24,8 +23,8 @@
     </div>
   
     <div class="form-group">
-      <label for="description">Descripcion:</label>
-      <input id="description" type="text" [(ngModel)]="objeto.description" />
+      <label for="description">Email:</label>
+      <input id="description" type="text" [(ngModel)]="objeto.email" />
     </div>
 
     <div class="form-group">

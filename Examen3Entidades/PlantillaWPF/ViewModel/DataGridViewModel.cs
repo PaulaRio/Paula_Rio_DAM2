@@ -59,14 +59,22 @@ namespace PlantillaWPF.ViewModel
             }
         }
         [RelayCommand]
+        private void Delete()
+        {
+
+            
+
+
+        }
+
+        [RelayCommand]
         private void Add_Click()
         {
             
-            var viewModel = new AddObjetoViewModel(new ObjectService(new HttpsJsonClientService<ObjectDTO>()), 
-                new AutorService(new HttpsJsonClientService<AutorDTO>()), 
-                new GrupoService(new HttpsJsonClientService<GrupoDTO>()),
-                new RelacionService(new HttpsJsonClientService<RelacionDTO>()));
-            var view = new AddObjetoView { DataContext = viewModel };
+            var viewModel = new AddGrupoViewModel(new ObjectService(new HttpsJsonClientService<ObjectDTO>()),  
+                new GrupoService(new HttpsJsonClientService<GrupoDTO>())
+                );
+            var view = new AddGrupoView { DataContext = viewModel };
             view.ShowDialog();
              LoadAsync();
 

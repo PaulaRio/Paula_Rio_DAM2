@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 export class DetailsComponent implements OnInit{
   route: ActivatedRoute = inject(ActivatedRoute);
   objetoId: number | null = null;
-  objeto: Objeto = { id: 0, name: '', description:'', createdDate: new Date(),photo:'' };
+  objeto: Objeto = { id: 0, name: '', email:'', createdDate: new Date(),photo:'' };
 
   constructor(
     private objetoService: ObjetoService

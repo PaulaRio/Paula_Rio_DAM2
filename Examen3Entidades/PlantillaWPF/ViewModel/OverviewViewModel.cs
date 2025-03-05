@@ -23,15 +23,14 @@ namespace PlantillaWPF.ViewModel
 {
     public partial class OverviewViewModel : ViewModelBase
     {
-        [ObservableProperty]
-        public int _IdFiltro=0 ;
+        
         [ObservableProperty]
         private ObservableCollection<AutorModel> _items;
         private IEnumerable<RelacionDTO> _relaciones;
         private ObjectDTO _obj;
        
         private List<int> _gruposIds;
-        private readonly IHttpsJsonClientProvider<ObjectDTO> _httpsJsonClientProvider;
+        private readonly IHttpsJsonClientProvider<AutorDTO> _httpsJsonClientProvider;
         private readonly StackPanelViewModel _stackPanelViewModel;
         private readonly IStringUtils _stringUtils;
         private readonly IObjectProvider _objectProvider;
@@ -41,7 +40,7 @@ namespace PlantillaWPF.ViewModel
         [ObservableProperty]
         private ViewModelBase? _selectedViewModel;
 
-        public OverviewViewModel(IHttpsJsonClientProvider<ObjectDTO> httpsJsonClientProvider,
+        public OverviewViewModel(IHttpsJsonClientProvider<AutorDTO> httpsJsonClientProvider,
             StackPanelViewModel stackPanelViewModel, IStringUtils stringUtils, IObjectProvider objectProvider,
             IAutorProvider autorProvider, IGrupoProvider grupoProvider,IRelacionProvider relacionProvider)
         {
