@@ -84,7 +84,6 @@ namespace PlantillaAPI.Repository
        
         public async Task<bool> UpdateAsync(ObjectEntity ObjectEntity)
         {
-            ObjectEntity.CreatedDate = DateTime.Now;
             _context.Update(ObjectEntity);
             return await Save();
         }

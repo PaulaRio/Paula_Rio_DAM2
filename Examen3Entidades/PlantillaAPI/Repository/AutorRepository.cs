@@ -61,7 +61,7 @@ namespace PlantillaAPI.Repository
             if (_cache.TryGetValue(AutorEntityCacheKey, out ICollection<AutorEntity> AutoresCached))
                 return AutoresCached;
 
-            var autoresFromDb = await _context.Autor.OrderBy(c => c.Name).ToListAsync();
+            var autoresFromDb = await _context.Autor.OrderBy(c => c.Id).ToListAsync();
             var cacheEntryOptions = new MemoryCacheEntryOptions()
                   .SetAbsoluteExpiration(TimeSpan.FromSeconds(CacheExpirationTime));
 

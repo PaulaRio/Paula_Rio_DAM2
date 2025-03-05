@@ -11,29 +11,35 @@ using PlantillaWPF.DTOs;
 using PlantillaWPF.Interfaces;
 using PlantillaWPF.Models;
 using PlantillaWPF.Utils;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PlantillaWPF.ViewModel
 {
     public partial class StackPanelViewModel : ViewModelBase
     {
-        
+
+        //[ObservableProperty]
+        //private ObservableCollection<ObjectModel> _items;
         [ObservableProperty]
-        private ObservableCollection<ObjectModel> _items;
+        private ObservableCollection<AutorModel> _items;
         private int _objetoId;
-        private ObjectDTO _obj;
+        //private ObjectDTO _obj;
+        private AutorDTO _obj;
         private  OverviewViewModel _overviewViewModel;
-        private readonly IHttpsJsonClientProvider<ObjectDTO> _httpsJsonClientProvider;
+        private readonly IHttpsJsonClientProvider<AutorDTO> _httpsJsonClientProvider;
         [ObservableProperty]
         private StackPanelItemModel _Item;
         private readonly IObjectProvider _objectProvider;
+        private readonly IAutorProvider _autorProvider;
         private readonly IRelacionProvider _relacionProvider;
         private IEnumerable<RelacionDTO> _relaciones;
 
-        public StackPanelViewModel(IHttpsJsonClientProvider<ObjectDTO> httpsJsonClientProvider, IObjectProvider objectProvider, IRelacionProvider relacionProvider)
+        public StackPanelViewModel(IHttpsJsonClientProvider<AutorDTO> httpsJsonClientProvider, IAutorProvider autorProvider, IRelacionProvider relacionProvider)
         {
             _httpsJsonClientProvider = httpsJsonClientProvider ?? throw new ArgumentNullException(nameof(httpsJsonClientProvider));
-            _objectProvider = objectProvider;
-            _items = new ObservableCollection<ObjectModel>();
+            _autorProvider = autorProvider;
+             _items = new ObservableCollection<AutorModel>();
+            //_items = new ObservableCollection<AutorModel>();
             _relacionProvider = relacionProvider;
         }
         public void SetIdObject(int id)
@@ -43,15 +49,17 @@ namespace PlantillaWPF.ViewModel
 
         public override async Task LoadAsync()
         {
-            IEnumerable<ObjectDTO> objetos = await _httpsJsonClientProvider.GetAsync(Constantes.OBJECT_URL);
-            Items = new ObservableCollection<ObjectModel>();
-            foreach (var objeto in objetos)
+            IEnumerable<AutorDTO> autores = await _httpsJsonClientProvider.GetAsync(Constantes.AUTOR_URL);
+            Items = new ObservableCollection<AutorModel>();
+            //Items = new ObservableCollection<AutorDTO>();
+            foreach (var autor in autores)
             {
-                Items.Add(ObjectModel.CreateModelFromDTO(objeto, _relaciones));
+                Items.Add(AutorModel.CreateModelFromDTO(autor));
             }
-            _obj = objetos.FirstOrDefault(x => x.Id == _objetoId);
+            _obj = autores.FirstOrDefault(x => x.Id == _objetoId);
             Item = StackPanelItemModel.CreateModelFromDTO(_obj) ;
-        
+            //Item = _obj;
+
         }
         internal void SetParentViewModel(ViewModelBase overviewViewModel)
         {
@@ -65,11 +73,11 @@ namespace PlantillaWPF.ViewModel
         [RelayCommand]
         private async Task Save()
         {
-            _obj.Name=Item.Name;
-            _obj.Description = Item.Description;
-            _obj.Photo = Item.Photo;
+            _obj.IdObjeto=Item.IdObjeto;
+           
+            
 
-            if ( await _httpsJsonClientProvider.PatchAsync($"{Constantes.OBJECT_URL}{_obj.Id}", _obj) != null)
+            if ( await _httpsJsonClientProvider.PatchAsync($"{Constantes.AUTOR_URL}{_obj.Id}", _obj) != null)
             {
                 _overviewViewModel.LoadAsync();
                 MessageBox.Show("Datos modificados");

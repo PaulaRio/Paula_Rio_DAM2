@@ -27,11 +27,7 @@ namespace PlantillaWPF.ViewModel
         [ObservableProperty]
         public string _Nombre;
         [ObservableProperty]
-        public string _Descripcion;
-        [ObservableProperty]
-        public string _Photo;
-        [ObservableProperty]
-        public string _IdAutor;
+        public string _Email;
         [ObservableProperty]
         public string _IdsGrupos;
 
@@ -120,18 +116,17 @@ namespace PlantillaWPF.ViewModel
             
    
             bool compGrupos= ComprobarGrupos();
-            bool compAutor = ComprobarAutor();
+           
 
             try
             {
-                if (compGrupos&&compAutor)
+                if (compGrupos)
                 {
                     ObjectDTO nuevoObjeto = new ObjectDTO
                     {
                         Name = _Nombre,
-                        Description = _Descripcion,
-                        Photo = string.IsNullOrEmpty(_Photo) ? "string" : _Photo,
-                        IdAutor = int.Parse(IdAutor),
+                        Email = _Email,
+                        
                         //GruposIds = listaGrupos.Length > 0 ? listaGrupos.ToList() : new List<int>(),
 
 
@@ -173,20 +168,6 @@ namespace PlantillaWPF.ViewModel
             }
             return true;
         }
-        private bool ComprobarAutor()
-        {
-            
-            foreach (var autorId in _allIdAutores)
-            {
-                if (!(autorId==int.Parse(IdAutor)))
-                {
-                    MessageBox.Show("El autor no existe, debes crearlo primero");
-                    IdAutor = "";
-                    return false;
-                }
-
-            }
-            return true;
-        }
+        
     }
 }

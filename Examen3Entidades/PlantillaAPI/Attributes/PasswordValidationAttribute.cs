@@ -10,7 +10,7 @@
                 return false;
 
             // Check password length (8-20 characters)
-            if (password.Length < 8 || password.Length > 20)
+            if (password.Length < 8 || password.Length > 30)
                 return false;
 
             // Check for at least one number

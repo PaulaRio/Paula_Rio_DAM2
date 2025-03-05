@@ -12,8 +12,8 @@ using PlantillaAPI.Data;
 namespace PlantillaAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250305130800_ultimaporfi")]
-    partial class ultimaporfi
+    [Migration("20250304192354_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -228,52 +228,6 @@ namespace PlantillaAPI.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("PlantillaAPI.Models.Entity.AutorEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Autor");
-                });
-
-            modelBuilder.Entity("PlantillaAPI.Models.Entity.GrupoEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Grupo");
-                });
-
             modelBuilder.Entity("PlantillaAPI.Models.Entity.ObjectEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -290,9 +244,6 @@ namespace PlantillaAPI.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<int>("IdAutor")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -305,25 +256,6 @@ namespace PlantillaAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Object");
-                });
-
-            modelBuilder.Entity("PlantillaAPI.Models.Entity.RelacionEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("IdGrupo")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdObjeto")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Relacion");
                 });
 
             modelBuilder.Entity("PlantillaAPI.Models.Entity.User", b =>

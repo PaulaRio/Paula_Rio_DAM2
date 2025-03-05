@@ -42,9 +42,9 @@
                     <UniformGrid Rows="1" Columns="3"  />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
-            <MenuItem Header="StackPanel" Width="auto" BorderBrush="Gray" Background="AliceBlue" Command="{Binding SelectViewModelCommand}"
+            <MenuItem Header="Pedidos" Width="auto" BorderBrush="Gray" Background="AliceBlue" Command="{Binding SelectViewModelCommand}"
               CommandParameter="{Binding OverviewViewModel}"/>
-            <MenuItem Header="GridView" Width="auto" BorderBrush="Gray" Background="AliceBlue" Command="{Binding SelectViewModelCommand}"
+            <MenuItem Header="Pedidos" Width="auto" BorderBrush="Gray" Background="AliceBlue" Command="{Binding SelectViewModelCommand}"
               CommandParameter="{Binding DataGridViewModel}"/>
             <MenuItem Header="Log Out" Width="auto" BorderBrush="Gray" Background="AliceBlue" Command="{Binding Logout_ClickCommand}"/>
         </Menu>

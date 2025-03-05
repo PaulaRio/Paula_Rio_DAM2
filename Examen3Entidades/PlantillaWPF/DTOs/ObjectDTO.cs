@@ -15,28 +15,21 @@ namespace PlantillaWPF.DTOs
         [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonPropertyName("createdDate")]
-        public DateTime CreatedDate { get; set; } 
-        [JsonPropertyName("description")]
-        public string Description { get; set; }
+        [JsonPropertyName("email")]
+        public string Email { get; set; }
 
-        [JsonPropertyName("photo")]
-        public string Photo { get; set; }
 
-        [JsonPropertyName("idAutor")]
-        public int IdAutor { get; set; }
 
 
         internal static ObjectDTO CreateDTOFromModel(ObjectModel objeto)
         {
-            
+
             return new ObjectDTO
             {
                 Id = objeto.Id,
                 Name = objeto.Name,
-                Description = objeto.Description,
-                Photo = objeto.Photo,
-                IdAutor = objeto.IdAutor,
+                Email = objeto.Email,
+
 
 
             };

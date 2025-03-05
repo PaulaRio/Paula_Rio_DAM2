@@ -22,9 +22,8 @@ namespace PlantillaWPF.ViewModel
         [ObservableProperty]
         public string _Nombre;
         [ObservableProperty]
-        public string _Descripcion;
-        [ObservableProperty]
-        public string _ObjetosIds;
+        public string _Precio;
+       
 
         
         private readonly IObjectProvider _objectProvider;
@@ -88,8 +87,8 @@ namespace PlantillaWPF.ViewModel
                 GrupoDTO nuevoGrupo = new GrupoDTO
                 {
                     Name=_Nombre,
-                    Description=_Descripcion,
-                    //ObjetosIds = objetosIds,
+                    Precio=int.Parse(_Precio),
+                    
 
 
                 };

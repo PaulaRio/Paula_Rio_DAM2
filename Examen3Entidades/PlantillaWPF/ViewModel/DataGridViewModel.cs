@@ -24,21 +24,22 @@ namespace PlantillaWPF.ViewModel
     {
         [ObservableProperty]
         private DateTime? _releaseDate;
-        private IEnumerable<RelacionDTO> _relaciones;
-        private readonly IFileService<ObjectDTO> _fileService;
+        //private IEnumerable<RelacionDTO> _relaciones;
+        private readonly IFileService<GrupoDTO> _fileService;
 
         private readonly IObjectProvider _objectProvider;
+        private readonly IGrupoProvider _grupoProvider;
         private readonly IRelacionProvider _relacionProvider;
-        public DataGridViewModel(IObjectProvider objectProvider, IFileService<ObjectDTO> fileService,IRelacionProvider relacionProvider)
+        public DataGridViewModel(IGrupoProvider grupoProvider, IFileService<GrupoDTO> fileService,IRelacionProvider relacionProvider)
         {
-            _objectProvider = objectProvider;
+            _grupoProvider = grupoProvider;
             _relacionProvider= relacionProvider;
             _fileService = fileService;
-            Objects = new ObservableCollection<ObjectModel>();
+            Objects = new ObservableCollection<GrupoDTO>();
 
         }
         [ObservableProperty]
-        private ObservableCollection<ObjectModel> objects;
+        private ObservableCollection<GrupoDTO> objects;
 
     
 
@@ -75,7 +76,7 @@ namespace PlantillaWPF.ViewModel
         [RelayCommand]
         public void Export()
         {
-            List<ObjectDTO> lista=new List<ObjectDTO>();
+            List<GrupoDTO> lista=new List<GrupoDTO>();
             var saveFileDialog = new SaveFileDialog
             {
                 Filter = Constantes.JSON_FILTER
@@ -85,7 +86,7 @@ namespace PlantillaWPF.ViewModel
             {
                 foreach (var obj in Objects)
                 {
-                    lista.Add(ObjectDTO.CreateDTOFromModel(obj));
+                    lista.Add(obj);
 
                 }
                 _fileService.Save(saveFileDialog.FileName, lista);
@@ -109,14 +110,14 @@ namespace PlantillaWPF.ViewModel
                     MessageBox.Show("El archivo seleccionado está vacío o no es válido.");
                     
                 }
-                await _objectProvider.DeleteAllObjetos();
-                await _objectProvider.PostObjetos(loadedObjects);
+                await _grupoProvider.DeleteAllGrupos();
+                await _grupoProvider.PostGrupos(loadedObjects);
                 
                 Objects.Clear();
                
                 foreach (var obj in loadedObjects)
                 {   
-                    Objects.Add(ObjectModel.CreateModelFromDTO(obj, _relaciones));
+                    Objects.Add(obj);
                     
                 }
             }
@@ -126,17 +127,17 @@ namespace PlantillaWPF.ViewModel
         public async Task CargarTabla()
         {
 
-            IEnumerable<ObjectDTO> requestData = await _objectProvider.GetObjetos();
+            IEnumerable<GrupoDTO> requestData = await _grupoProvider.GetGrupos();
 
             foreach (var element in requestData)
             {
-                Objects.Add(ObjectModel.CreateModelFromDTO(element, _relaciones));
+                Objects.Add(element);
             }
 
         }
         public override async Task LoadAsync()
         {
-            _relaciones = await _relacionProvider.GetRelaciones();
+            //_relaciones = await _relacionProvider.GetRelaciones();
             Objects.Clear();
             await CargarTabla();
 

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PlantillaAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class ultimaporfi : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -52,34 +52,6 @@ namespace PlantillaAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Autor",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Autor", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Grupo",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Grupo", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Object",
                 columns: table => new
                 {
@@ -88,26 +60,11 @@ namespace PlantillaAPI.Migrations
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IdAutor = table.Column<int>(type: "int", nullable: false)
+                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Object", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Relacion",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IdObjeto = table.Column<int>(type: "int", nullable: false),
-                    IdGrupo = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Relacion", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -291,16 +248,7 @@ namespace PlantillaAPI.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Autor");
-
-            migrationBuilder.DropTable(
-                name: "Grupo");
-
-            migrationBuilder.DropTable(
                 name: "Object");
-
-            migrationBuilder.DropTable(
-                name: "Relacion");
 
             migrationBuilder.DropTable(
                 name: "Users");

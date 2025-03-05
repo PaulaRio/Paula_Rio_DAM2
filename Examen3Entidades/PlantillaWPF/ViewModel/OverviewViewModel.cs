@@ -26,7 +26,7 @@ namespace PlantillaWPF.ViewModel
         [ObservableProperty]
         public int _IdFiltro=0 ;
         [ObservableProperty]
-        private ObservableCollection<ObjectModel> _items;
+        private ObservableCollection<AutorModel> _items;
         private IEnumerable<RelacionDTO> _relaciones;
         private ObjectDTO _obj;
        
@@ -51,20 +51,20 @@ namespace PlantillaWPF.ViewModel
             _httpsJsonClientProvider = httpsJsonClientProvider;
             _stackPanelViewModel = stackPanelViewModel;
             _stringUtils = stringUtils;
-            _items = new ObservableCollection<ObjectModel>();
+            _items = new ObservableCollection<AutorModel>();
             _relacionProvider = relacionProvider;
         }
 
         public override async Task LoadAsync()
         {
             // Obtén todos los objetos
-            IEnumerable<ObjectDTO> objetos = await _httpsJsonClientProvider.GetAsync(Constantes.OBJECT_URL);
+            IEnumerable<AutorDTO> autores = await _autorProvider.GetAutores();
 
             // Filtrar los objetos según el _IdFiltro
-            var objetosFiltrados = FiltrarObjetos(objetos, _IdFiltro);
+            
 
             // Actualizar la colección observable de objetos
-            Items = new ObservableCollection<ObjectModel>(objetosFiltrados);
+            //Items = new ObservableCollection<ObjectModel>(objetosFiltrados);
             _relaciones = await _relacionProvider.GetRelaciones();
             //IEnumerable<ObjectDTO> objetos = await _httpsJsonClientProvider.GetAsync(Constantes.OBJECT_URL);//Todos objetos
             //Items = new ObservableCollection<ObjectModel>();
@@ -87,19 +87,19 @@ namespace PlantillaWPF.ViewModel
             await LoadAsync();
         }
 
-        public IEnumerable<ObjectModel> FiltrarObjetos(IEnumerable<ObjectDTO> objetos, int _IdFiltro)
-        {
-            if (_IdFiltro == null || _IdFiltro == 0)  
-            {
+        //public IEnumerable<ObjectModel> FiltrarObjetos(IEnumerable<ObjectDTO> objetos, int _IdFiltro)
+        //{
+        //    if (_IdFiltro == null || _IdFiltro == 0)  
+        //    {
                
-                return objetos.Select(obj => ObjectModel.CreateModelFromDTO(obj, _relaciones));
-            }
+        //        return objetos.Select(obj => ObjectModel.CreateModelFromDTO(obj, _relaciones));
+        //    }
 
 
-            return objetos.Where(obj => obj.IdAutor == _IdFiltro || _relaciones.Where(r => r.IdObjeto == obj.Id).Any(r => r.IdGrupo == _IdFiltro))
-                .Select(obj => ObjectModel.CreateModelFromDTO(obj,_relaciones)).ToList();
+        //    return objetos.Where(obj => obj.IdAutor == _IdFiltro || _relaciones.Where(r => r.IdObjeto == obj.Id).Any(r => r.IdGrupo == _IdFiltro))
+        //        .Select(obj => ObjectModel.CreateModelFromDTO(obj,_relaciones)).ToList();
             
-        }
+        //}
 
         [RelayCommand]
         private async Task SelectViewModel(object? parameter)

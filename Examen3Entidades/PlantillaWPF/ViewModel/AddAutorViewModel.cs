@@ -22,9 +22,7 @@ namespace PlantillaWPF.ViewModel
         private ICollection<AutorDTO> _allAutores;
         private List<int> _allIdAutores;
         [ObservableProperty]
-        public string _Nombre;
-        [ObservableProperty]
-        public string _Descripcion;
+        public string _IdsGrupos;
         [ObservableProperty]
         public string _IdObjeto;
         
@@ -94,9 +92,9 @@ namespace PlantillaWPF.ViewModel
            
                 AutorDTO nuevoAutor = new AutorDTO
                 {
-                    Name = _Nombre,
-                    Description = _Descripcion,
-                    //IdObjeto =int.Parse(_IdObjeto),
+                    IdObjeto = int.Parse(IdObjeto),
+                   
+                    
                 };
 
                 await _autorProvider.PostAutor(nuevoAutor);
