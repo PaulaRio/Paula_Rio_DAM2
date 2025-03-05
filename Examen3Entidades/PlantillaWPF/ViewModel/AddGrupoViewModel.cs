@@ -75,13 +75,13 @@ namespace PlantillaWPF.ViewModel
 
         private async Task<bool> PostGrupoAsync()
         {
-            List<int> objetosIds = string.IsNullOrEmpty(_ObjetosIds) ? new List<int>() : _ObjetosIds.Split(',').Select(int.Parse).ToList();
-            if (!await _objectProvider.ExistenObjetos(objetosIds.ToList()))
-            {
-                MessageBox.Show("Uno o más objetos no existen. Debes crear los autores primero.");
-                _ObjetosIds = string.Empty;
-                return false;
-            }
+            //List<int> objetosIds = string.IsNullOrEmpty(_ObjetosIds) ? new List<int>() : _ObjetosIds.Split(',').Select(int.Parse).ToList();
+            //if (!await _objectProvider.ExistenObjetos(objetosIds.ToList()))
+            //{
+            //    MessageBox.Show("Uno o más objetos no existen. Debes crear los autores primero.");
+            //    _ObjetosIds = string.Empty;
+            //    return false;
+            //}
             try
             {
                 

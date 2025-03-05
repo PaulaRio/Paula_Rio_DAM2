@@ -85,16 +85,12 @@ namespace PlantillaWPF.ViewModel
         {
             try
             {
-                if (string.IsNullOrEmpty(_IdObjeto))
-                {
-                    MessageBox.Show("El campo 'ID Objeto' es obligatorio.");
-                    return false;
-                }
-                if ( !await _objectProvider.ExisteObjeto(IdObjeto))
-                {
-                MessageBox.Show("El ID del objeto no existe. Debe ser un objeto válido.");
-                return false;
-                }
+                
+                //if ( !await _objectProvider.ExisteObjeto(IdObjeto))
+                //{
+                //MessageBox.Show("El ID del objeto no existe. Debe ser un objeto válido.");
+                //return false;
+                //}
            
                 AutorDTO nuevoAutor = new AutorDTO
                 {

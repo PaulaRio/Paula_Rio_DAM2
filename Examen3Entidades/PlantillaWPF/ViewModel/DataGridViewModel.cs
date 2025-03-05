@@ -63,7 +63,8 @@ namespace PlantillaWPF.ViewModel
             
             var viewModel = new AddObjetoViewModel(new ObjectService(new HttpsJsonClientService<ObjectDTO>()), 
                 new AutorService(new HttpsJsonClientService<AutorDTO>()), 
-                new GrupoService(new HttpsJsonClientService<GrupoDTO>()));
+                new GrupoService(new HttpsJsonClientService<GrupoDTO>()),
+                new RelacionService(new HttpsJsonClientService<RelacionDTO>()));
             var view = new AddObjetoView { DataContext = viewModel };
             view.ShowDialog();
              LoadAsync();

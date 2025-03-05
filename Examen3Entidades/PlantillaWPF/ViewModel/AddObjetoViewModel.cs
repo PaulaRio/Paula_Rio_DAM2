@@ -61,12 +61,15 @@ namespace PlantillaWPF.ViewModel
             Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w is AddObjetoView)?.Close();
         }
 
-        //TODO: comprobacion campos
+       
         [RelayCommand]
         private async Task Save()
         {
-            if (await PostObjectAsync())
+            await LoadAsync();
+            ObjectDTO objeto = await PostObjectAsync();
+            if (objeto!=null)
             {
+                await PostRelacionAsync(objeto);
                 MessageBox.Show("Post exitoso");
                 
             }
@@ -85,7 +88,7 @@ namespace PlantillaWPF.ViewModel
             _allAutores = new ObservableCollection<AutorDTO>();
             foreach (var autor in autores)
             {
-                _allAutores.Add(autor);
+                //_allAutores.Add(autor);
                 _allIdAutores.Add(autor.Id);
             }
             IEnumerable<GrupoDTO> grupos = await _grupoProvider.GetGrupos();
@@ -98,26 +101,30 @@ namespace PlantillaWPF.ViewModel
 
 
         }
+        private async Task PostRelacionAsync(ObjectDTO objeto)
+        {
+            
 
+            foreach (var idGrupo in IdsGrupos)
+            {  
+                await _relacionProvider.PostRelacion(new RelacionDTO { IdGrupo= idGrupo,IdObjeto= objeto.Id });
+                
 
-        private async Task<bool> PostObjectAsync()
-        {   await LoadAsync();
-            bool exito=true;
-
-            List<int> gruposIds = string.IsNullOrEmpty(IdsGrupos) ? new List<int>() : IdsGrupos.Split(',').Select(int.Parse).ToList();
-            foreach (var grupoId in gruposIds){
-                if (!_allIdGrupos.Contains(grupoId))
-                {
-                    MessageBox.Show("Uno de los grupos introducidos no existe, debes crearlo primero");
-                    gruposIds.Clear();
-                    exito = false;
-                }
-               
             }
+            
+
+        }
+
+        private async Task<ObjectDTO> PostObjectAsync()
+        {
+            
+   
+            bool compGrupos= ComprobarGrupos();
+            bool compAutor = ComprobarAutor();
 
             try
             {
-                if (exito)
+                if (compGrupos&&compAutor)
                 {
                     ObjectDTO nuevoObjeto = new ObjectDTO
                     {
@@ -132,22 +139,54 @@ namespace PlantillaWPF.ViewModel
 
 
 
-                    await _objectProvider.PostObjeto(nuevoObjeto);
+                    return await _objectProvider.PostObjeto(nuevoObjeto);
                     MessageBox.Show("Objeto creado exitosamente");
-                    exito= true;
+                    
 
 
                 }
+
+                return default;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                exito= false;
+                return default;
             }
-            return exito;
             
 
+
         }
-        
+
+        private bool ComprobarGrupos()
+        {
+            List<int> gruposIds = string.IsNullOrEmpty(IdsGrupos) ? new List<int>() : IdsGrupos.Split(',').Select(int.Parse).ToList();
+            foreach (var grupoId in gruposIds)
+            {
+                if (!_allIdGrupos.Contains(grupoId))
+                {
+                    MessageBox.Show("Uno de los grupos introducidos no existe, debes crearlo primero");
+                    gruposIds.Clear();
+                    return false;
+                }
+
+            }
+            return true;
+        }
+        private bool ComprobarAutor()
+        {
+            
+            foreach (var autorId in _allIdAutores)
+            {
+                if (!(autorId==int.Parse(IdAutor)))
+                {
+                    MessageBox.Show("El autor no existe, debes crearlo primero");
+                    IdAutor = "";
+                    return false;
+                }
+
+            }
+            return true;
+        }
     }
 }

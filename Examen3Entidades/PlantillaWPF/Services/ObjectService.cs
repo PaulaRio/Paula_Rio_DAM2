@@ -46,14 +46,15 @@ namespace PlantillaWPF.Services
             }
         }
 
-        public async Task PostObjeto(ObjectDTO Objeto)
+        public async Task<ObjectDTO> PostObjeto(ObjectDTO Objeto)
         {
             if (Objeto != null)
             {
-                await _httpsJsonClientProvider.PostAsync(Constantes.OBJECT_URL, Objeto);
+               return await _httpsJsonClientProvider.PostAsync(Constantes.OBJECT_URL, Objeto);
             }
             else
             {
+                return default;
                 MessageBox.Show("No se ha podido cargar el objeto, no se ha realizado el cambio");
             }
         }
