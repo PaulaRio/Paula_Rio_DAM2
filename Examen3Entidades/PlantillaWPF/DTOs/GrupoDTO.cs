@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlantillaWPF.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,6 @@ namespace PlantillaWPF.DTOs
         //[JsonPropertyName("photo")]
         //public string Photo { get; set; }
 
-        [JsonPropertyName("objetosIds")]
-        public List<int> ObjetosIds { get; set; }
     }
+
 }

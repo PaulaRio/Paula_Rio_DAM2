@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using PlantillaWPF.DTOs;
 using PlantillaWPF.Utils;
@@ -14,9 +15,36 @@ namespace PlantillaWPF.Models
         public string Photo { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string AutoresIds { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public int IdAutor { get; set; }
         public string GruposIds { get; set; }
 
+
+        internal static ObjectModel CreateModelFromDTO(ObjectDTO objeto, IEnumerable<GrupoDTO> grupos)
+        {
+            string listaG = "";
+            if (grupos.Count() == 0)
+            {
+                listaG += " ";
+            }
+            foreach (var grupo in grupos)
+            {
+                listaG += grupo.Id + ",";
+
+            }
+            return new ObjectModel
+            {
+                Id = objeto.Id,
+                Name = objeto.Name,
+                Description = objeto.Description,
+                CreatedDate = objeto.CreatedDate,
+                Photo = objeto.Photo,
+                IdAutor = objeto.IdAutor, 
+                GruposIds = listaG.Substring(0, listaG.Length - 1)
+            };
+        }
+
+        /*
         internal static ObjectModel CreateModelFromDTO(ObjectDTO objeto)
         {
            
@@ -49,9 +77,8 @@ namespace PlantillaWPF.Models
                 Photo =objeto.Photo,
                 AutoresIds = listaA.Substring(0,listaA.Length-1),
                 GruposIds = listaG.Substring(0, listaG.Length-1)
-
-
             };
         }
+        */
     }
 }

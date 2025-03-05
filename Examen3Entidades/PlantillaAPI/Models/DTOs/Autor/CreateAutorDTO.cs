@@ -12,8 +12,8 @@ namespace PlantillaAPI.Models.DTOs.Object
         [MaxLength(1000, ErrorMessage = "Max char is 1000")]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "IdObjeto is required")]
-        public int IdObjeto { get; set; }
+        //[Required(ErrorMessage = "IdObjeto is required")]
+        //public int IdObjeto { get; set; }
 
         //public string Photo { get; set; }
 

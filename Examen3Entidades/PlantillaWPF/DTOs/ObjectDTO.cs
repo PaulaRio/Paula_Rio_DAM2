@@ -23,12 +23,27 @@ namespace PlantillaWPF.DTOs
         [JsonPropertyName("photo")]
         public string Photo { get; set; }
 
-        [JsonPropertyName("gruposIds")]
-        public List<int> GruposIds { get; set; }
+        [JsonPropertyName("idAutor")]
+        public int IdAutor { get; set; }
 
-        [JsonPropertyName("autoresIds")]
-        public List<int> AutoresIds { get; set; }
 
+        internal static ObjectDTO CreateDTOFromModel(ObjectModel objeto)
+        {
+            
+            return new ObjectDTO
+            {
+                Id = objeto.Id,
+                Name = objeto.Name,
+                Description = objeto.Description,
+                Photo = objeto.Photo,
+                IdAutor = objeto.IdAutor,
+
+
+            };
+        }
+
+
+        /*
         internal static ObjectDTO CreateDTOFromModel(ObjectModel objeto)
         {
             List<int> listaA = new List<int>();
@@ -62,6 +77,7 @@ namespace PlantillaWPF.DTOs
 
             };
         }
+        */
 
     }
 }

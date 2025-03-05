@@ -21,8 +21,9 @@ namespace PlantillaAPI.Models.Entity
         public string Description { get; set; }
 
         public string Photo { get; set; }
-        public List<int> AutoresIds { get; set; }
-        public List<int> GruposIds { get; set; }
+        
+        public int idAutor { get; set; }
+
         public ObjectEntity()
         {
             CreatedDate = DateTime.UtcNow;

@@ -3,6 +3,7 @@ using AutoMapper;
 using PlantillaAPI.Models.DTOs;
 using PlantillaAPI.Models.Entity;
 using PlantillaAPI.Models.DTOs.Object;
+using PlantillaAPI.Models.DTOs.Relacion;
 
 
 namespace PlantillaAPI.AutoMapper
@@ -20,6 +21,9 @@ namespace PlantillaAPI.AutoMapper
 
             CreateMap<GrupoEntity, GrupoDTO>().ReverseMap();
             CreateMap<GrupoEntity, CreateGrupoDTO>().ReverseMap();
+
+            CreateMap<RelacionEntity, RelacionDTO>().ReverseMap();
+            CreateMap<RelacionEntity, CreateRelacionDTO>().ReverseMap();
 
             CreateMap<AppUser, UserDto>().ReverseMap();
         }

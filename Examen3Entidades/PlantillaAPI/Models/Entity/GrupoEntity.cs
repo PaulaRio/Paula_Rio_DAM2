@@ -19,7 +19,7 @@ namespace PlantillaAPI.Models.Entity
         [MaxLength(1000, ErrorMessage = "Max char is 1000")]
         public string Description { get; set; }
 
-        public List<int> ObjetosIds { get; set; }
+        //public List<int> ObjetosIds { get; set; }
 
         //public string Photo { get; set; }
         //public ObjectEntity()

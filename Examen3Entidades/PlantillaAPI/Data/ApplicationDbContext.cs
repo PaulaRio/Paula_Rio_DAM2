@@ -24,6 +24,7 @@ namespace PlantillaAPI.Data
         public DbSet<ObjectEntity> Object { get; set; }
         public DbSet<AutorEntity> Autor { get; set; }
         public DbSet<GrupoEntity> Grupo { get; set; }
+        public DbSet<RelacionEntity> Relacion { get; set; }
 
     }
 }

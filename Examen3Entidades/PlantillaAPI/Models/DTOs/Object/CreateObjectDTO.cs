@@ -14,9 +14,9 @@ namespace PlantillaAPI.Models.DTOs.Object
 
         public string Photo { get; set; }
 
-        public List<int> AutoresIds { get; set; }
+        //public List<int> AutoresIds { get; set; }
 
-        public List<int> GruposIds { get; set; }
+        //public List<int> GruposIds { get; set; }
 
        
     }

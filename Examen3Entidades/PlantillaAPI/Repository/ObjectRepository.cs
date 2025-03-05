@@ -71,11 +71,11 @@ namespace PlantillaAPI.Repository
 
         public async Task<ObjectEntity> GetAsync(int id)
         {
-            if (_cache.TryGetValue(ObjectEntityCacheKey, out ICollection<ObjectEntity> GhibliCached))
+            if (_cache.TryGetValue(ObjectEntityCacheKey, out ICollection<ObjectEntity> ObjectCached))
             {
-                var GhibliEntity = GhibliCached.FirstOrDefault(c => c.Id == id);
-                if (GhibliEntity != null)
-                    return GhibliEntity;
+                var ObjectEntity = ObjectCached.FirstOrDefault(c => c.Id == id);
+                if (ObjectEntity != null)
+                    return ObjectEntity;
             }
 
             return await _context.Object.FirstOrDefaultAsync(c => c.Id == id);
