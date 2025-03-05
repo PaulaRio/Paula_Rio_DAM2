@@ -17,6 +17,7 @@ using PlantillaWPF.Utils;
 using PlantillaWPF.Services;
 using PlantillaWPF.View;
 using Microsoft.Extensions.DependencyInjection;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PlantillaWPF.ViewModel
 {
@@ -26,8 +27,9 @@ namespace PlantillaWPF.ViewModel
         public int _IdFiltro=0 ;
         [ObservableProperty]
         private ObservableCollection<ObjectModel> _items;
+        private IEnumerable<RelacionDTO> _relaciones;
         private ObjectDTO _obj;
-        private List<int> _autoresIds;
+       
         private List<int> _gruposIds;
         private readonly IHttpsJsonClientProvider<ObjectDTO> _httpsJsonClientProvider;
         private readonly StackPanelViewModel _stackPanelViewModel;
@@ -35,12 +37,13 @@ namespace PlantillaWPF.ViewModel
         private readonly IObjectProvider _objectProvider;
         private readonly IAutorProvider _autorProvider;
         private readonly IGrupoProvider _grupoProvider;
+        private readonly IRelacionProvider _relacionProvider;
         [ObservableProperty]
         private ViewModelBase? _selectedViewModel;
 
         public OverviewViewModel(IHttpsJsonClientProvider<ObjectDTO> httpsJsonClientProvider,
             StackPanelViewModel stackPanelViewModel, IStringUtils stringUtils, IObjectProvider objectProvider,
-            IAutorProvider autorProvider, IGrupoProvider grupoProvider)
+            IAutorProvider autorProvider, IGrupoProvider grupoProvider,IRelacionProvider relacionProvider)
         {
             _objectProvider = objectProvider;
             _autorProvider = autorProvider;
@@ -49,7 +52,7 @@ namespace PlantillaWPF.ViewModel
             _stackPanelViewModel = stackPanelViewModel;
             _stringUtils = stringUtils;
             _items = new ObservableCollection<ObjectModel>();
-
+            _relacionProvider = relacionProvider;
         }
 
         public override async Task LoadAsync()
@@ -62,7 +65,7 @@ namespace PlantillaWPF.ViewModel
 
             // Actualizar la colección observable de objetos
             Items = new ObservableCollection<ObjectModel>(objetosFiltrados);
-
+            _relaciones = await _relacionProvider.GetRelaciones();
             //IEnumerable<ObjectDTO> objetos = await _httpsJsonClientProvider.GetAsync(Constantes.OBJECT_URL);//Todos objetos
             //Items = new ObservableCollection<ObjectModel>();
             //foreach (var objeto in objetos)
@@ -86,16 +89,16 @@ namespace PlantillaWPF.ViewModel
 
         public IEnumerable<ObjectModel> FiltrarObjetos(IEnumerable<ObjectDTO> objetos, int _IdFiltro)
         {
-            if (_IdFiltro == null || _IdFiltro == 0)  // Si _IdFiltro es 0 (o algún valor que indique que no se está filtrando)
+            if (_IdFiltro == null || _IdFiltro == 0)  
             {
-                // Si el filtro es 0, devolver todos los objetos sin aplicar el filtro
-                return objetos.Select(obj => ObjectModel.CreateModelFromDTO(obj));
+               
+                return objetos.Select(obj => ObjectModel.CreateModelFromDTO(obj, _relaciones));
             }
 
-            // Si el filtro tiene un valor, se filtra
-            return objetos
-                .Where(obj => obj.AutoresIds.Contains(_IdFiltro) || obj.GruposIds.Contains(_IdFiltro))
-                .Select(obj => ObjectModel.CreateModelFromDTO(obj));  // Transformar los objetos en ObjectModel
+
+            return objetos.Where(obj => obj.IdAutor == _IdFiltro || _relaciones.Where(r => r.IdObjeto == obj.Id).Any(r => r.IdGrupo == _IdFiltro))
+                .Select(obj => ObjectModel.CreateModelFromDTO(obj,_relaciones)).ToList();
+            
         }
 
         [RelayCommand]
@@ -113,7 +116,8 @@ namespace PlantillaWPF.ViewModel
 
             var viewModel = new AddObjetoViewModel(new ObjectService(new HttpsJsonClientService<ObjectDTO>()),
                 new AutorService(new HttpsJsonClientService<AutorDTO>()),
-                new GrupoService(new HttpsJsonClientService<GrupoDTO>()));
+                new GrupoService(new HttpsJsonClientService<GrupoDTO>()),
+                new RelacionService(new HttpsJsonClientService<RelacionDTO>()));
             var view = new AddObjetoView { DataContext = viewModel };
             view.ShowDialog();
             LoadAsync();
@@ -123,7 +127,7 @@ namespace PlantillaWPF.ViewModel
         [RelayCommand]
         private void AddAutor()
         {
-
+            // var viewModel = App.Current.Services.GetService<AddAutorViewModel>();
             var viewModel = new AddAutorViewModel(new ObjectService(new HttpsJsonClientService<ObjectDTO>()),
                 new AutorService(new HttpsJsonClientService<AutorDTO>()));
             var view = new AddAutorView { DataContext = viewModel };

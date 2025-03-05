@@ -21,11 +21,8 @@ namespace PlantillaWPF.Models
 
 
         internal static ObjectModel CreateModelFromDTO(ObjectDTO objeto, IEnumerable<RelacionDTO> relaciones)
-        {   List< RelacionDTO > listaFiltrada= new List< RelacionDTO >();
-            foreach (var relacion in relaciones)
-            {   if(relacion.Id == objeto.Id)
-                listaFiltrada.Add(relacion);
-            }
+        {
+            List<RelacionDTO> listaFiltrada = relaciones.Where(r => r.IdObjeto == objeto.Id).ToList();           
             string listaG = "";
             if (listaFiltrada.Count() == 0)
             {

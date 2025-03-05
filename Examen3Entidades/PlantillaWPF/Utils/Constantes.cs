@@ -34,6 +34,7 @@ namespace PlantillaWPF.Utils
         internal const string OBJECT_URL = "Object/";
         internal const string AUTOR_URL = "Autor/";
         internal const string GRUPO_URL = "Grupo/";
+        internal const string RELACION_URL = "Relacion/";
         internal static List<string> OBJETOS_POSIBLES = new List<string>()
         {
             "Altay.png",

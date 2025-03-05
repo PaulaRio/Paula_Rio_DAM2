@@ -26,13 +26,15 @@ namespace PlantillaWPF.ViewModel
         [ObservableProperty]
         private StackPanelItemModel _Item;
         private readonly IObjectProvider _objectProvider;
+        private readonly IRelacionProvider _relacionProvider;
+        private IEnumerable<RelacionDTO> _relaciones;
 
-        public StackPanelViewModel(IHttpsJsonClientProvider<ObjectDTO> httpsJsonClientProvider, IObjectProvider objectProvider)
+        public StackPanelViewModel(IHttpsJsonClientProvider<ObjectDTO> httpsJsonClientProvider, IObjectProvider objectProvider, IRelacionProvider relacionProvider)
         {
-            _httpsJsonClientProvider=httpsJsonClientProvider ?? throw new ArgumentNullException(nameof(httpsJsonClientProvider));
+            _httpsJsonClientProvider = httpsJsonClientProvider ?? throw new ArgumentNullException(nameof(httpsJsonClientProvider));
             _objectProvider = objectProvider;
             _items = new ObservableCollection<ObjectModel>();
-
+            _relacionProvider = relacionProvider;
         }
         public void SetIdObject(int id)
         {
@@ -45,7 +47,7 @@ namespace PlantillaWPF.ViewModel
             Items = new ObservableCollection<ObjectModel>();
             foreach (var objeto in objetos)
             {
-                Items.Add(ObjectModel.CreateModelFromDTO(objeto));
+                Items.Add(ObjectModel.CreateModelFromDTO(objeto, _relaciones));
             }
             _obj = objetos.FirstOrDefault(x => x.Id == _objetoId);
             Item = StackPanelItemModel.CreateModelFromDTO(_obj) ;

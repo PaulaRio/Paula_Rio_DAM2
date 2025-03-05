@@ -24,12 +24,15 @@ namespace PlantillaWPF.ViewModel
     {
         [ObservableProperty]
         private DateTime? _releaseDate;
+        private IEnumerable<RelacionDTO> _relaciones;
         private readonly IFileService<ObjectDTO> _fileService;
 
         private readonly IObjectProvider _objectProvider;
-        public DataGridViewModel(IObjectProvider objectProvider, IFileService<ObjectDTO> fileService)
+        private readonly IRelacionProvider _relacionProvider;
+        public DataGridViewModel(IObjectProvider objectProvider, IFileService<ObjectDTO> fileService,IRelacionProvider relacionProvider)
         {
             _objectProvider = objectProvider;
+            _relacionProvider= relacionProvider;
             _fileService = fileService;
             Objects = new ObservableCollection<ObjectModel>();
 
@@ -37,6 +40,7 @@ namespace PlantillaWPF.ViewModel
         [ObservableProperty]
         private ObservableCollection<ObjectModel> objects;
 
+    
 
 
         private void MyDataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -62,7 +66,7 @@ namespace PlantillaWPF.ViewModel
                 new GrupoService(new HttpsJsonClientService<GrupoDTO>()));
             var view = new AddObjetoView { DataContext = viewModel };
             view.ShowDialog();
-            LoadAsync();
+             LoadAsync();
 
 
         }
@@ -88,7 +92,7 @@ namespace PlantillaWPF.ViewModel
         }
         [RelayCommand]
         public async void Import()
-        {
+        {   
              
             var openFileDialog = new OpenFileDialog
             {
@@ -111,7 +115,7 @@ namespace PlantillaWPF.ViewModel
                
                 foreach (var obj in loadedObjects)
                 {   
-                    Objects.Add(ObjectModel.CreateModelFromDTO(obj));
+                    Objects.Add(ObjectModel.CreateModelFromDTO(obj, _relaciones));
                     
                 }
             }
@@ -125,13 +129,13 @@ namespace PlantillaWPF.ViewModel
 
             foreach (var element in requestData)
             {
-                Objects.Add(ObjectModel.CreateModelFromDTO(element));
+                Objects.Add(ObjectModel.CreateModelFromDTO(element, _relaciones));
             }
 
         }
         public override async Task LoadAsync()
         {
-          
+            _relaciones = await _relacionProvider.GetRelaciones();
             Objects.Clear();
             await CargarTabla();
 

@@ -287,6 +287,9 @@ namespace PlantillaAPI.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
+                    b.Property<int>("IdAutor")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -295,9 +298,6 @@ namespace PlantillaAPI.Migrations
                     b.Property<string>("Photo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("idAutor")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

@@ -22,7 +22,7 @@ namespace PlantillaAPI.Models.Entity
 
         public string Photo { get; set; }
         
-        public int idAutor { get; set; }
+        public int IdAutor { get; set; }
 
         public ObjectEntity()
         {

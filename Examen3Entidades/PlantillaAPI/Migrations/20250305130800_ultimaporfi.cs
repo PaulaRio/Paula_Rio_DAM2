@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PlantillaAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class Relacion : Migration
+    public partial class ultimaporfi : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -58,8 +58,7 @@ namespace PlantillaAPI.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    IdObjeto = table.Column<int>(type: "int", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -90,7 +89,7 @@ namespace PlantillaAPI.Migrations
                     Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     Photo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    idAutor = table.Column<int>(type: "int", nullable: false)
+                    IdAutor = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

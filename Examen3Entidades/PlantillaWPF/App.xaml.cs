@@ -62,6 +62,7 @@ namespace PlantillaWPF
             services.AddSingleton<IObjectProvider, ObjectService>();
             services.AddSingleton<IAutorProvider, AutorService>();
             services.AddSingleton<IGrupoProvider, GrupoService>();
+            services.AddSingleton<IRelacionProvider, RelacionService>();
             services.AddSingleton<IStringUtils, StringUtils>();
             return services.BuildServiceProvider();
         }

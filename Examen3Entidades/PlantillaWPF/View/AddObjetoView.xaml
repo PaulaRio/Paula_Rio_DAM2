@@ -43,17 +43,15 @@
                 <Border BorderThickness="0,0,0,2" BorderBrush="LightGray" Margin="0,0,0,10">
                     <ui:TextBox Text="{Binding Photo}" PlaceholderText="Enter the Lifetime Gross" Height="40" Margin="0,0,0,10" FontSize="14" VerticalContentAlignment="Center"/>
                 </Border>
-
-                <Label Content="Autor/es" Foreground="LightSlateGray" Margin="0,0,0,5" FontWeight="Bold"/>
+                
+                <Label Content="IdAutor" Foreground="LightSlateGray" Margin="0,0,0,5" FontWeight="Bold"/>
                 <Border BorderThickness="0,0,0,2" BorderBrush="LightGray" Margin="0,0,0,10">
-                    <ui:TextBox Text="{Binding AutoresIds}" PlaceholderText="Enter the Lifetime Gross" Height="40" Margin="0,0,0,10" FontSize="14" VerticalContentAlignment="Center"/>
+                    <ui:TextBox Text="{Binding IdAutor}" PlaceholderText="Enter the Lifetime Gross" Height="40" Margin="0,0,0,10" FontSize="14" VerticalContentAlignment="Center"/>
                 </Border>
-
-                <Label Content="Grupo/s" Foreground="LightSlateGray" Margin="0,0,0,5" FontWeight="Bold"/>
+                <Label Content="IdsGrupos" Foreground="LightSlateGray" Margin="0,0,0,5" FontWeight="Bold"/>
                 <Border BorderThickness="0,0,0,2" BorderBrush="LightGray" Margin="0,0,0,10">
-                    <ui:TextBox Text="{Binding GruposIds}" PlaceholderText="Enter the Lifetime Gross" Height="40" Margin="0,0,0,10" FontSize="14" VerticalContentAlignment="Center"/>
+                    <ui:TextBox Text="{Binding IdsGrupos}" PlaceholderText="Enter the Lifetime Gross" Height="40" Margin="0,0,0,10" FontSize="14" VerticalContentAlignment="Center"/>
                 </Border>
-
 
 
                 <Button Content="Back"  FontSize="15" Foreground="Ivory" Background="DarkSlateGray" BorderThickness="0" Cursor="Hand" Command="{Binding CancelarVentanaCommand}" Grid.Column="0" HorizontalAlignment="Left" Margin="0,0,0,-34" Width="70"/>

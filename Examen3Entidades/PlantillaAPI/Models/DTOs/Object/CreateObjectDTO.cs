@@ -14,10 +14,12 @@ namespace PlantillaAPI.Models.DTOs.Object
 
         public string Photo { get; set; }
 
+        public int IdAutor { get; set; }
+
         //public List<int> AutoresIds { get; set; }
 
         //public List<int> GruposIds { get; set; }
 
-       
+
     }
 }

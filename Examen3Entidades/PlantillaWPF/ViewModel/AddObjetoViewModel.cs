@@ -31,27 +31,30 @@ namespace PlantillaWPF.ViewModel
         [ObservableProperty]
         public string _Photo;
         [ObservableProperty]
-        public string _AutoresIds;
+        public string _IdAutor;
         [ObservableProperty]
-        public string _GruposIds;
+        public string _IdsGrupos;
 
-        
+
+
         private readonly IObjectProvider _objectProvider;
         private readonly IAutorProvider _autorProvider;
         private readonly IGrupoProvider _grupoProvider;
+        private readonly IRelacionProvider _relacionProvider;
 
-        public AddObjetoViewModel( IObjectProvider objectProvider,IAutorProvider autorProvider, IGrupoProvider grupoProvider)
+        public AddObjetoViewModel( IObjectProvider objectProvider, IAutorProvider autorProvider, IGrupoProvider grupoProvider, IRelacionProvider relacionProvider)
         {
-            _objectProvider=objectProvider;
-            _autorProvider=autorProvider;
-            _grupoProvider =grupoProvider;
+            _objectProvider = objectProvider;
+            _autorProvider = autorProvider;
+            _grupoProvider = grupoProvider;
+            _relacionProvider = relacionProvider;
 
-            _allIdAutores = new List<int>(); 
+            _allIdAutores = new List<int>();
             _allIdGrupos = new List<int>();
-
+            
         }
 
-       
+
         [RelayCommand]
         private void CancelarVentana(object? parameter)
         {
@@ -89,7 +92,7 @@ namespace PlantillaWPF.ViewModel
             _allGrupos = new ObservableCollection<GrupoDTO>();
             foreach (var grupo in grupos)
             {
-                _allGrupos.Add(grupo);
+                //_allGrupos.Add(grupo);
                 _allIdGrupos.Add(grupo.Id);
             }
 
@@ -98,74 +101,53 @@ namespace PlantillaWPF.ViewModel
 
 
         private async Task<bool> PostObjectAsync()
-        {
-            await LoadAsync();
-            int[] listaAutores=string.IsNullOrEmpty(_AutoresIds)?new int [0]:listNum(_AutoresIds);
-            int[] listaGrupos = string.IsNullOrEmpty(_GruposIds) ? new int[0]: listNum(_GruposIds);
-            if (!await _autorProvider.ExistenAutores(listaAutores.ToList()))
-            {
-                MessageBox.Show("Uno o más autores no existen. Debes crear los autores primero.");
-                _AutoresIds = string.Empty; 
-                return false; 
+        {   await LoadAsync();
+            bool exito=true;
+
+            List<int> gruposIds = string.IsNullOrEmpty(IdsGrupos) ? new List<int>() : IdsGrupos.Split(',').Select(int.Parse).ToList();
+            foreach (var grupoId in gruposIds){
+                if (!_allIdGrupos.Contains(grupoId))
+                {
+                    MessageBox.Show("Uno de los grupos introducidos no existe, debes crearlo primero");
+                    gruposIds.Clear();
+                    exito = false;
+                }
+               
             }
-            if (!await _grupoProvider.ExistenGrupos(listaGrupos.ToList()))
-            {
-                MessageBox.Show("Uno o más grupos no existen. Debes crear los grupos primero.");
-                _GruposIds = string.Empty; 
-                return false; 
-            }
+
             try
             {
-                ObjectDTO nuevoObjeto = new ObjectDTO
+                if (exito)
                 {
-                    Name = _Nombre,
-                    Description = _Descripcion,
-                    Photo = string.IsNullOrEmpty(_Photo) ? "string" : _Photo,
-                    //AutoresIds = listaAutores.Length > 0 ? listaAutores.ToList() : new List<int>(),
-                    //GruposIds = listaGrupos.Length > 0 ? listaGrupos.ToList() : new List<int>(),
+                    ObjectDTO nuevoObjeto = new ObjectDTO
+                    {
+                        Name = _Nombre,
+                        Description = _Descripcion,
+                        Photo = string.IsNullOrEmpty(_Photo) ? "string" : _Photo,
+                        IdAutor = int.Parse(IdAutor),
+                        //GruposIds = listaGrupos.Length > 0 ? listaGrupos.ToList() : new List<int>(),
 
 
-                };
+                    };
 
-               
 
-                await _objectProvider.PostObjeto(nuevoObjeto);
-                MessageBox.Show("Objeto creado exitosamente");
-                return true;
-               
-                
+
+                    await _objectProvider.PostObjeto(nuevoObjeto);
+                    MessageBox.Show("Objeto creado exitosamente");
+                    exito= true;
+
+
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return false;
+                exito= false;
             }
+            return exito;
+            
 
         }
-        private int[] listNum(string cad)
-        {
-            if (string.IsNullOrEmpty(cad))
-            {
-                return new int[0]; 
-            }
-
-            
-            cad = cad.Replace(" ", "");
-            string[] numeros;
-
-            
-            if (cad.Contains(","))
-            {
-                numeros = cad.Split(',');
-            }
-            else
-            {
-                
-                numeros = new string[] { cad };
-            }
-
-            
-            return numeros.Select(n => int.Parse(n)).ToArray();
-        }
+        
     }
 }
